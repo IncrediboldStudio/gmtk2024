@@ -1,16 +1,16 @@
-extends Node
+extends Node2D
 
 class_name Block
 
 var next_block: Block
-var components_contained = 0
-var received_now = false
+
+# Contains [Component, progression in %]
+var components_contained = []
 
 
-func send():
+func move(_delta):
     print("send shouldn't be called here")
 
 
-func receive(components) -> bool:
+func receive(_components):
     print("receive shouldn't be called here")
-    return false
