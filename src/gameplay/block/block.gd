@@ -2,8 +2,9 @@ extends Node
 
 class_name Block
 
-var components_contained
 var next_block: Block
+var components_contained = 0
+var received_now = false
 
 
 func send():

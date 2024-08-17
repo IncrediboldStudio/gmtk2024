@@ -1,25 +1,35 @@
 extends Node
 
-class_name factory
-
-var height
 var width
+var height
 var blocks = []
+
+@export var testing: bool = false
+
+func _ready():
+    if (testing):
+        setup_test_scenario()
+    
+
+func _process(delta):
+    if (testing):
+        process_test_scenario(delta)
+    
 
 func setup(new_width, new_height):
     width = new_width
     height = new_height
     for i in width:
         blocks.append([])
-        blocks[i].resize(height)
-        blocks[i].fill(Block.new())
+        for j in height:
+            blocks[i].append(Block.new())
 
 
 func add(new_block: Block, position: Vector2, entry: Vector2, exit: Vector2):
     blocks[position.x][position.y].queue_free()
     blocks[position.x][position.y] = new_block
     
-    var adjacent_block_position = position - entry
+    var adjacent_block_position = position + entry
     if (adjacent_block_position.x >= 0 && adjacent_block_position.x < width &&
         adjacent_block_position.y >= 0 && adjacent_block_position.y < height):
         blocks[adjacent_block_position.x][adjacent_block_position.y].next_block = new_block
@@ -30,3 +40,48 @@ func add(new_block: Block, position: Vector2, entry: Vector2, exit: Vector2):
         new_block.next_block = blocks[adjacent_block_position.x][adjacent_block_position.y]
         
         
+func remove(position: Vector2):
+    blocks[position.x][position.y].queue_free()
+    blocks[position.x][position.y] = Block.new()
+
+
+func print_blocks():
+    var row
+    for i in height:
+        row = ""
+        for j in width:
+            row += "[" + str(blocks[j][i].components_contained) + "]"
+        print(row)
+    print("=================================================")
+
+
+func setup_test_scenario():
+    setup(3, 3)
+    add(threadmill.new(), Vector2(0,0), Vector2(1,0), Vector2(0,1))
+    add(threadmill.new(), Vector2(0,1), Vector2(0,-1), Vector2(0,1))
+    add(threadmill.new(), Vector2(0,2), Vector2(0,-1), Vector2(1,0))
+    add(threadmill.new(), Vector2(1,2), Vector2(-1,0), Vector2(1,0))
+    add(threadmill.new(), Vector2(2,2), Vector2(-1,0), Vector2(0,-1))
+    add(threadmill.new(), Vector2(2,1), Vector2(0,1), Vector2(0,-1))
+    add(threadmill.new(), Vector2(2,0), Vector2(0,1), Vector2(-1,0))
+    add(threadmill.new(), Vector2(1,0), Vector2(1,0), Vector2(-1,0))
+    blocks[1][0].receive(1)
+    blocks[1][2].receive(1)
+
+
+var next_time = 0
+func process_test_scenario(delta):
+    next_time += delta
+    
+    if (next_time < 1):
+        return
+       
+    for i in width:
+        for j in height:
+            blocks[i][j].received_now = false
+    
+    next_time = 0
+    for i in width:
+        for j in height:
+            blocks[i][j].send()
+    print_blocks()
