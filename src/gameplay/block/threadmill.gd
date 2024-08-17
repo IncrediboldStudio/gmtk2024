@@ -1,6 +1,6 @@
 extends Block
 
-class_name threadmill
+class_name Threadmill
 
 func send():
     if next_block == null || received_now:
