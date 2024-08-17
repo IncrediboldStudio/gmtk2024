@@ -5,7 +5,7 @@ This project is based on our Godot template. For more information, you can check
 
 ## Prerequisites
 
-- [Godot 4.1.4-stable](https://godotengine.org/download/archive/4.1.4-stable/)
+- [Godot 4.3-stable](https://godotengine.org/download/archive/4.3-stable/)
 
 ## Getting Started
 
