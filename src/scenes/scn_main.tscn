@@ -29,18 +29,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/MarginContainer"]
+[node name="Hud" parent="CanvasLayer/MarginContainer" instance=ExtResource("2_kkx21")]
 layout_mode = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+offset_left = 224.0
+offset_top = 64.0
+offset_right = 736.0
+offset_bottom = 576.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
-[node name="Viewport" type="SubViewport" parent="CanvasLayer/MarginContainer/SubViewportContainer"]
+[node name="Viewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
 disable_3d = true
 handle_input_locally = false
 physics_object_picking = true
 render_target_update_mode = 4
 
-[node name="Map" parent="CanvasLayer/MarginContainer/SubViewportContainer/Viewport" instance=ExtResource("1_7wbeq")]
-
-[node name="Hud" parent="CanvasLayer/MarginContainer" instance=ExtResource("2_kkx21")]
-layout_mode = 2
+[node name="Map" parent="CanvasLayer/SubViewportContainer/Viewport" instance=ExtResource("1_7wbeq")]
