@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  GODOT_VERSION: '4.1.4'
+  GODOT_VERSION: '4.3'
   GODOT_PATCH_VERSION: stable
 
 permissions:
@@ -72,12 +72,6 @@ jobs:
         uses: actions/download-artifact@v4
         with: 
           name: build-html5
-      - name: Add coi-service-worker
-        run: |
-          git clone https://github.com/gzuidhof/coi-serviceworker.git
-          mv coi-serviceworker/coi-serviceworker.min.js ./coi-serviceworker.min.js
-          rm -R coi-serviceworker
-          ls -a
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
