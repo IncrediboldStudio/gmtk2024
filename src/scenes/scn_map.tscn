@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgoenhi3apad1"]
+
+[ext_resource type="Script" path="res://src/gameplay/map/map.gd" id="1_30ukq"]
+[ext_resource type="PackedScene" uid="uid://d13dr5m7twgrj" path="res://src/gameplay/map/tile/tile.tscn" id="1_d50gi"]
+
+[node name="Map" type="Node2D"]
+
+[node name="Map" type="Node2D" parent="."]
+script = ExtResource("1_30ukq")
+tile_size = Vector2i(128, 128)
+tile_template = ExtResource("1_d50gi")
+
+[node name="Tile" parent="Map" instance=ExtResource("1_d50gi")]
+
+[node name="Node" type="Node" parent="."]

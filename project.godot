@@ -32,7 +32,7 @@ KeyPersistence="*res://src/system/key_persistence.gd"
 window/size/viewport_width=1080
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="expand"
 
 [editor_plugins]
 
