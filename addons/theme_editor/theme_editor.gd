@@ -316,7 +316,7 @@ func set_icon_color(icon_name: String, theme_type: String, color: Color):
 
   var texture = ImageTexture.create_from_image(image)
   ResourceSaver.save(texture, "%s/%s_%s.png" % [icon_dir, theme_type, icon_name])
-  return texture
+  return load("%s/%s_%s.png" % [icon_dir, theme_type, icon_name])
 
 func get_hover_color(color: Color):
   return color.lightened(0.24)
