@@ -2,7 +2,6 @@ extends Conveyor
 
 class_name Assembler
 
-var onlyOnce = false
 func move(delta):
     if components_contained.size() != 0 && (components_contained[0][0].generated_by == self || components_contained[0][1] < 50):
         super(delta)
@@ -10,8 +9,6 @@ func move(delta):
     
     if sub_block.components_contained.size() == 0 || sub_block.components_contained[0][1] < 50:
         return
-        
-    onlyOnce = true
     
     var components_parent = components_contained[0][0].get_parent()
     var components_to_assemble: Array[Component]
