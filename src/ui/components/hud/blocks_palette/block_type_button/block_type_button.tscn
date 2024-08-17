@@ -1,0 +1,66 @@
+[gd_scene load_steps=13 format=3 uid="uid://odpaja1mfuvi"]
+
+[ext_resource type="Texture2D" uid="uid://dmfff8h5kxmo1" path="res://icon.svg" id="1_3pjnn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu24i"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t055k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b104r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8tm1v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oyt53"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tuvxq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jo7qj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eisse"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cx6ei"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ajxo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w47up"]
+
+[node name="BlockTypeButton" type="PanelContainer"]
+custom_minimum_size = Vector2(96, 96)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"PanelContainerPrimary"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_3pjnn")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+tooltip_text = "Block Name"
+theme_override_styles/focus = SubResource("StyleBoxFlat_wu24i")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_t055k")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_b104r")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_8tm1v")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_oyt53")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_tuvxq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jo7qj")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_eisse")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_cx6ei")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_8ajxo")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_w47up")
