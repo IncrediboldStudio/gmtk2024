@@ -5,7 +5,7 @@ class_name Conveyor
 var speed = 30
 
 func move(delta):
-    if components_contained.size() == 0:
+    if components_contained.size() == 0 || components_contained[-1][0].is_blocked:
         return
     
     var next_stop
@@ -13,6 +13,9 @@ func move(delta):
     var movement
     
     for i in components_contained.size():
+        if (components_contained[i][0].is_blocked):
+            continue
+        
         if i == 0:
             next_stop = 200
             if next_block == null || next_block.next_block == self:
@@ -22,7 +25,15 @@ func move(delta):
             free_space = next_stop - components_contained[0][1] - components_contained[0][0].size_in_block_ratio
         else:
             free_space = components_contained[i-1][1] - components_contained[i][1] - components_contained[i][0].size_in_block_ratio
-            
+        
+        if (free_space == 0):
+            if i == 0:
+                if next_block == null:
+                    components_contained[i][0].is_blocked = true
+            elif components_contained[i-1][0].is_blocked:
+                components_contained[i][0].is_blocked = true
+            continue
+        
         movement = clampf(free_space, 0, speed * delta)
         
         components_contained[i][1] += movement
