@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://d13dr5m7twgrj"]
+
+[ext_resource type="Script" path="res://src/gameplay/map/select_tile/select_tile.gd" id="1_4e5mn"]
+[ext_resource type="Texture2D" uid="uid://c5wwythjtubcb" path="res://src/art/tile_highlight.png" id="2_2vxbq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gn80u"]
+size = Vector2(64, 64)
+
+[node name="Select_Tile" type="Node2D"]
+script = ExtResource("1_4e5mn")
+
+[node name="HighlightValid" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+position = Vector2(32, 32)
+texture = ExtResource("2_2vxbq")
+
+[node name="HighlightInvalid" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.724744, 0, 0.0713163, 1)
+z_index = 2
+position = Vector2(32, 32)
+texture = ExtResource("2_2vxbq")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_gn80u")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_tile_clicked"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_tile_hovered"]

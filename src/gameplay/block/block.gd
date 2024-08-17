@@ -2,6 +2,10 @@ extends Node2D
 
 class_name Block
 
+var sprite : Sprite2D
+
+var block_data : BlockData : set = _set_block_data
+
 var previous_block: Block
 var next_block: Block
 var exit_direction: Vector2
@@ -10,6 +14,8 @@ var exit_direction: Vector2
 # Contains [Component, progression in %]
 var components_contained = []
 
+func _ready():
+    sprite = get_node("Sprite2D")
 
 func move(_delta):
     print("send shouldn't be called here")
@@ -30,3 +36,8 @@ func try_set_next_block(new_block: Block):
     if (new_block.previous_block == null || new_block.previous_block.get_class() == "Block"):
         next_block = new_block
         new_block.previous_block = self
+
+func _set_block_data(value):
+    block_data = value
+    sprite.texture = block_data.texture
+    sprite.offset = block_data.texture_offset
