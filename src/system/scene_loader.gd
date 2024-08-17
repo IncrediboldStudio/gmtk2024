@@ -36,9 +36,9 @@ func set_configuration(config: Dictionary) -> void:
 ## - current_scene: The current scene to be replaced.
 ##
 ## Returns: None
-func load_scene(next_scene: PackedScene, current_scene: Node = null) -> void:
+func load_scene(next_scene_path: String, current_scene: Node = null) -> void:
     var loading_screen_instance: Node = _initialize_loading_screen()
-    var path: String = _find_scene_path(next_scene.resource_path)
+    var path: String = _find_scene_path(next_scene_path)
 
     # Start loading scene
     if ResourceLoader.load_threaded_request(path) != OK:
