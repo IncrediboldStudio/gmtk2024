@@ -1,10 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgoenhi3apad1"]
+[gd_scene load_steps=4 format=3 uid="uid://dgoenhi3apad1"]
 
 [ext_resource type="Script" path="res://src/gameplay/map/map.gd" id="1_30ukq"]
-[ext_resource type="Resource" uid="uid://djroi62q0galj" path="res://src/gameplay/map/tile/test_tile.tres" id="2_86mqg"]
+[ext_resource type="Texture2D" uid="uid://1vie715d8w4e" path="res://src/art/test_block.png" id="3_krjo4"]
+[ext_resource type="Texture2D" uid="uid://on1s50gsruye" path="res://src/art/tile_grid.png" id="3_vs4jw"]
 
 [node name="Map" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_30ukq")
-tile_size = Vector2i(128, 128)
-map_size = Vector2i(4, 4)
-default_tile_type = ExtResource("2_86mqg")
+tile_size = Vector2i(64, 64)
+
+[node name="TileGrid" type="Sprite2D" parent="."]
+position = Vector2(256, 256)
+texture = ExtResource("3_vs4jw")
+
+[node name="BlockPreview" type="Sprite2D" parent="."]
+z_index = 5
+texture = ExtResource("3_krjo4")
