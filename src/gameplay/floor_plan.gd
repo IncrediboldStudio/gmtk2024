@@ -5,10 +5,6 @@ var height
 var blocks = []
 
 @export var testing: bool = false
-@export var component_scene: Component
-@export var component_scene2: Component
-@export var component_scene3: Component
-@export var component_scene4: Component
 
 func _ready():
     if (testing):
@@ -78,15 +74,24 @@ func setup_test_scenario():
     setup(3, 3)
     add(Conveyor.new(), Vector2(0,0), Vector2(0,-1), Vector2(0,1))
     add(Conveyor.new(), Vector2(1,0), Vector2(0,-1), Vector2(0,1))
-    add(Combiner.new(), Vector2(0,1), Vector2(0,-1), Vector2(0,1))
-    add(SubCombiner.new(), Vector2(1,1), Vector2(0,-1), Vector2(0,1))
+    add(Assembler.new(), Vector2(0,1), Vector2(0,-1), Vector2(0,1))
+    add(SubAssembler.new(), Vector2(1,1), Vector2(0,-1), Vector2(0,1))
     add(Conveyor.new(), Vector2(0,2), Vector2(0,-1), Vector2(0,1))
     add(Conveyor.new(), Vector2(2,0), Vector2(0,1), Vector2(-1,0))
     
     blocks[0][1].sub_block = blocks[1][1]
     
-    blocks[0][0].receive([component_scene, 50])
-    blocks[2][0].receive([component_scene2, 50])
+    var new_component = preload("res://src/gameplay/component/Component.tscn")
+    var instance = new_component.instantiate()
+    var component_data = preload("res://src/gameplay/component/test_component.tres")
+    add_child(instance)
+    var instance2 = instance.duplicate()
+    add_child(instance2)
+    instance.component_data = component_data
+    instance2.component_data = component_data
+    
+    blocks[0][0].receive([instance, 50])
+    blocks[2][0].receive([instance2, 50])
 
 
 func process_test_scenario(delta):

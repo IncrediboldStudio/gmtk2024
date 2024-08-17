@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ComponentData" load_steps=3 format=3 uid="uid://cpp3n6rxlf1eh"]
+
+[ext_resource type="Script" path="res://src/gameplay/component/component_data.gd" id="1_3lt4d"]
+[ext_resource type="Texture2D" uid="uid://cja76vjc3nfwu" path="res://src/art/RedSquare.png" id="2_lo2tv"]
+
+[resource]
+script = ExtResource("1_3lt4d")
+type = 0
+texture = ExtResource("2_lo2tv")
+texture_offset = Vector2i(16, 16)
+size_in_block_ratio = 20.0
