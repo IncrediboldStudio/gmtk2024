@@ -151,13 +151,13 @@ pivot_offset = Vector2(20, 20)
 texture = SubResource("GradientTexture1D_eqs57")
 
 [node name="FadeAnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "fade_in"
 libraries = {
 "": SubResource("AnimationLibrary_uwjus")
 }
+autoplay = "fade_in"
 
 [node name="ThrobberAnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "throbber"
 libraries = {
 "": SubResource("AnimationLibrary_d2i53")
 }
+autoplay = "throbber"
