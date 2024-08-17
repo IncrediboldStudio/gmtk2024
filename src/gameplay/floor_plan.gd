@@ -50,7 +50,10 @@ func print_blocks():
     for i in height:
         row = ""
         for j in width:
-            row += "[" + str(blocks[j][i].components_contained) + "]"
+            if blocks[j][i].components_contained.size() != 0:
+                row += "[" + str(blocks[j][i].components_contained[0][1]) + "]"
+            else:
+                row += "[" + str(0) + "]"
         print(row)
     print("=================================================")
 
@@ -65,23 +68,12 @@ func setup_test_scenario():
     add(Threadmill.new(), Vector2(2,1), Vector2(0,1), Vector2(0,-1))
     add(Threadmill.new(), Vector2(2,0), Vector2(0,1), Vector2(-1,0))
     add(Threadmill.new(), Vector2(1,0), Vector2(1,0), Vector2(-1,0))
-    blocks[1][0].receive(1)
-    blocks[1][2].receive(1)
+    blocks[1][0].receive([1, 0])
+    blocks[1][2].receive([1, 0])
 
 
-var next_time = 0
 func process_test_scenario(delta):
-    next_time += delta
-    
-    if (next_time < 1):
-        return
-       
     for i in width:
         for j in height:
-            blocks[i][j].received_now = false
-    
-    next_time = 0
-    for i in width:
-        for j in height:
-            blocks[i][j].send()
+            blocks[i][j].move(delta)
     print_blocks()
