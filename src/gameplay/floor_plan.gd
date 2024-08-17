@@ -68,8 +68,9 @@ func setup_test_scenario():
     add(Threadmill.new(), Vector2(2,1), Vector2(0,1), Vector2(0,-1))
     add(Threadmill.new(), Vector2(2,0), Vector2(0,1), Vector2(-1,0))
     add(Threadmill.new(), Vector2(1,0), Vector2(1,0), Vector2(-1,0))
-    blocks[1][0].receive([1, 0])
-    blocks[1][2].receive([1, 0])
+    blocks[0][0].receive([Component.new(), 0])
+    blocks[1][0].receive([Component.new(), 0])
+    blocks[1][0].speed = 0
 
 
 func process_test_scenario(delta):
