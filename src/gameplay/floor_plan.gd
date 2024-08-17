@@ -57,14 +57,14 @@ func print_blocks():
 
 func setup_test_scenario():
     setup(3, 3)
-    add(threadmill.new(), Vector2(0,0), Vector2(1,0), Vector2(0,1))
-    add(threadmill.new(), Vector2(0,1), Vector2(0,-1), Vector2(0,1))
-    add(threadmill.new(), Vector2(0,2), Vector2(0,-1), Vector2(1,0))
-    add(threadmill.new(), Vector2(1,2), Vector2(-1,0), Vector2(1,0))
-    add(threadmill.new(), Vector2(2,2), Vector2(-1,0), Vector2(0,-1))
-    add(threadmill.new(), Vector2(2,1), Vector2(0,1), Vector2(0,-1))
-    add(threadmill.new(), Vector2(2,0), Vector2(0,1), Vector2(-1,0))
-    add(threadmill.new(), Vector2(1,0), Vector2(1,0), Vector2(-1,0))
+    add(Threadmill.new(), Vector2(0,0), Vector2(1,0), Vector2(0,1))
+    add(Threadmill.new(), Vector2(0,1), Vector2(0,-1), Vector2(0,1))
+    add(Threadmill.new(), Vector2(0,2), Vector2(0,-1), Vector2(1,0))
+    add(Threadmill.new(), Vector2(1,2), Vector2(-1,0), Vector2(1,0))
+    add(Threadmill.new(), Vector2(2,2), Vector2(-1,0), Vector2(0,-1))
+    add(Threadmill.new(), Vector2(2,1), Vector2(0,1), Vector2(0,-1))
+    add(Threadmill.new(), Vector2(2,0), Vector2(0,1), Vector2(-1,0))
+    add(Threadmill.new(), Vector2(1,0), Vector2(1,0), Vector2(-1,0))
     blocks[1][0].receive(1)
     blocks[1][2].receive(1)
 
