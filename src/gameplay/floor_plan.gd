@@ -76,35 +76,22 @@ func print_blocks():
 
 func setup_test_scenario():
     setup(3, 3)
-    add(Conveyor.new(), Vector2(0,0), Vector2(1,0), Vector2(0,1))
-    #blocks[0][0].position = Vector2(100, 100)
-    add(Conveyor.new(), Vector2(0,1), Vector2(0,-1), Vector2(0,1))
-    #blocks[0][1].position = Vector2(100, 300)
-    add(Conveyor.new(), Vector2(0,2), Vector2(0,-1), Vector2(1,0))
-    #blocks[0][2].position = Vector2(100, 500)
-    add(Conveyor.new(), Vector2(1,2), Vector2(-1,0), Vector2(1,0))
-    #blocks[1][2].position = Vector2(300, 500)
-    add(Conveyor.new(), Vector2(2,2), Vector2(-1,0), Vector2(0,-1))
-    #blocks[2][2].position = Vector2(500, 500)
-    add(Conveyor.new(), Vector2(2,1), Vector2(0,1), Vector2(-1,0))
-    #blocks[2][1].position = Vector2(500, 300)
-    add(Conveyor.new(), Vector2(2,0), Vector2(1,0), Vector2(-1,0))
-    #blocks[2][0].position = Vector2(500, 100)
-    add(Conveyor.new(), Vector2(1,0), Vector2(1,0), Vector2(-1,0))
-    #blocks[1][0].position = Vector2(300, 100)
-    add(Conveyor.new(), Vector2(1,1), Vector2(1,0), Vector2(-1,0))
-    #blocks[1][1].position = Vector2(300, 300)
-    #add_child(component_scene)
+    add(Conveyor.new(), Vector2(0,0), Vector2(0,-1), Vector2(0,1))
+    add(Conveyor.new(), Vector2(1,0), Vector2(0,-1), Vector2(0,1))
+    add(Combiner.new(), Vector2(0,1), Vector2(0,-1), Vector2(0,1))
+    add(SubCombiner.new(), Vector2(1,1), Vector2(0,-1), Vector2(0,1))
+    add(Conveyor.new(), Vector2(0,2), Vector2(0,-1), Vector2(0,1))
+    add(Conveyor.new(), Vector2(2,0), Vector2(0,1), Vector2(-1,0))
+    
+    blocks[0][1].sub_block = blocks[1][1]
+    
     blocks[0][0].receive([component_scene, 50])
     blocks[2][0].receive([component_scene2, 50])
-    blocks[2][2].receive([component_scene3, 50])
-    blocks[0][2].receive([component_scene4, 50])
-    #blocks[0][0].speed = 0
 
 
 func process_test_scenario(delta):
     for i in width:
         for j in height:
             blocks[i][j].move(delta)
-    ##print_blocks()
-    print(component_scene.position)
+    #print_blocks()
+    #print(component_scene.position)

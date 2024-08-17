@@ -8,6 +8,7 @@ var block_data : BlockData : set = _set_block_data
 
 var used_tiles : Array[SelectTile]
 
+var sub_block: Block
 var previous_block: Block
 var next_block: Block
 var exit_direction: Vector2
@@ -20,11 +21,11 @@ func _ready():
     sprite = get_node("Sprite2D")
 
 func move(_delta):
-    print("send shouldn't be called here")
+    return
 
 
 func receive(_components):
-    print("receive shouldn't be called here")
+    return
     
 
 func try_set_previous_block(new_block: Block):

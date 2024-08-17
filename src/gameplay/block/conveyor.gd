@@ -38,9 +38,9 @@ func move(delta):
         
         components_contained[i][1] += movement
         if (components_contained[i][1] < 50):
-            components_contained[i][0].position = position + (distance_to_adjacent * (components_contained[i][0].position - position).normalized() * absf(components_contained[i][1] - 50) / 100)
+            components_contained[i][0].global_position = global_position + (distance_to_adjacent * (components_contained[i][0].global_position - global_position).normalized() * absf(components_contained[i][1] - 50) / 100)
         else:
-            components_contained[i][0].position = position + (distance_to_adjacent * exit_direction * (components_contained[i][1] - 50) / 100)
+            components_contained[i][0].global_position = global_position + (distance_to_adjacent * exit_direction * (components_contained[i][1] - 50) / 100)
         
     if components_contained[0][1] >= 100:
         components_contained[0][1] -= 100
