@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://da4rwmiwsc58c"]
+[gd_scene load_steps=5 format=3 uid="uid://da4rwmiwsc58c"]
 
 [ext_resource type="PackedScene" uid="uid://giy013f25khn" path="res://src/ui/components/hud/blocks_palette/blocks_palette.tscn" id="1_6ejom"]
+[ext_resource type="Script" path="res://src/ui/menus/menu.gd" id="1_odwqh"]
 [ext_resource type="PackedScene" uid="uid://i2o5l6g1vntu" path="res://src/ui/components/hud/tools_palette/tools_palette.tscn" id="1_u07aa"]
+[ext_resource type="Script" path="res://src/ui/components/quit_button/quit_button.gd" id="4_rnmjo"]
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -12,13 +14,41 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_odwqh")
 
-[node name="ToolsPalette" parent="." instance=ExtResource("1_u07aa")]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-offset_right = 83.0
-offset_bottom = 96.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ToolsPalette" parent="MarginContainer" instance=ExtResource("1_u07aa")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="BlocksPalette" parent="MarginContainer" instance=ExtResource("1_6ejom")]
+layout_mode = 2
+
+[node name="NavigationButtons" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="BlocksPalette" parent="." instance=ExtResource("1_6ejom")]
-layout_mode = 1
+[node name="ButttonMainMenu" type="Button" parent="MarginContainer/NavigationButtons"]
+layout_mode = 2
+text = "Home"
+
+[node name="ButtonSettings" type="Button" parent="MarginContainer/NavigationButtons"]
+layout_mode = 2
+text = "Settings"
+
+[node name="ButtonQuit" type="Button" parent="MarginContainer/NavigationButtons"]
+layout_mode = 2
+theme_type_variation = &"ButtonAccent"
+text = "Quit"
+script = ExtResource("4_rnmjo")
+
+[connection signal="pressed" from="MarginContainer/NavigationButtons/ButtonSettings" to="." method="change_menu" binds= ["SettingsMenu"]]
