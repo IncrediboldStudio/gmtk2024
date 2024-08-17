@@ -17,7 +17,7 @@ var blocks : Array[Block]
 var highlighted_tiles : Array[SelectTile]
 
 var last_tile_dragged : Vector2i
-var click_helded = Click_Helded.NONE
+var click_holded = Click_Helded.NONE
 
 func _ready():
     block_preview = get_node("BlockPreview")
@@ -42,35 +42,35 @@ func _process(delta: float):
     block_preview.position = get_viewport().get_mouse_position()
 
 func _unhandled_input(event):
-    if click_helded == Click_Helded.LEFT_CLICK:
+    if click_holded == Click_Helded.LEFT_CLICK:
         if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
             if !event.pressed:
                 print("released!")
-                click_helded = Click_Helded.NONE
-    elif click_helded == Click_Helded.RIGHT_CLICK:
+                click_holded = Click_Helded.NONE
+    elif click_holded == Click_Helded.RIGHT_CLICK:
         if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
             if !event.pressed:
                 print("released!")
-                click_helded = Click_Helded.NONE
+                click_holded = Click_Helded.NONE
 
 func _handle_selectable_tile_left_clicked(selected_tile : SelectTile):
     last_tile_dragged = selected_tile.map_pos
-    click_helded = Click_Helded.LEFT_CLICK
+    click_holded = Click_Helded.LEFT_CLICK
 
     _place_block(selected_tile)
 
 func _handle_selectable_tile_right_clicked(selected_tile : SelectTile):
     last_tile_dragged = selected_tile.map_pos
-    click_helded = Click_Helded.RIGHT_CLICK
+    click_holded = Click_Helded.RIGHT_CLICK
 
     _remove_block(selected_tile)
 
 func _handle_selectable_tile_hovered(selected_tile : SelectTile):
-    if click_helded == Click_Helded.LEFT_CLICK:
+    if click_holded == Click_Helded.LEFT_CLICK:
         _place_block(selected_tile)
         print("Dragged from " + str(last_tile_dragged))
         last_tile_dragged = selected_tile.map_pos
-    elif click_helded == Click_Helded.RIGHT_CLICK:
+    elif click_holded == Click_Helded.RIGHT_CLICK:
         _remove_block(selected_tile)
     else:
         _update_tile_highlight(selected_tile)
