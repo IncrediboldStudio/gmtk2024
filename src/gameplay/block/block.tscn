@@ -1,9 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://bdk7llskrfrud"]
 
-[ext_resource type="Texture2D" uid="uid://1vie715d8w4e" path="res://src/art/test_block.png" id="1_cftov"]
+[ext_resource type="Script" path="res://src/gameplay/block/block.gd" id="1_j6iaa"]
 
 [node name="Block" type="Node2D"]
+script = ExtResource("1_j6iaa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(32, 32)
-texture = ExtResource("1_cftov")

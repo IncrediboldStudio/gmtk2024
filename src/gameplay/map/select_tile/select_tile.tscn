@@ -30,4 +30,3 @@ shape = SubResource("RectangleShape2D_gn80u")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_tile_clicked"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_tile_hovered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_stop_tile_hovered"]
