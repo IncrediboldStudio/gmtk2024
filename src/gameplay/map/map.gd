@@ -32,19 +32,6 @@ func _ready():
 func _process(delta: float):
 	block_preview.position = get_viewport().get_mouse_position()
 
-func _update_tile_highlight(hover_map_pos : Vector2i):
-	#Clear last highlighted tiles
-	for tile in highlighted_tiles:
-		tile.hide_highlight()
-	highlighted_tiles.clear()
-
-	#Is a tile occupied?
-	var can_place_previewed_block = _is_block_placable(hover_map_pos)
-
-	for tile in _get_all_tiles_at_position_for_selected_block(hover_map_pos):
-		tile.show_highlight(can_place_previewed_block)
-		highlighted_tiles.append(tile)
-
 func place_block(block_origin : Vector2i):
 	if _is_block_placable(block_origin):
 		var block = preload("res://src/gameplay/block/block.tscn")
@@ -58,6 +45,29 @@ func place_block(block_origin : Vector2i):
 			tile.occupied = true
 		
 		_update_tile_highlight(block_origin)
+
+func _update_tile_highlight(hover_map_pos : Vector2i):
+	_clear_highlights()
+
+	#Is a tile occupied?
+	var can_place_previewed_block = _is_block_placable(hover_map_pos)
+
+	for tile in _get_all_tiles_at_position_for_selected_block(hover_map_pos):
+		tile.show_highlight(can_place_previewed_block)
+		highlighted_tiles.append(tile)
+
+func _on_mouse_quited_area():
+	_clear_highlights()
+	block_preview.visible = false
+
+func _on_mouse_entered_area():
+	block_preview.visible = true
+
+func _clear_highlights():
+	for tile in highlighted_tiles:
+		tile.hide_highlight()
+	highlighted_tiles.clear()
+
 
 #Check if all tiles are inside the map and unoccupied
 func _is_block_placable(map_pos : Vector2i):
