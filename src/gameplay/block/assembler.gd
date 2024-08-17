@@ -14,7 +14,7 @@ func move(delta):
     var components_to_assemble: Array[Component]
     components_to_assemble.append(components_contained[0][0])
     components_to_assemble.append(sub_block.components_contained[0][0])
-    var new_component_data = RecipeManager.GetAssemblyResult(components_to_assemble)
+    var new_component_data = components_contained[0][0].GetAssemblyResult(components_to_assemble)
     components_contained.pop_front()[0].queue_free()
     sub_block.components_contained.pop_front()[0].queue_free()
     

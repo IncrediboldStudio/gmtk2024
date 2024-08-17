@@ -26,7 +26,6 @@ Panku="*res://addons/panku_console/console.tscn"
 SfxManager="*res://src/system/game_settings/audio/sfx_manager.gd"
 MusicManager="*res://src/system/game_settings/audio/music_manager.gd"
 KeyPersistence="*res://src/system/key_persistence.gd"
-RecipeManager="*res://src/gameplay/component/recipe_manager.gd"
 
 [display]
 

@@ -1,11 +1,8 @@
 [gd_resource type="Resource" script_class="ComponentData" load_steps=3 format=3 uid="uid://clidfaf1u4s0v"]
 
+[ext_resource type="Resource" uid="uid://bv1rrmktne0sk" path="res://src/gameplay/component/test_component_base_assembly.tres" id="1_nhaeu"]
 [ext_resource type="Script" path="res://src/gameplay/component/component_data.gd" id="1_x7hfd"]
-[ext_resource type="Texture2D" uid="uid://dqvpvx11dexg5" path="res://src/art/WhiteSquare.png" id="2_k6077"]
 
 [resource]
 script = ExtResource("1_x7hfd")
-type = 1
-texture = ExtResource("2_k6077")
-texture_offset = Vector2i(16, 16)
-size_in_block_ratio = 40.0
+base_data = ExtResource("1_nhaeu")

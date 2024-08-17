@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="ComponentData" load_steps=3 format=3 uid="uid://cpp3n6rxlf1eh"]
+[gd_resource type="Resource" script_class="ComponentData" load_steps=4 format=3 uid="uid://cpp3n6rxlf1eh"]
 
 [ext_resource type="Script" path="res://src/gameplay/component/component_data.gd" id="1_3lt4d"]
-[ext_resource type="Texture2D" uid="uid://cja76vjc3nfwu" path="res://src/art/RedSquare.png" id="2_lo2tv"]
+[ext_resource type="Resource" uid="uid://da8sfy107vec3" path="res://src/gameplay/component/test_component_base.tres" id="1_yvtqc"]
+[ext_resource type="Resource" uid="uid://bj7yawv7scg1v" path="res://src/gameplay/component/recipe/test_recipe_list.tres" id="2_m7cqo"]
 
 [resource]
 script = ExtResource("1_3lt4d")
-type = 0
-texture = ExtResource("2_lo2tv")
-texture_offset = Vector2i(16, 16)
-size_in_block_ratio = 20.0
+base_data = ExtResource("1_yvtqc")
+recipe_list = ExtResource("2_m7cqo")
