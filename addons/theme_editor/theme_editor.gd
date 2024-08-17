@@ -285,11 +285,12 @@ func set_stylebox_color(stylebox_name: String, theme_type: String, stylebox: Sty
   set_stylebox(stylebox_name, theme_type, stylebox)
 
 func set_icon_color(icon_name: String, theme_type: String, color: Color):
-  var icon_dir = "res://src/ui/icons/%s" % [theme_type]
+  var icon_dir_base = "res://src/ui/theme/icons"
+  var icon_dir = "%s/%s" % [icon_dir_base, theme_type]
   var variant_base = get_type_variation_base(theme_type)
  
   if variant_base:
-    icon_dir = "res://src/ui/icons/%s" % [variant_base]
+    icon_dir = "%s/%s" % [icon_dir_base, variant_base]
   if !DirAccess.dir_exists_absolute(icon_dir):
     DirAccess.make_dir_absolute(icon_dir)
   

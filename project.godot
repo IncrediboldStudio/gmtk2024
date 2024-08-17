@@ -40,7 +40,7 @@ enabled=PackedStringArray("res://addons/panku_console/plugin.cfg", "res://addons
 
 [gui]
 
-theme/custom="res://src/ui/th_default.tres"
+theme/custom="res://src/ui/theme/th_default.tres"
 
 [input]
 
