@@ -2,28 +2,37 @@ extends Block
 
 class_name Threadmill
 
-var speed = 40
-var remove_first_component = false
+var speed = 30
 
 func move(delta):
     if next_block == null || components_contained.size() == 0:
         return
     
-    var next_stop = 200
-    if next_block.components_contained.size() != 0:
-        next_stop = 100 + next_block.components_contained[-1][1]
-    var free_space = next_stop - components_contained[0][1] - components_contained[0][0].size_in_block_ratio
-    var move = clampf(free_space, 0, speed * delta)
+    var next_stop
+    var free_space
+    var movement
+    
     for i in components_contained.size():
-        components_contained[0][1] += move
-        if components_contained[0][1] >= 100:
-            components_contained[0][1] -= 100
-            next_block.receive(components_contained[0])
-            remove_first_component = true
+        if i == 0:
+            next_stop = 200
+            if next_block.components_contained.size() != 0:
+                next_stop = 100 + next_block.components_contained[-1][1]
+            free_space = next_stop - components_contained[0][1] - components_contained[0][0].size_in_block_ratio
+        else:
+            free_space = components_contained[i-1][1] - components_contained[i][1] - components_contained[i][0].size_in_block_ratio
+            
+        movement = clampf(free_space, 0, speed * delta)
         
-    if (remove_first_component):
+        components_contained[i][1] += movement
+        if (components_contained[i][1] < 50):
+            components_contained[i][0].position = position + ((position - next_block.position).length() * (components_contained[i][0].position - position).normalized() * absf(components_contained[i][1] - 50) / 100)
+        else:
+            components_contained[i][0].position = position + ((next_block.position - position) * (components_contained[i][1] - 50) / 100)
+        
+    if components_contained[0][1] >= 100:
+        components_contained[0][1] -= 100
+        next_block.receive(components_contained[0])
         components_contained.pop_front()
-        remove_first_component = false
 
 
 func receive(component_and_position):
