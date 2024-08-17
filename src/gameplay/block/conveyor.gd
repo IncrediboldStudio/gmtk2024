@@ -1,11 +1,11 @@
 extends Block
 
-class_name Threadmill
+class_name Conveyor
 
 var speed = 30
 
 func move(delta):
-    if next_block == null || components_contained.size() == 0:
+    if components_contained.size() == 0:
         return
     
     var next_stop
@@ -15,7 +15,9 @@ func move(delta):
     for i in components_contained.size():
         if i == 0:
             next_stop = 200
-            if next_block.components_contained.size() != 0:
+            if next_block == null || next_block.next_block == self:
+                next_stop = 100
+            elif next_block.components_contained.size() != 0:
                 next_stop = 100 + next_block.components_contained[-1][1]
             free_space = next_stop - components_contained[0][1] - components_contained[0][0].size_in_block_ratio
         else:
@@ -25,9 +27,9 @@ func move(delta):
         
         components_contained[i][1] += movement
         if (components_contained[i][1] < 50):
-            components_contained[i][0].position = position + ((position - next_block.position).length() * (components_contained[i][0].position - position).normalized() * absf(components_contained[i][1] - 50) / 100)
+            components_contained[i][0].position = position + (distance_to_adjacent * (components_contained[i][0].position - position).normalized() * absf(components_contained[i][1] - 50) / 100)
         else:
-            components_contained[i][0].position = position + ((next_block.position - position) * (components_contained[i][1] - 50) / 100)
+            components_contained[i][0].position = position + (distance_to_adjacent * exit_direction * (components_contained[i][1] - 50) / 100)
         
     if components_contained[0][1] >= 100:
         components_contained[0][1] -= 100
