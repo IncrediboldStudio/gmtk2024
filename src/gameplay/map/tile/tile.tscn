@@ -1,17 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://d13dr5m7twgrj"]
 
-[ext_resource type="Texture2D" uid="uid://dmfff8h5kxmo1" path="res://icon.svg" id="1_3o7kw"]
 [ext_resource type="Script" path="res://src/gameplay/map/tile/tile.gd" id="1_67w8x"]
+[ext_resource type="Resource" uid="uid://cf74olflxfsg6" path="res://src/gameplay/map/tile/test_tile2.tres" id="2_b5r3s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gn80u"]
 size = Vector2(128, 128)
 
 [node name="Tile" type="Node2D"]
 script = ExtResource("1_67w8x")
+test_tile = ExtResource("2_b5r3s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(64, 64)
-texture = ExtResource("1_3o7kw")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -19,5 +19,6 @@ texture = ExtResource("1_3o7kw")
 position = Vector2(64, 64)
 shape = SubResource("RectangleShape2D_gn80u")
 
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="input_event" from="Area2D" to="." method="_on_tile_clicked"]
+[connection signal="mouse_entered" from="Area2D" to="Sprite2D" method="set_modulate" binds= [Color(0.502079, 0.735248, 0.714467, 1)]]
+[connection signal="mouse_exited" from="Area2D" to="Sprite2D" method="set_modulate" binds= [Color(1, 1, 1, 1)]]
