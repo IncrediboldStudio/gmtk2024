@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TileType" load_steps=3 format=3 uid="uid://cf74olflxfsg6"]
+
+[ext_resource type="Script" path="res://src/gameplay/map/tile/tile_type.gd" id="1_bxfaq"]
+[ext_resource type="Texture2D" uid="uid://bux21u0vh8yun" path="res://negative_icon.png" id="2_25goq"]
+
+[resource]
+script = ExtResource("1_bxfaq")
+texture = ExtResource("2_25goq")
