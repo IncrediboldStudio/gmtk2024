@@ -2,12 +2,21 @@ extends Node
 
 class_name BlockSelector
 
+signal _on_selected_block_changed(block_data: BlockData)
+
 @export var currently_selected_block : BlockData
 
 @export var conveyor_data_variants : Array[BlockData]
 @export var conveyor_block_base_data : BlockData
 
 var last_tile_dragged : SelectTile
+
+func _ready():
+    EventEngine.change_selected_block.connect(_change_selected_block)
+    
+func _change_selected_block(selected_block : BlockData):
+    currently_selected_block = selected_block
+    _on_selected_block_changed.emit(currently_selected_block)
 
 func _rotate_block(block : BlockData):
     pass
@@ -16,7 +25,7 @@ func get_block():
     return currently_selected_block
 
 func get_block_for_tile(selected_tile : SelectTile):
-    if currently_selected_block == conveyor_block_base_data:
+    if is_conveyor_selected():
         if last_tile_dragged and last_tile_dragged.placed_block:
             var input_direction = _get_direction_between_tiles(last_tile_dragged, selected_tile)
             var output_direction = input_direction
@@ -65,3 +74,6 @@ func _is_conveyor_belt(block_data : BlockData):
         if block_data == conveyor_data:
             return true
     return false
+
+func is_conveyor_selected():
+    return currently_selected_block == conveyor_block_base_data

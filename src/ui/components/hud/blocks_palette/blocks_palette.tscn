@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://giy013f25khn"]
+[gd_scene load_steps=5 format=3 uid="uid://giy013f25khn"]
 
 [ext_resource type="PackedScene" uid="uid://odpaja1mfuvi" path="res://src/ui/components/hud/blocks_palette/block_type_button/block_type_button.tscn" id="1_sfdlw"]
+[ext_resource type="Resource" path="res://src/gameplay/block/data/conveyor_block_base.tres" id="2_0gufh"]
+[ext_resource type="Resource" uid="uid://blxptemgde1xp" path="res://src/gameplay/block/data/test_block2x1.tres" id="3_32278"]
+[ext_resource type="Resource" uid="uid://bgbphtrsiljvr" path="res://src/gameplay/block/data/test_block.tres" id="4_b78my"]
 
 [node name="BlocksPalette" type="PanelContainer"]
 clip_contents = true
@@ -36,14 +39,17 @@ size_flags_vertical = 3
 [node name="BlockTypeButton" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
 layout_mode = 2
 size_flags_vertical = 1
+block_data = ExtResource("2_0gufh")
 
 [node name="BlockTypeButton2" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
 layout_mode = 2
 size_flags_vertical = 1
+block_data = ExtResource("3_32278")
 
 [node name="BlockTypeButton3" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
 layout_mode = 2
 size_flags_vertical = 1
+block_data = ExtResource("4_b78my")
 
 [node name="BlockTypeButton4" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
 layout_mode = 2
