@@ -11,6 +11,9 @@ var simulated_blocks = []
 func run_simulation(blocks: Array[Block]):
     setup(8,8)
     for block in blocks:
+        if block == null:
+            continue
+        
         var grid_pos = block.grid_pos
         if block is Conveyor:
             simulated_blocks[grid_pos.x][grid_pos.y] = block
@@ -27,6 +30,8 @@ func run_simulation(blocks: Array[Block]):
                     block.next_block = next_block
                     next_block.previous_block = block
         elif block is Producer:
+            block.component_data = preload("res://src/gameplay/component/test_component.tres")
+            block.floor_plan = self
             simulated_blocks[grid_pos.x][grid_pos.y] = block
             var next_pos = grid_pos + block.block_data.outputs[0].pos
             if is_within_grid(next_pos) && simulated_blocks[next_pos.x][next_pos.y].get_script().get_global_name() != "Block":
@@ -35,6 +40,7 @@ func run_simulation(blocks: Array[Block]):
                     block.next_block = next_block
                     next_block.previous_block = block
         else:
+            block.floor_plan = self
             for pos in block.block_data.block_layout:
                 simulated_blocks[grid_pos.x + pos.x][grid_pos.y + pos.y] = block
             for i in block.block_data.inputs.size():
@@ -49,7 +55,7 @@ func run_simulation(blocks: Array[Block]):
                 var output = block.block_data.outputs[i]
                 block.exits.append(Block.new())
                 var exit_pos = block.grid_pos + output.pos
-                block.exits[i].position = exit_pos - get_direction_vector(output.Direction)
+                block.exits[i].position = exit_pos - get_direction_vector(output.edge)
                 if is_within_grid(exit_pos):
                     var next_block = get_block_at(exit_pos)
                     block.exits[i].next_block = next_block
@@ -120,20 +126,20 @@ func get_direction_vector(direction : BlockIO.Direction):
         return Vector2i(0,-1)
         
     
-#var once = true
-#var patate = 0
-#func _process(delta):
-    #patate += delta
-    #if patate > 10:
-        #if once:
-            #run_simulation(map.blocks)
-            #var new_component = preload("res://src/gameplay/component/Component.tscn")
-            #var instance = new_component.instantiate()
-            #add_child(instance)
-            #var component_data = preload("res://src/gameplay/component/test_component.tres")
-            #instance.component_data = component_data
-            #once = false
-        #process_test_scenario(delta)
+var once = true
+var patate = 0
+func _process(delta):
+    patate += delta
+    if patate > 30:
+        if once:
+            run_simulation(map.blocks)
+            var new_component = preload("res://src/gameplay/component/Component.tscn")
+            var instance = new_component.instantiate()
+            add_child(instance)
+            var component_data = preload("res://src/gameplay/component/test_component.tres")
+            instance.component_data = component_data
+            once = false
+        process_test_scenario(delta)
     
 
 func setup(new_width, new_height):
