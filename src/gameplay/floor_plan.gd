@@ -1,5 +1,7 @@
 extends Node
 
+class_name FloorPlan
+
 var width
 var height
 var blocks = []
@@ -62,10 +64,14 @@ func setup_test_scenario():
     add(Conveyor.new(), Vector2(0,0), Vector2(0,-1), Vector2(0,1))
     add(Conveyor.new(), Vector2(1,0), Vector2(0,-1), Vector2(0,1))
     var asem = Assembler.new()
+    asem.floor_plan = self
     add(asem, Vector2(0,1), Vector2(0,-1), Vector2(0,1))
     add(asem, Vector2(1,1), Vector2(0,-1), Vector2(0,1))
     add(Conveyor.new(), Vector2(0,2), Vector2(0,-1), Vector2(0,1))
-    add(Conveyor.new(), Vector2(2,0), Vector2(0,1), Vector2(-1,0))
+    var prod = Producer.new()
+    prod.component_data = preload("res://src/gameplay/component/test_component.tres")
+    prod.floor_plan = self
+    add(prod, Vector2(2,0), Vector2(0,1), Vector2(-1,0))
     
     asem.entrys.append(Entry.new())
     asem.entrys.append(Entry.new())
@@ -85,7 +91,6 @@ func setup_test_scenario():
     instance2.component_data = component_data
     
     blocks[0][0].receive(instance)
-    blocks[2][0].receive(instance2)
 
 
 func process_test_scenario(delta):
