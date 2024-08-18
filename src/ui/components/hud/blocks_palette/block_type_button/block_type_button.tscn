@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://odpaja1mfuvi"]
+[gd_scene load_steps=14 format=3 uid="uid://odpaja1mfuvi"]
 
 [ext_resource type="Texture2D" uid="uid://dmfff8h5kxmo1" path="res://icon.svg" id="1_3pjnn"]
+[ext_resource type="Script" path="res://src/ui/components/hud/blocks_palette/block_type_button/block_type_button.gd" id="1_7746q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu24i"]
 bg_color = Color(0, 0, 0, 0)
@@ -39,6 +40,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_type_variation = &"PanelContainerPrimary"
+script = ExtResource("1_7746q")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -64,3 +66,5 @@ theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_eisse")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_cx6ei")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_8ajxo")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_w47up")
+
+[connection signal="pressed" from="Button" to="." method="_on_block_selected"]
