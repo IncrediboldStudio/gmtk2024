@@ -2,7 +2,7 @@ extends Node2D
 
 class_name Block
 
-var sprite : Sprite2D
+var sprite : AnimatedSprite2D
 
 var block_data : BlockData : set = _set_block_data
 
@@ -18,7 +18,7 @@ const distance_to_adjacent = 64.0
 var components_contained = []
 
 func _ready():
-    sprite = get_node("Sprite2D")
+    sprite = get_node("AnimatedSprite2D")
 
 func work(_delta):
     return
@@ -33,6 +33,12 @@ func clean():
 
 func _set_block_data(value):
     block_data = value
-    sprite.texture = block_data.texture
+    sprite.sprite_frames = block_data.sprite_frames
+    sprite.animation = "block"
     sprite.position = block_data.texture_offset
     sprite.rotation = deg_to_rad(block_data.texture_rotation)
+
+func advance_animation(frame : int):
+    var nb_frame = sprite.sprite_frames.get_frame_count("block")
+    var new_frame = frame % nb_frame
+    sprite.frame = new_frame
