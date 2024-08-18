@@ -30,4 +30,3 @@ func _set_block_data(value):
     sprite.texture = block_data.texture
     sprite.position = block_data.texture_offset
     sprite.rotation = deg_to_rad(block_data.texture_rotation)
-

@@ -38,7 +38,7 @@ func _ready():
 			instance.tile_hovered.connect(_handle_selectable_tile_hovered)
 			select_tiles.set_value(Vector2i(x,y), instance)
 
-func _process(delta: float):
+func _process(_delta: float):
 	block_preview.position = get_viewport().get_mouse_position()
 
 func _unhandled_input(event):
@@ -89,6 +89,9 @@ func _place_block(selected_tile : SelectTile):
 			tile.occupied = true
 			tile.placed_block = instance
 			instance.used_tiles.append(tile)
+	else:
+		block_selector.verify_already_placed_block_data(selected_tile)
+	
 
 	_update_tile_highlight(selected_tile)
 
