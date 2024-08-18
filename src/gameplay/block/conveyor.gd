@@ -43,7 +43,7 @@ func work(delta):
             components_contained[i][0].global_position = global_position + (distance_to_adjacent * exit_direction * (components_contained[i][1] - 50) / 100)
     
     var limit = 100
-    if !(next_block is Conveyor):
+    if next_block is not Conveyor:
         limit += components_contained[0][0].base_data.size_in_block_ratio / 2
     if components_contained[0][1] >= limit:
         components_contained[0][1] -= limit

@@ -44,7 +44,7 @@ func send_to_next():
         return
     
     for exit in exits:
-        if exit.next_block == null || exit.next_block.block_data == null:
+        if exit.next_block == null || (exit.next_block is not Entry && exit.next_block.block_data == null):
             is_blocked = true
             return
         elif exit.next_block is Conveyor:

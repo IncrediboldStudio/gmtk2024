@@ -96,7 +96,7 @@ func run_simulation():
                         previous_block.next_block = block.entrys[i]
             for i in block.block_data.outputs.size():
                 var output = block.block_data.outputs[i]
-                block.exits.append(Block.new())
+                block.exits.append(Exit.new())
                 var exit_pos = block.grid_pos + output.pos
                 block.exits[i].position = (exit_pos - get_direction_vector(output.edge)) * 64
                 if is_within_grid(exit_pos):
