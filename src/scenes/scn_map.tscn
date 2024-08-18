@@ -91,12 +91,12 @@ outputs = Array[ExtResource("6_te357")]([SubResource("Resource_gikhs")])
 
 [sub_resource type="Resource" id="Resource_gj42f"]
 script = ExtResource("6_te357")
-pos = Vector2i(0, 1)
+pos = Vector2i(0, -1)
 edge = 1
 
 [sub_resource type="Resource" id="Resource_3dw4i"]
 script = ExtResource("6_te357")
-pos = Vector2i(-1, 0)
+pos = Vector2i(1, 0)
 edge = 3
 
 [sub_resource type="Resource" id="Resource_6wgb0"]
@@ -115,7 +115,7 @@ edge = 2
 
 [sub_resource type="Resource" id="Resource_1pwy2"]
 script = ExtResource("6_te357")
-pos = Vector2i(0, -1)
+pos = Vector2i(0, 1)
 edge = 1
 
 [sub_resource type="Resource" id="Resource_eibse"]
@@ -148,7 +148,7 @@ outputs = Array[ExtResource("6_te357")]([SubResource("Resource_cc638")])
 
 [sub_resource type="Resource" id="Resource_aya5b"]
 script = ExtResource("6_te357")
-pos = Vector2i(0, 1)
+pos = Vector2i(0, -1)
 edge = 1
 
 [sub_resource type="Resource" id="Resource_n0gwg"]
@@ -186,7 +186,7 @@ outputs = Array[ExtResource("6_te357")]([SubResource("Resource_w2wwj")])
 
 [sub_resource type="Resource" id="Resource_kiypj"]
 script = ExtResource("6_te357")
-pos = Vector2i(0, -1)
+pos = Vector2i(0, 1)
 edge = 0
 
 [sub_resource type="Resource" id="Resource_j084c"]
