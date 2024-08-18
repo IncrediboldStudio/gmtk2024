@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://giy013f25khn"]
+[gd_scene load_steps=6 format=3 uid="uid://giy013f25khn"]
 
+[ext_resource type="Script" path="res://src/ui/components/hud/blocks_palette/blocks_palette.gd" id="1_0ppcr"]
 [ext_resource type="PackedScene" uid="uid://odpaja1mfuvi" path="res://src/ui/components/hud/blocks_palette/block_type_button/block_type_button.tscn" id="1_sfdlw"]
-[ext_resource type="Resource" path="res://src/gameplay/block/data/conveyor_block_base.tres" id="2_0gufh"]
+[ext_resource type="Resource" uid="uid://bt3mw38aoaf82" path="res://src/gameplay/block/data/conveyor_block_base.tres" id="2_0gufh"]
 [ext_resource type="Resource" uid="uid://blxptemgde1xp" path="res://src/gameplay/block/data/test_block2x1.tres" id="3_32278"]
 [ext_resource type="Resource" uid="uid://bgbphtrsiljvr" path="res://src/gameplay/block/data/test_block.tres" id="4_b78my"]
 
@@ -17,11 +18,13 @@ grow_vertical = 2
 size_flags_horizontal = 8
 size_flags_vertical = 3
 theme_type_variation = &"PanelContainerSurface"
+script = ExtResource("1_0ppcr")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 clip_contents = false
 layout_mode = 2
 horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
 layout_mode = 2
@@ -38,39 +41,36 @@ size_flags_vertical = 3
 
 [node name="BlockTypeButton" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
 layout_mode = 2
-size_flags_vertical = 1
 block_data = ExtResource("2_0gufh")
 
 [node name="BlockTypeButton2" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
 layout_mode = 2
-size_flags_vertical = 1
 block_data = ExtResource("3_32278")
 
 [node name="BlockTypeButton3" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
 layout_mode = 2
-size_flags_vertical = 1
 block_data = ExtResource("4_b78my")
 
 [node name="BlockTypeButton4" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
 layout_mode = 2
-size_flags_vertical = 1
+block_data = ExtResource("4_b78my")
 
 [node name="BlockTypeButton5" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
 layout_mode = 2
-size_flags_vertical = 1
+block_data = ExtResource("4_b78my")
 
 [node name="BlockTypeButton6" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
 layout_mode = 2
-size_flags_vertical = 1
+block_data = ExtResource("4_b78my")
 
 [node name="BlockTypeButton7" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
 layout_mode = 2
-size_flags_vertical = 1
+block_data = ExtResource("4_b78my")
 
 [node name="BlockTypeButton8" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
 layout_mode = 2
-size_flags_vertical = 1
+block_data = ExtResource("4_b78my")
 
 [node name="BlockTypeButton9" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
 layout_mode = 2
-size_flags_vertical = 1
+block_data = ExtResource("4_b78my")
