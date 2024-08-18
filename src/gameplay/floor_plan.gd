@@ -57,29 +57,23 @@ func remove(position: Vector2):
     blocks[position.x][position.y] = Block.new()
 
 
-func print_blocks():
-    var row
-    for i in height:
-        row = ""
-        for j in width:
-            if blocks[j][i].components_contained.size() != 0:
-                row += "[" + str(blocks[j][i].components_contained[0][1]) + "]"
-            else:
-                row += "[" + str(0) + "]"
-        print(row)
-    print("=================================================")
-
-
 func setup_test_scenario():
     setup(3, 3)
     add(Conveyor.new(), Vector2(0,0), Vector2(0,-1), Vector2(0,1))
     add(Conveyor.new(), Vector2(1,0), Vector2(0,-1), Vector2(0,1))
-    add(Assembler.new(), Vector2(0,1), Vector2(0,-1), Vector2(0,1))
-    add(SubAssembler.new(), Vector2(1,1), Vector2(0,-1), Vector2(0,1))
+    var asem = Assembler.new()
+    add(asem, Vector2(0,1), Vector2(0,-1), Vector2(0,1))
+    add(asem, Vector2(1,1), Vector2(0,-1), Vector2(0,1))
     add(Conveyor.new(), Vector2(0,2), Vector2(0,-1), Vector2(0,1))
     add(Conveyor.new(), Vector2(2,0), Vector2(0,1), Vector2(-1,0))
     
-    blocks[0][1].sub_block = blocks[1][1]
+    asem.entrys.append(Entry.new())
+    asem.entrys.append(Entry.new())
+    blocks[0][0].next_block = asem.entrys[0]
+    blocks[1][0].next_block = asem.entrys[1]
+    asem.exits.append(Block.new())
+    asem.exits[0].position = Vector2(100, 300)
+    asem.exits[0].next_block = blocks[0][2]
     
     var new_component = preload("res://src/gameplay/component/Component.tscn")
     var instance = new_component.instantiate()
@@ -90,13 +84,11 @@ func setup_test_scenario():
     instance.component_data = component_data
     instance2.component_data = component_data
     
-    blocks[0][0].receive([instance, 50])
-    blocks[2][0].receive([instance2, 50])
+    blocks[0][0].receive(instance)
+    blocks[2][0].receive(instance2)
 
 
 func process_test_scenario(delta):
     for i in width:
         for j in height:
-            blocks[i][j].move(delta)
-    #print_blocks()
-    #print(component_scene.position)
+            blocks[i][j].work(delta)
