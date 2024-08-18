@@ -5,4 +5,5 @@
 [node name="Block" type="Node2D"]
 script = ExtResource("1_ctk5i")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
