@@ -6,3 +6,4 @@
 script = ExtResource("1_qd4la")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
