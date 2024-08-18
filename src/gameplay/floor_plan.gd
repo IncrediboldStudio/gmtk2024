@@ -6,7 +6,6 @@ var width
 var height
 var simulated_blocks = []
 
-@export var testing: bool = false
 @export var map: Map
 
 func run_simulation(blocks: Array[Block]):
@@ -68,7 +67,7 @@ func run_simulation(blocks: Array[Block]):
     #ass.exits.append(Block.new())
     #ass.exits[0].position = Vector2(0, 192)
     #ass.exits[0].next_block = simulated_blocks[0][4]
-    
+    #
     #var prod = Producer.new()
     #prod.component_data = preload("res://src/gameplay/component/test_component.tres")
     #prod.floor_plan = self
@@ -84,6 +83,10 @@ func run_simulation(blocks: Array[Block]):
 
 func get_block_at(grid_pos: Vector2i):
     var block: Block = simulated_blocks[grid_pos.x][grid_pos.y]
+    
+    if block.block_data == null:
+        return block
+    
     if block.block_data.block_layout.size() == 1 && block.block_data.inputs.size() == 1 && block.block_data.outputs.size() == 1:
         return block
         
@@ -122,18 +125,17 @@ func get_direction_vector(direction : BlockIO.Direction):
 #var once = true
 #var patate = 0
 #func _process(delta):
-#    patate += delta
-#    #if (testing):
-#    if patate > 10:
-#        if once:
-#            run_simulation(map.blocks)
-#            var new_component = preload("res://src/gameplay/component/Component.tscn")
-#            var instance = new_component.instantiate()
-#            add_child(instance)
-#            var component_data = preload("res://src/gameplay/component/test_component.tres")
-#            instance.component_data = component_data
-#            once = false
-#        process_test_scenario(delta)
+    #patate += delta
+    #if patate > 10:
+        #if once:
+            #run_simulation(map.blocks)
+            #var new_component = preload("res://src/gameplay/component/Component.tscn")
+            #var instance = new_component.instantiate()
+            #add_child(instance)
+            #var component_data = preload("res://src/gameplay/component/test_component.tres")
+            #instance.component_data = component_data
+            #once = false
+        #process_test_scenario(delta)
     
 
 func setup(new_width, new_height):
@@ -143,8 +145,6 @@ func setup(new_width, new_height):
         simulated_blocks.append([])
         for j in height:
             simulated_blocks[i].append(Block.new())
-            if (testing):
-                simulated_blocks[i][j].position = Vector2(i,j) * 200 + Vector2(100, 100)
 
 
 func process_test_scenario(delta):
