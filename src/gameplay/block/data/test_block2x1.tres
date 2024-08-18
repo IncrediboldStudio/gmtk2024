@@ -1,8 +1,23 @@
-[gd_resource type="Resource" script_class="BlockData" load_steps=4 format=3 uid="uid://blxptemgde1xp"]
+[gd_resource type="Resource" script_class="BlockData" load_steps=7 format=3 uid="uid://blxptemgde1xp"]
 
 [ext_resource type="Script" path="res://src/gameplay/block/block_io.gd" id="1_4g7nj"]
 [ext_resource type="Script" path="res://src/gameplay/block/data/block_data.gd" id="1_wdu67"]
 [ext_resource type="Texture2D" uid="uid://c7uuja6tnp2mt" path="res://src/art/test_block2x1.png" id="2_416nn"]
+
+[sub_resource type="Resource" id="Resource_pm5nd"]
+script = ExtResource("1_4g7nj")
+pos = Vector2i(0, -1)
+edge = 1
+
+[sub_resource type="Resource" id="Resource_cudnv"]
+script = ExtResource("1_4g7nj")
+pos = Vector2i(1, -1)
+edge = 1
+
+[sub_resource type="Resource" id="Resource_8quv6"]
+script = ExtResource("1_4g7nj")
+pos = Vector2i(0, 1)
+edge = 1
 
 [resource]
 script = ExtResource("1_wdu67")
@@ -10,6 +25,6 @@ texture = ExtResource("2_416nn")
 texture_offset = Vector2i(64, 32)
 texture_rotation = 0.0
 block_layout = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
-inputs = Array[ExtResource("1_4g7nj")]([])
-outputs = Array[ExtResource("1_4g7nj")]([])
+inputs = Array[ExtResource("1_4g7nj")]([SubResource("Resource_pm5nd"), SubResource("Resource_cudnv")])
+outputs = Array[ExtResource("1_4g7nj")]([SubResource("Resource_8quv6")])
 block_type = 2
