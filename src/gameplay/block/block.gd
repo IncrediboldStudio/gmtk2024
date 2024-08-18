@@ -26,6 +26,11 @@ func work(_delta):
 func receive(_components):
     return
 
+func clean():
+    components_contained.clear()
+    previous_block = null
+    next_block = null
+
 func _set_block_data(value):
     block_data = value
     sprite.texture = block_data.texture
