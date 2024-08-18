@@ -81,10 +81,17 @@ func _handle_selectable_tile_hovered(selected_tile : SelectTile):
 
 func _place_block(selected_tile : SelectTile):
     if _is_block_placable(selected_tile.map_pos):
-        var block = preload("res://src/gameplay/block/block.tscn")
+        var block_data = block_selector.get_block_for_tile(selected_tile)
+        var block : PackedScene
+        if block_data.block_type == BlockData.BlockType.Conveyor:
+            block = preload("res://src/gameplay/block/conveyor.tscn")
+        elif block_data.block_type == BlockData.BlockType.Assembler:
+            block = preload("res://src/gameplay/block/assembler.tscn")
+        elif block_data.block_type == BlockData.BlockType.Producer:
+            block = preload("res://src/gameplay/block/producer.tscn")
         var instance = block.instantiate()
         add_child(instance)
-        instance.block_data = block_selector.get_block_for_tile(selected_tile)
+        instance.block_data = block_data
         instance.position = selected_tile.map_pos * tile_size
         instance.grid_pos = selected_tile.map_pos
         blocks.append(instance)

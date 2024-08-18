@@ -22,3 +22,4 @@ texture_rotation = 0.0
 block_layout = Array[Vector2i]([Vector2i(0, 0)])
 inputs = Array[ExtResource("1_8qi4e")]([SubResource("Resource_t5nfi")])
 outputs = Array[ExtResource("1_8qi4e")]([SubResource("Resource_45lgq")])
+block_type = 1
