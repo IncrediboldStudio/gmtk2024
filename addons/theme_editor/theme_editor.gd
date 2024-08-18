@@ -8,48 +8,48 @@ extends Theme
 
 @export var variants: Dictionary = {
   "Button": {
-    "variant_name": ["Primary", "Secondary", "Accent"],
-    "colored_text": true
+      "variant_name": ["Primary", "Secondary", "Accent"],
+      "colored_text": true
     },
   "CheckBox": {
-    "variant_name": ["Primary", "Secondary", "Accent"],
-    "colored_text": false
+      "variant_name": ["Primary", "Secondary", "Accent"],
+      "colored_text": false
     },
   "CheckButton": {
-    "variant_name": ["Primary", "Secondary", "Accent"],
-    "colored_text": false
+      "variant_name": ["Primary", "Secondary", "Accent"],
+      "colored_text": false
     },
   "HSlider": {
-    "variant_name": ["Primary", "Secondary", "Accent"],
-    "colored_text": true
+      "variant_name": ["Primary", "Secondary", "Accent"],
+      "colored_text": true
     },
   "LineEdit": {
-    "variant_name": ["Primary", "Secondary", "Accent"],
-    "colored_text": false
+      "variant_name": ["Primary", "Secondary", "Accent"],
+      "colored_text": false
     },
   "LinkButton": {
-    "variant_name": ["Primary", "Secondary", "Accent"],
-    "colored_text": false
+      "variant_name": ["Primary", "Secondary", "Accent"],
+      "colored_text": false
     },
   "PanelContainer": {
-    "variant_name": ["Background", "Surface", "Primary", "Secondary", "Accent"],
-    "colored_text": false
+      "variant_name": ["Background", "Surface", "Primary", "Secondary", "Accent"],
+      "colored_text": false
     },
   "ProgressBar": {
-    "variant_name": ["Primary", "Secondary", "Accent"],
-    "colored_text": true
+      "variant_name": ["Primary", "Secondary", "Accent"],
+      "colored_text": true
     },
   "TabBar": {
-    "variant_name": ["Background", "Surface", "Primary", "Secondary", "Accent"],
-    "colored_text": true
+      "variant_name": ["Background", "Surface", "Primary", "Secondary", "Accent"],
+      "colored_text": true
     },
   "TabContainer": {
-    "variant_name": ["Background", "Surface", "Primary", "Secondary", "Accent"],
-    "colored_text": true
+      "variant_name": ["Background", "Surface", "Primary", "Secondary", "Accent"],
+      "colored_text": true
     },
   "VSlider": {
-    "variant_name": ["Primary", "Secondary", "Accent"],
-    "colored_text": true
+      "variant_name": ["Primary", "Secondary", "Accent"],
+      "colored_text": true
     },
 }
 
@@ -185,33 +185,8 @@ func set_stylebox_style(theme_type: String, color: Color):
     var stylebox = get_stylebox(stylebox_name, theme_type)
     if variant_base:
       stylebox = get_stylebox(stylebox_name, variant_base).duplicate()
-    
-    if stylebox_name.contains("disabled"):
-      set_stylebox_color(stylebox_name, theme_type, stylebox, get_disabled_color(color))
 
-    elif stylebox_name.contains("focus"):
-      set_stylebox_color(stylebox_name, theme_type, stylebox, get_hover_color(color))
-
-    elif stylebox_name.contains("hover"):
-      var hover_color = color.lightened(0.24)
-      set_stylebox_color(stylebox_name, theme_type, stylebox, get_hover_color(color))
-
-    elif stylebox_name.contains("pressed"):
-      var pressed_color = color.lightened(0.5)
-      set_stylebox_color(stylebox_name, theme_type, stylebox, get_pressed_color(color))
-      pass
-
-    elif stylebox_name.contains("slider") || stylebox_name.contains("background"):
-      var slider_color = get_color_alpha_variant(color.lightened(0.67), 0.24)
-      set_stylebox_color(stylebox_name, theme_type, stylebox, slider_color)
-      pass
-
-    elif stylebox_name.contains("area_highlight"):
-      var area_highlight_color = get_hover_color(color)
-      set_stylebox_color(stylebox_name, theme_type, stylebox, area_highlight_color)
-      pass
-
-    elif theme_type.contains("LineEdit"):
+    if theme_type.contains("LineEdit"):
       var line_edit_color = Color.TRANSPARENT
       set_stylebox_color(stylebox_name, theme_type, stylebox, line_edit_color)
       if stylebox_name.contains("read_only"):
@@ -225,6 +200,35 @@ func set_stylebox_style(theme_type: String, color: Color):
         (stylebox as StyleBoxFlat).border_color = get_pressed_color(color)
       if stylebox_name.contains("tab_unselected"):
         set_stylebox_color(stylebox_name, theme_type, stylebox, color.darkened(0.24))
+
+    elif theme_type.contains("ScrollBar"):
+      if stylebox_name.contains("grabber"):
+        set_stylebox_color(stylebox_name, theme_type, stylebox, get_color_alpha_variant(Color.WHITE, 0.5))
+      else:
+        set_stylebox_color(stylebox_name, theme_type, stylebox, get_color_alpha_variant(Color.WHITE, 0.87))
+    
+    elif stylebox_name.contains("disabled"):
+      set_stylebox_color(stylebox_name, theme_type, stylebox, get_disabled_color(color))
+
+    elif stylebox_name.contains("focus"):
+      set_stylebox_color(stylebox_name, theme_type, stylebox, get_hover_color(color))
+
+    elif stylebox_name.contains("hover"):
+      set_stylebox_color(stylebox_name, theme_type, stylebox, get_hover_color(color))
+
+    elif stylebox_name.contains("pressed"):
+      set_stylebox_color(stylebox_name, theme_type, stylebox, get_pressed_color(color))
+      pass
+
+    elif stylebox_name.contains("slider") || stylebox_name.contains("background"):
+      var slider_color = get_color_alpha_variant(color.lightened(0.67), 0.24)
+      set_stylebox_color(stylebox_name, theme_type, stylebox, slider_color)
+      pass
+
+    elif stylebox_name.contains("area_highlight"):
+      var area_highlight_color = get_hover_color(color)
+      set_stylebox_color(stylebox_name, theme_type, stylebox, area_highlight_color)
+      pass
 
     else:
       set_stylebox_color(stylebox_name, theme_type, stylebox, color)
@@ -281,11 +285,12 @@ func set_stylebox_color(stylebox_name: String, theme_type: String, stylebox: Sty
   set_stylebox(stylebox_name, theme_type, stylebox)
 
 func set_icon_color(icon_name: String, theme_type: String, color: Color):
-  var icon_dir = "res://src/ui/icons/%s" % [theme_type]
+  var icon_dir_base = "res://src/ui/theme/icons"
+  var icon_dir = "%s/%s" % [icon_dir_base, theme_type]
   var variant_base = get_type_variation_base(theme_type)
  
   if variant_base:
-    icon_dir = "res://src/ui/icons/%s" % [variant_base]
+    icon_dir = "%s/%s" % [icon_dir_base, variant_base]
   if !DirAccess.dir_exists_absolute(icon_dir):
     DirAccess.make_dir_absolute(icon_dir)
   
@@ -309,8 +314,10 @@ func set_icon_color(icon_name: String, theme_type: String, color: Color):
         icon_color = color.lightened(0.67)
       icon_color.a = base_color.a;
       image.set_pixel(x, y, icon_color)
-  
-  return ImageTexture.create_from_image(image)
+
+  var texture = ImageTexture.create_from_image(image)
+  ResourceSaver.save(texture, "%s/%s_%s.png" % [icon_dir, theme_type, icon_name])
+  return load("%s/%s_%s.png" % [icon_dir, theme_type, icon_name])
 
 func get_hover_color(color: Color):
   return color.lightened(0.24)

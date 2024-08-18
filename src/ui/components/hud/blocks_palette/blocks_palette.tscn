@@ -1,0 +1,70 @@
+[gd_scene load_steps=2 format=3 uid="uid://giy013f25khn"]
+
+[ext_resource type="PackedScene" uid="uid://odpaja1mfuvi" path="res://src/ui/components/hud/blocks_palette/block_type_button/block_type_button.tscn" id="1_sfdlw"]
+
+[node name="BlocksPalette" type="PanelContainer"]
+clip_contents = true
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+theme_type_variation = &"PanelContainerSurface"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+clip_contents = false
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BlockTypeButton" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="BlockTypeButton2" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="BlockTypeButton3" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="BlockTypeButton4" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="BlockTypeButton5" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="BlockTypeButton6" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="BlockTypeButton7" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="BlockTypeButton8" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="BlockTypeButton9" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
+layout_mode = 2
+size_flags_vertical = 1
