@@ -5,6 +5,7 @@ class_name Manipulator
 var entrys: Array[Entry]
 var exits: Array[Block]
 
+var floor_plan: FloorPlan
 
 var work_complete = false
 var work_time = 0
