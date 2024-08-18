@@ -1,17 +1,12 @@
-[gd_resource type="Resource" script_class="BlockData" load_steps=6 format=3 uid="uid://bgbphtrsiljvr"]
+[gd_resource type="Resource" script_class="BlockData" load_steps=5 format=3 uid="uid://bgbphtrsiljvr"]
 
 [ext_resource type="Script" path="res://src/gameplay/block/data/block_data.gd" id="1_6ud2c"]
 [ext_resource type="Script" path="res://src/gameplay/block/block_io.gd" id="1_8qi4e"]
 [ext_resource type="SpriteFrames" uid="uid://xkxl3p2wx6mr" path="res://src/art/sprfr_test_block.tres" id="3_ceubs"]
 
-[sub_resource type="Resource" id="Resource_t5nfi"]
-script = ExtResource("1_8qi4e")
-pos = Vector2i(0, 0)
-edge = 0
-
 [sub_resource type="Resource" id="Resource_45lgq"]
 script = ExtResource("1_8qi4e")
-pos = Vector2i(0, 0)
+pos = Vector2i(0, 1)
 edge = 1
 
 [resource]
@@ -20,6 +15,6 @@ sprite_frames = ExtResource("3_ceubs")
 texture_offset = Vector2i(32, 32)
 texture_rotation = 0.0
 block_layout = Array[Vector2i]([Vector2i(0, 0)])
-inputs = Array[ExtResource("1_8qi4e")]([SubResource("Resource_t5nfi")])
+inputs = Array[ExtResource("1_8qi4e")]([])
 outputs = Array[ExtResource("1_8qi4e")]([SubResource("Resource_45lgq")])
 block_type = 1
