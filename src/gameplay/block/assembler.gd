@@ -4,13 +4,12 @@ class_name Assembler
 
 func work(delta):
     super(delta)
-    if (!work_complete):
+    if (!work_complete || is_blocked || components_to_send.size() != 0):
         return
     
     var components: Array[Component]
     for entry in entrys:
         components.append(entry.held_component)
-        entry.held_component = null
     
     var new_component_data = components[0].GetAssemblyResult(components)
     for component in components:
@@ -23,7 +22,9 @@ func work(delta):
 
     var new_component = preload("res://src/gameplay/component/Component.tscn")
     var instance = new_component.instantiate()
+    instance.visible = false
     floor_plan.add_child(instance)
     instance.component_data = new_component_data
     
-    send_to_next([instance])
+    components_to_send = [instance]
+    send_to_next()

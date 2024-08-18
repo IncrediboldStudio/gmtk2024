@@ -15,21 +15,27 @@ func run_simulation(blocks: Array[Block]):
         var grid_pos = block.grid_pos
         if block is Conveyor:
             simulated_blocks[grid_pos.x][grid_pos.y] = block
+            block.exit_direction = get_direction_vector(block.block_data.outputs[0].edge)
             var previous_pos = grid_pos + block.block_data.inputs[0].pos
             if is_within_grid(previous_pos):
-                block.previous_block = simulated_blocks[previous_pos.x][previous_pos.y]
-                simulated_blocks[previous_pos.x][previous_pos.y].next_block = block
+                var previous_block = get_block_at(previous_pos)
+                if previous_block.get_script().get_global_name() != "Block":
+                    block.previous_block = previous_block
+                    previous_block.next_block = block
             var next_pos = grid_pos + block.block_data.outputs[0].pos
-            if is_within_grid(next_pos) && simulated_blocks[next_pos.x][next_pos.y].get_script().get_global_name() != "Block":
-                block.next_block = simulated_blocks[next_pos.x][next_pos.y]
-                simulated_blocks[next_pos.x][next_pos.y].previous_block = block
-                block.exit_direction = get_direction_vector(block.block_data.outputs[0].edge)
+            if is_within_grid(next_pos):
+                var next_block = get_block_at(next_pos)
+                if next_block.get_script().get_global_name() != "Block":
+                    block.next_block = next_block
+                    next_block.previous_block = block
         elif block is Producer:
             simulated_blocks[grid_pos.x][grid_pos.y] = block
             var next_pos = grid_pos + block.block_data.outputs[0].pos
             if is_within_grid(next_pos) && simulated_blocks[next_pos.x][next_pos.y].get_script().get_global_name() != "Block":
-                block.next_block = simulated_blocks[next_pos.x][next_pos.y]
-                simulated_blocks[next_pos.x][next_pos.y].previous_block = block
+                var next_block = get_block_at(next_pos)
+                if next_block.block_data != null:
+                    block.next_block = next_block
+                    next_block.previous_block = block
         else:
             for pos in block.block_data.block_layout:
                 simulated_blocks[grid_pos.x + pos.x][grid_pos.y + pos.y] = block
@@ -39,14 +45,16 @@ func run_simulation(blocks: Array[Block]):
                 block.entrys.append(Entry.new())
                 var entry_pos = block.grid_pos + input.pos
                 if is_within_grid(entry_pos):
-                    simulated_blocks[entry_pos.x][entry_pos.y].next_block = block.entrys[i]
+                    var previous_block = get_block_at(entry_pos)
+                    previous_block.next_block = block.entrys[i]
             for i in block.block_data.outputs.size():
                 var output = block.block_data.outputs[i]
                 block.exits.append(Block.new())
                 var exit_pos = block.grid_pos + output.pos
                 block.exits[i].position = exit_pos - get_direction_vector(output.Direction)
                 if is_within_grid(exit_pos):
-                    block.exits[i].next_block = simulated_blocks[exit_pos.x][exit_pos.y]
+                    var next_block = get_block_at(exit_pos)
+                    block.exits[i].next_block = next_block
                 
     
     #var ass = Assembler.new()
@@ -72,7 +80,20 @@ func run_simulation(blocks: Array[Block]):
     #prod2.next_block = simulated_blocks[1][1]
     #prod2.position = Vector2(64, 0)
     #simulated_blocks[1][0] = prod2
-    
+
+
+func get_block_at(grid_pos: Vector2i):
+    var block: Block = simulated_blocks[grid_pos.x][grid_pos.y]
+    if block.block_data.block_layout.size() == 1 && block.block_data.inputs.size() == 1 && block.block_data.outputs.size() == 1:
+        return block
+        
+    for input in block.block_data.inputs:
+        if block.grid_pos + input.pos + get_direction_vector(input.edge) == grid_pos:
+            return input
+        
+    for output in block.block_data.outputs:
+        if block.grid_pos + output.pos - get_direction_vector(output.edge) == grid_pos:
+            return output
             
             
 func is_within_grid(position: Vector2i):
