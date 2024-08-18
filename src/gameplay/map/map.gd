@@ -11,7 +11,7 @@ enum Click_Held {
 @export var tile_size = Vector2i(16,16)
 @export var map_size = Vector2i(8,8)
 
-var block_preview : Sprite2D
+var block_preview : AnimatedSprite2D
 var block_selector : BlockSelector
 
 var select_tiles = Array2D.new()
@@ -19,6 +19,8 @@ var blocks : Array[Block]
 var highlighted_tiles : Array[SelectTile]
 
 var click_held = Click_Held.NONE
+
+var current_frame = 0
 
 func _ready():
     block_selector = get_node("BlockSelector")
@@ -117,6 +119,7 @@ func _remove_block(selected_tile : SelectTile):
             tile.occupied = false
             tile.placed_block = null
         
+        blocks.remove_at(blocks.find(block))
         block.queue_free()
         
     _update_tile_highlight(selected_tile)
@@ -171,5 +174,11 @@ func _get_all_tiles_at_position_for_selected_block(map_pos : Vector2i):
     return tiles
 
 func _on_selected_block_changed(block_data : BlockData):
-    block_preview.texture = block_selector.get_block().texture
+    block_preview.sprite_frames = block_selector.get_block().sprite_frames
+    block_preview.animation = "preview"
     block_preview.offset = block_selector.get_block().texture_offset - (tile_size / 2)
+
+func _on_anim_frame_update():
+    current_frame = current_frame + 1
+    for block in blocks:
+        block.advance_animation(current_frame)

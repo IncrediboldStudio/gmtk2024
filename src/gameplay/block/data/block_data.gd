@@ -8,7 +8,7 @@ enum BlockType{
     Receiver
 }
 
-@export var texture : Texture
+@export var sprite_frames : SpriteFrames
 @export var texture_offset : Vector2i
 @export var texture_rotation : float
 @export var block_layout : Array[Vector2i]

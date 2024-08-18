@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bocssasw4lvfa"
-path="res://.godot/imported/test_conveyor_curved.png-db1716da726c920dcdcf8ac30ee96920.ctex"
+uid="uid://cajg1xk74g2kt"
+path="res://.godot/imported/spr_conveyor_corner_inversed.png-08dcab611a70c85cc141afbcbeb92046.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/art/test_conveyor_curved.png"
-dest_files=["res://.godot/imported/test_conveyor_curved.png-db1716da726c920dcdcf8ac30ee96920.ctex"]
+source_file="res://src/art/spr_conveyor_corner_inversed.png"
+dest_files=["res://.godot/imported/spr_conveyor_corner_inversed.png-08dcab611a70c85cc141afbcbeb92046.ctex"]
 
 [params]
 

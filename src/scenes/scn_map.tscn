@@ -6,9 +6,9 @@
 [ext_resource type="Script" path="res://src/gameplay/block/data/block_data.gd" id="5_pewdh"]
 [ext_resource type="Resource" uid="uid://bt3mw38aoaf82" path="res://src/gameplay/block/data/conveyor_block_base.tres" id="6_1i41n"]
 [ext_resource type="Script" path="res://src/gameplay/block/block_io.gd" id="6_te357"]
-[ext_resource type="Texture2D" uid="uid://8crlpiko4t54" path="res://src/art/test_conveyor_straight.png" id="7_vmlox"]
-[ext_resource type="Texture2D" uid="uid://bocssasw4lvfa" path="res://src/art/test_conveyor_curved.png" id="8_m672s"]
-[ext_resource type="Texture2D" uid="uid://cr8oh0h3r3l4g" path="res://src/art/test_conveyor_curved2.png" id="9_62e2a"]
+[ext_resource type="SpriteFrames" uid="uid://8mg4vcde15s2" path="res://src/art/sprfr_conveyor_corner.tres" id="9_ogbgs"]
+[ext_resource type="SpriteFrames" uid="uid://e1tkf41xayx7" path="res://src/art/sprfr_conveyor_straight.tres" id="10_0bpxq"]
+[ext_resource type="SpriteFrames" uid="uid://cfgr6bpxtjvr1" path="res://src/art/sprfr_conveyor_corner_inversed.tres" id="11_g3xif"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t3jwo"]
 size = Vector2(512, 512)
@@ -25,7 +25,7 @@ edge = 3
 
 [sub_resource type="Resource" id="Resource_0xjuw"]
 script = ExtResource("5_pewdh")
-texture = ExtResource("7_vmlox")
+sprite_frames = ExtResource("10_0bpxq")
 texture_offset = Vector2i(32, 32)
 texture_rotation = 90.0
 block_layout = Array[Vector2i]([Vector2i(0, 0)])
@@ -45,7 +45,7 @@ edge = 1
 
 [sub_resource type="Resource" id="Resource_rkq2l"]
 script = ExtResource("5_pewdh")
-texture = ExtResource("7_vmlox")
+sprite_frames = ExtResource("10_0bpxq")
 texture_offset = Vector2i(32, 32)
 texture_rotation = 180.0
 block_layout = Array[Vector2i]([Vector2i(0, 0)])
@@ -65,7 +65,7 @@ edge = 2
 
 [sub_resource type="Resource" id="Resource_j0qow"]
 script = ExtResource("5_pewdh")
-texture = ExtResource("7_vmlox")
+sprite_frames = ExtResource("10_0bpxq")
 texture_offset = Vector2i(32, 32)
 texture_rotation = 270.0
 block_layout = Array[Vector2i]([Vector2i(0, 0)])
@@ -85,7 +85,7 @@ edge = 0
 
 [sub_resource type="Resource" id="Resource_5px1a"]
 script = ExtResource("5_pewdh")
-texture = ExtResource("8_m672s")
+sprite_frames = ExtResource("9_ogbgs")
 texture_offset = Vector2i(32, 32)
 texture_rotation = 0.0
 block_layout = Array[Vector2i]([Vector2i(0, 0)])
@@ -105,7 +105,7 @@ edge = 3
 
 [sub_resource type="Resource" id="Resource_6wgb0"]
 script = ExtResource("5_pewdh")
-texture = ExtResource("8_m672s")
+sprite_frames = ExtResource("9_ogbgs")
 texture_offset = Vector2i(32, 32)
 texture_rotation = 90.0
 block_layout = Array[Vector2i]([Vector2i(0, 0)])
@@ -125,7 +125,7 @@ edge = 1
 
 [sub_resource type="Resource" id="Resource_eibse"]
 script = ExtResource("5_pewdh")
-texture = ExtResource("8_m672s")
+sprite_frames = ExtResource("9_ogbgs")
 texture_offset = Vector2i(32, 32)
 texture_rotation = 180.0
 block_layout = Array[Vector2i]([Vector2i(0, 0)])
@@ -145,7 +145,7 @@ edge = 2
 
 [sub_resource type="Resource" id="Resource_habsj"]
 script = ExtResource("5_pewdh")
-texture = ExtResource("8_m672s")
+sprite_frames = ExtResource("9_ogbgs")
 texture_offset = Vector2i(32, 32)
 texture_rotation = 270.0
 block_layout = Array[Vector2i]([Vector2i(0, 0)])
@@ -165,7 +165,7 @@ edge = 2
 
 [sub_resource type="Resource" id="Resource_3injr"]
 script = ExtResource("5_pewdh")
-texture = ExtResource("9_62e2a")
+sprite_frames = ExtResource("11_g3xif")
 texture_offset = Vector2i(32, 32)
 texture_rotation = 0.0
 block_layout = Array[Vector2i]([Vector2i(0, 0)])
@@ -185,7 +185,7 @@ edge = 0
 
 [sub_resource type="Resource" id="Resource_aaen4"]
 script = ExtResource("5_pewdh")
-texture = ExtResource("9_62e2a")
+sprite_frames = ExtResource("11_g3xif")
 texture_offset = Vector2i(32, 32)
 texture_rotation = 90.0
 block_layout = Array[Vector2i]([Vector2i(0, 0)])
@@ -205,7 +205,7 @@ edge = 3
 
 [sub_resource type="Resource" id="Resource_c8rsd"]
 script = ExtResource("5_pewdh")
-texture = ExtResource("9_62e2a")
+sprite_frames = ExtResource("11_g3xif")
 texture_offset = Vector2i(32, 32)
 texture_rotation = 180.0
 block_layout = Array[Vector2i]([Vector2i(0, 0)])
@@ -225,7 +225,7 @@ edge = 1
 
 [sub_resource type="Resource" id="Resource_ng1pi"]
 script = ExtResource("5_pewdh")
-texture = ExtResource("9_62e2a")
+sprite_frames = ExtResource("11_g3xif")
 texture_offset = Vector2i(32, 32)
 texture_rotation = 270.0
 block_layout = Array[Vector2i]([Vector2i(0, 0)])
@@ -238,12 +238,12 @@ texture_filter = 1
 script = ExtResource("1_30ukq")
 tile_size = Vector2i(64, 64)
 
+[node name="BlockPreview" type="AnimatedSprite2D" parent="."]
+z_index = 5
+
 [node name="TileGridBackground" type="Sprite2D" parent="."]
 position = Vector2(256, 256)
 texture = ExtResource("3_vs4jw")
-
-[node name="BlockPreview" type="Sprite2D" parent="."]
-z_index = 5
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -257,5 +257,10 @@ currently_selected_block = ExtResource("6_1i41n")
 conveyor_data_variants = Array[ExtResource("5_pewdh")]([ExtResource("6_1i41n"), SubResource("Resource_0xjuw"), SubResource("Resource_rkq2l"), SubResource("Resource_j0qow"), SubResource("Resource_5px1a"), SubResource("Resource_6wgb0"), SubResource("Resource_eibse"), SubResource("Resource_habsj"), SubResource("Resource_3injr"), SubResource("Resource_aaen4"), SubResource("Resource_c8rsd"), SubResource("Resource_ng1pi")])
 conveyor_block_base_data = ExtResource("6_1i41n")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_entered_area"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_mouse_quited_area"]
+[connection signal="timeout" from="Timer" to="." method="_on_anim_frame_update"]
