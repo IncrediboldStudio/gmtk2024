@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dj1mns8gt38um"]
+[gd_scene load_steps=6 format=3 uid="uid://dj1mns8gt38um"]
 
 [ext_resource type="Script" path="res://src/ui/menus/menu.gd" id="1_b8gtb"]
 [ext_resource type="PackedScene" uid="uid://dgdcegdvx3ooh" path="res://src/ui/menus/audio_settings.tscn" id="2_o60l8"]
+[ext_resource type="Script" path="res://src/ui/menus/settings_tab.gd" id="2_p3m0o"]
 [ext_resource type="PackedScene" uid="uid://bjdgwg23lm1d4" path="res://src/ui/menus/action_remap_menu.tscn" id="3_bhs1p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y2m1i"]
@@ -42,6 +43,7 @@ layout_mode = 2
 theme_type_variation = &"TabContainerSurface"
 current_tab = 0
 clip_tabs = false
+script = ExtResource("2_p3m0o")
 
 [node name="Audio" type="MarginContainer" parent="Panel/MarginContainer/TabContainer"]
 layout_mode = 2
@@ -74,4 +76,5 @@ offset_right = 63.0
 offset_bottom = 48.0
 text = "Back"
 
+[connection signal="tab_changed" from="Panel/MarginContainer/TabContainer" to="Panel/MarginContainer/TabContainer" method="_on_tab_changed"]
 [connection signal="pressed" from="ButtonBack" to="." method="back_menu"]

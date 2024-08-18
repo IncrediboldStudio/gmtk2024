@@ -1,7 +1,21 @@
 extends Node
 
 enum SfxName {
-       EXAMPLE,
+    CUT,
+    ERROR,
+    FACTORY_ACTIVATION,
+    FACTORY_CREATION,
+    FACTORY_DESACTIVATION,
+    FACTORY_DESTRUCTION,
+    FUSION,
+    NOTIFICATION,
+    SUCCESS,
+    SWISH,
+    UI_POP_1,
+    UI_POP_2,
+    UI_POP_3,
+    WHOOSH_1,
+    WHOOSH_2
 }
 
 enum SfxVariation {
@@ -12,7 +26,21 @@ enum SfxVariation {
 }
 
 var AUDIOFILES = {
-       #SfxName.EXAMPLE: preload ("res://src/audio/example.mp3"),
+       SfxName.CUT: preload ("res://src/audio/sfx/Cut.wav"),
+       SfxName.ERROR: preload ("res://src/audio/sfx/Error.wav"),
+       SfxName.FACTORY_ACTIVATION: preload ("res://src/audio/sfx/Factory_Activation.wav"),
+       SfxName.FACTORY_CREATION: preload ("res://src/audio/sfx/Factory_Creation.wav"),
+       SfxName.FACTORY_DESACTIVATION: preload ("res://src/audio/sfx/Factory_Desactivation.wav"),
+       SfxName.FACTORY_DESTRUCTION: preload ("res://src/audio/sfx/Factory_Destruction.wav"),
+       SfxName.FUSION: preload ("res://src/audio/sfx/Fusion.wav"),
+       SfxName.NOTIFICATION: preload ("res://src/audio/sfx/Notification.wav"),
+       SfxName.SUCCESS: preload ("res://src/audio/sfx/Success.wav"),
+       SfxName.SWISH: preload ("res://src/audio/sfx/Swish.wav"),
+       SfxName.UI_POP_1: preload ("res://src/audio/sfx/UI_pop_01.wav"),
+       SfxName.UI_POP_2: preload ("res://src/audio/sfx/UI_pop_02.wav"),
+       SfxName.UI_POP_3: preload ("res://src/audio/sfx/UI_pop_03.wav"),
+       SfxName.WHOOSH_1: preload ("res://src/audio/sfx/Whoosh_01.wav"),
+       SfxName.WHOOSH_2: preload ("res://src/audio/sfx/Whoosh_02.wav"),
 }
 
 
@@ -61,7 +89,7 @@ func play_sfx(sfx_name: SfxName, variation: SfxVariation = SfxVariation.NONE):
     next_player_id += 1
     if next_player_id == MAX_SFX:
         next_player_id = 0
-        _play(player, sfx_name, variation)
+    _play(player, sfx_name, variation)
 
 
 # Need to add AudioListener2D and call make_current on it to define the point of listening

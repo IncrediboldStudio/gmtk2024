@@ -99,6 +99,7 @@ func _place_block(selected_tile : SelectTile):
         instance.position = selected_tile.map_pos * tile_size
         instance.grid_pos = selected_tile.map_pos
         blocks.append(instance)
+        SfxManager.play_sfx(SfxManager.SfxName.FACTORY_CREATION, SfxManager.SfxVariation.MEDIUM)
 
         for tile in _get_all_tiles_at_position_for_selected_block(selected_tile.map_pos):
             tile.occupied = true
@@ -121,6 +122,7 @@ func _remove_block(selected_tile : SelectTile):
         
         blocks.remove_at(blocks.find(block))
         block.queue_free()
+        SfxManager.play_sfx(SfxManager.SfxName.FACTORY_DESTRUCTION, SfxManager.SfxVariation.MEDIUM)
         
     _update_tile_highlight(selected_tile)
 
