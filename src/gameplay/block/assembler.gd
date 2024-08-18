@@ -18,6 +18,8 @@ func work(delta):
         component.queue_free()
         
     if new_component_data == null:
+        work_time = 0
+        work_complete = false
         return
 
     var new_component = preload("res://src/gameplay/component/Component.tscn")
