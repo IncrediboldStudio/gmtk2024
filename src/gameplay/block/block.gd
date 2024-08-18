@@ -28,4 +28,6 @@ func receive(_components):
 func _set_block_data(value):
     block_data = value
     sprite.texture = block_data.texture
-    sprite.offset = block_data.texture_offset
+    sprite.position = block_data.texture_offset
+    sprite.rotation = deg_to_rad(block_data.texture_rotation)
+
