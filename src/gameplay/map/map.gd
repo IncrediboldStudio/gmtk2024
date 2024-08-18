@@ -86,7 +86,7 @@ func _place_block(selected_tile : SelectTile):
         add_child(instance)
         instance.block_data = block_selector.get_block_for_tile(selected_tile)
         instance.position = selected_tile.map_pos * tile_size
-		instance.grid_pos = selected_tile.map_pos
+        instance.grid_pos = selected_tile.map_pos
         blocks.append(instance)
 
         for tile in _get_all_tiles_at_position_for_selected_block(selected_tile.map_pos):
