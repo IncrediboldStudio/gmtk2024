@@ -1,12 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bt04ee18kvvtq"]
+[gd_scene load_steps=8 format=3 uid="uid://bt04ee18kvvtq"]
 
 [ext_resource type="Script" path="res://src/scenes/loading_screen/loading_screen.gd" id="1_l6wrb"]
-
-[sub_resource type="Gradient" id="Gradient_q4v31"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_eqs57"]
-gradient = SubResource("Gradient_q4v31")
-width = 40
+[ext_resource type="Script" path="res://src/utils/animated_texture_rect.gd" id="2_kr6l0"]
+[ext_resource type="SpriteFrames" uid="uid://b7nr7oqj6s11d" path="res://src/art/sprfr_throbber.tres" id="3_c2hp3"]
 
 [sub_resource type="Animation" id="Animation_h6cfv"]
 length = 0.001
@@ -75,28 +71,6 @@ _data = {
 "fade_out": SubResource("Animation_lhrmh")
 }
 
-[sub_resource type="Animation" id="Animation_6mags"]
-resource_name = "throbber"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Container/Throbber:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.28319]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_d2i53"]
-_data = {
-"throbber": SubResource("Animation_6mags")
-}
-
 [node name="LoadingScreen" type="CanvasLayer"]
 script = ExtResource("1_l6wrb")
 
@@ -131,7 +105,7 @@ offset_bottom = -63.5199
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 64
-text = "Loading..."
+text = "Loading"
 horizontal_alignment = 1
 
 [node name="Throbber" type="TextureRect" parent="Container"]
@@ -142,22 +116,17 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -20.0
+offset_top = 40.0
 offset_right = 20.0
-offset_bottom = 20.0
+offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = SubResource("GradientTexture1D_eqs57")
+script = ExtResource("2_kr6l0")
+sprite_frames = ExtResource("3_c2hp3")
 
 [node name="FadeAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_uwjus")
 }
 autoplay = "fade_in"
-
-[node name="ThrobberAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_d2i53")
-}
-autoplay = "throbber"
