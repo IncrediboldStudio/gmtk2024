@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/scenes/loading_screen/loading_screen.gd" id="1_l6wrb"]
 [ext_resource type="Script" path="res://src/utils/animated_texture_rect.gd" id="2_kr6l0"]
-[ext_resource type="SpriteFrames" uid="uid://b7nr7oqj6s11d" path="res://src/art/sprfr_throbber.tres" id="3_c2hp3"]
+[ext_resource type="SpriteFrames" uid="uid://d3gpm7iyihu3w" path="res://src/art/sprfr_throbber.tres" id="3_c2hp3"]
 
 [sub_resource type="Animation" id="Animation_h6cfv"]
 length = 0.001
