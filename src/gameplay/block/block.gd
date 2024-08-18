@@ -8,7 +8,6 @@ var block_data : BlockData : set = _set_block_data
 
 var used_tiles : Array[SelectTile]
 
-var sub_block: Block
 var previous_block: Block
 var next_block: Block
 var exit_direction: Vector2
@@ -20,25 +19,11 @@ var components_contained = []
 func _ready():
 	sprite = get_node("Sprite2D")
 
-func move(_delta):
-	return
-
+func work(_delta):
+    return
 
 func receive(_components):
-	return
-	
-
-func try_set_previous_block(new_block: Block):
-	if (new_block.next_block == null || new_block.next_block.get_class() == "Block"):
-		previous_block = new_block
-		new_block.next_block = self
-		distance_to_adjacent = (position - new_block.position).length()
-	
-
-func try_set_next_block(new_block: Block):
-	if (new_block.previous_block == null || new_block.previous_block.get_class() == "Block"):
-		next_block = new_block
-		new_block.previous_block = self
+    return
 
 func _set_block_data(value):
 	block_data = value

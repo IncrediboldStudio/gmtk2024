@@ -4,7 +4,7 @@ class_name Conveyor
 
 var speed = 30
 
-func move(delta):
+func work(delta):
     if components_contained.size() == 0 || components_contained[-1][0].is_blocked:
         return
     
@@ -44,9 +44,13 @@ func move(delta):
         
     if components_contained[0][1] >= 100:
         components_contained[0][1] -= 100
-        next_block.receive(components_contained[0])
+        next_block.receive(components_contained[0][0])
         components_contained.pop_front()
 
 
-func receive(component_and_position):
-    components_contained.append(component_and_position)
+func receive(component):
+    components_contained.append([component, 0])
+
+
+func receive_from_manipulator(component):
+    components_contained.append([component, -component.base_data.size_in_block_ratio])

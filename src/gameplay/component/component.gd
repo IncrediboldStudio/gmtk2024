@@ -18,6 +18,7 @@ func _set_component_data(value):
     component_data = value
     base_data = component_data.base_data
     sprite.texture = base_data.texture
+    sprite.offset = Vector2i(32,32)
     
     if (component_data.recipe_list == null):
         return
