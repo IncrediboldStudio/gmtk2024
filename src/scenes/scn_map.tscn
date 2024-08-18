@@ -1,24 +1,256 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgoenhi3apad1"]
+[gd_scene load_steps=47 format=3 uid="uid://dgoenhi3apad1"]
 
 [ext_resource type="Script" path="res://src/gameplay/map/map.gd" id="1_30ukq"]
-[ext_resource type="Resource" uid="uid://blxptemgde1xp" path="res://src/gameplay/block/test_block2x1.tres" id="2_bk6pg"]
 [ext_resource type="Texture2D" uid="uid://on1s50gsruye" path="res://src/art/tile_grid.png" id="3_vs4jw"]
+[ext_resource type="Script" path="res://src/gameplay/map/block_selector.gd" id="4_iyw37"]
+[ext_resource type="Resource" uid="uid://bc4eit44ge7u" path="res://src/gameplay/block/data/conveyor_block.tres" id="5_e2ors"]
+[ext_resource type="Script" path="res://src/gameplay/block/data/block_data.gd" id="5_pewdh"]
+[ext_resource type="Script" path="res://src/gameplay/block/block_io.gd" id="6_te357"]
+[ext_resource type="Texture2D" uid="uid://8crlpiko4t54" path="res://src/art/test_conveyor_straight.png" id="7_vmlox"]
+[ext_resource type="Texture2D" uid="uid://bocssasw4lvfa" path="res://src/art/test_conveyor_curved.png" id="8_m672s"]
+[ext_resource type="Texture2D" uid="uid://cr8oh0h3r3l4g" path="res://src/art/test_conveyor_curved2.png" id="9_62e2a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t3jwo"]
 size = Vector2(512, 512)
+
+[sub_resource type="Resource" id="Resource_c1tp6"]
+script = ExtResource("6_te357")
+pos = Vector2i(0, 1)
+edge = 0
+
+[sub_resource type="Resource" id="Resource_4wgwi"]
+script = ExtResource("6_te357")
+pos = Vector2i(0, -1)
+edge = 0
+
+[sub_resource type="Resource" id="Resource_qhlbd"]
+script = ExtResource("5_pewdh")
+texture = ExtResource("7_vmlox")
+texture_offset = Vector2i(32, 32)
+texture_rotation = 0.0
+block_layout = Array[Vector2i]([Vector2i(0, 0)])
+inputs = Array[ExtResource("6_te357")]([SubResource("Resource_c1tp6")])
+outputs = Array[ExtResource("6_te357")]([SubResource("Resource_4wgwi")])
+
+[sub_resource type="Resource" id="Resource_dn6j3"]
+script = ExtResource("6_te357")
+pos = Vector2i(-1, 0)
+edge = 3
+
+[sub_resource type="Resource" id="Resource_n4wlm"]
+script = ExtResource("6_te357")
+pos = Vector2i(1, 0)
+edge = 3
+
+[sub_resource type="Resource" id="Resource_0xjuw"]
+script = ExtResource("5_pewdh")
+texture = ExtResource("7_vmlox")
+texture_offset = Vector2i(32, 32)
+texture_rotation = 90.0
+block_layout = Array[Vector2i]([Vector2i(0, 0)])
+inputs = Array[ExtResource("6_te357")]([SubResource("Resource_dn6j3")])
+outputs = Array[ExtResource("6_te357")]([SubResource("Resource_n4wlm")])
+
+[sub_resource type="Resource" id="Resource_jkcv5"]
+script = ExtResource("6_te357")
+pos = Vector2i(0, -1)
+edge = 1
+
+[sub_resource type="Resource" id="Resource_1aav3"]
+script = ExtResource("6_te357")
+pos = Vector2i(0, 1)
+edge = 1
+
+[sub_resource type="Resource" id="Resource_rkq2l"]
+script = ExtResource("5_pewdh")
+texture = ExtResource("7_vmlox")
+texture_offset = Vector2i(32, 32)
+texture_rotation = 180.0
+block_layout = Array[Vector2i]([Vector2i(0, 0)])
+inputs = Array[ExtResource("6_te357")]([SubResource("Resource_jkcv5")])
+outputs = Array[ExtResource("6_te357")]([SubResource("Resource_1aav3")])
+
+[sub_resource type="Resource" id="Resource_521so"]
+script = ExtResource("6_te357")
+pos = Vector2i(1, 0)
+edge = 2
+
+[sub_resource type="Resource" id="Resource_0hsr5"]
+script = ExtResource("6_te357")
+pos = Vector2i(-1, 0)
+edge = 2
+
+[sub_resource type="Resource" id="Resource_j0qow"]
+script = ExtResource("5_pewdh")
+texture = ExtResource("7_vmlox")
+texture_offset = Vector2i(32, 32)
+texture_rotation = 270.0
+block_layout = Array[Vector2i]([Vector2i(0, 0)])
+inputs = Array[ExtResource("6_te357")]([SubResource("Resource_521so")])
+outputs = Array[ExtResource("6_te357")]([SubResource("Resource_0hsr5")])
+
+[sub_resource type="Resource" id="Resource_ajjtx"]
+script = ExtResource("6_te357")
+pos = Vector2i(-1, 0)
+edge = 3
+
+[sub_resource type="Resource" id="Resource_gikhs"]
+script = ExtResource("6_te357")
+pos = Vector2i(0, 1)
+edge = 0
+
+[sub_resource type="Resource" id="Resource_5px1a"]
+script = ExtResource("5_pewdh")
+texture = ExtResource("8_m672s")
+texture_offset = Vector2i(32, 32)
+texture_rotation = 0.0
+block_layout = Array[Vector2i]([Vector2i(0, 0)])
+inputs = Array[ExtResource("6_te357")]([SubResource("Resource_ajjtx")])
+outputs = Array[ExtResource("6_te357")]([SubResource("Resource_gikhs")])
+
+[sub_resource type="Resource" id="Resource_gj42f"]
+script = ExtResource("6_te357")
+pos = Vector2i(0, 1)
+edge = 1
+
+[sub_resource type="Resource" id="Resource_3dw4i"]
+script = ExtResource("6_te357")
+pos = Vector2i(-1, 0)
+edge = 3
+
+[sub_resource type="Resource" id="Resource_6wgb0"]
+script = ExtResource("5_pewdh")
+texture = ExtResource("8_m672s")
+texture_offset = Vector2i(32, 32)
+texture_rotation = 90.0
+block_layout = Array[Vector2i]([Vector2i(0, 0)])
+inputs = Array[ExtResource("6_te357")]([SubResource("Resource_gj42f")])
+outputs = Array[ExtResource("6_te357")]([SubResource("Resource_3dw4i")])
+
+[sub_resource type="Resource" id="Resource_l1csf"]
+script = ExtResource("6_te357")
+pos = Vector2i(1, 0)
+edge = 2
+
+[sub_resource type="Resource" id="Resource_1pwy2"]
+script = ExtResource("6_te357")
+pos = Vector2i(0, -1)
+edge = 1
+
+[sub_resource type="Resource" id="Resource_eibse"]
+script = ExtResource("5_pewdh")
+texture = ExtResource("8_m672s")
+texture_offset = Vector2i(32, 32)
+texture_rotation = 180.0
+block_layout = Array[Vector2i]([Vector2i(0, 0)])
+inputs = Array[ExtResource("6_te357")]([SubResource("Resource_l1csf")])
+outputs = Array[ExtResource("6_te357")]([SubResource("Resource_1pwy2")])
+
+[sub_resource type="Resource" id="Resource_516hh"]
+script = ExtResource("6_te357")
+pos = Vector2i(0, 1)
+edge = 0
+
+[sub_resource type="Resource" id="Resource_cc638"]
+script = ExtResource("6_te357")
+pos = Vector2i(-1, 0)
+edge = 2
+
+[sub_resource type="Resource" id="Resource_habsj"]
+script = ExtResource("5_pewdh")
+texture = ExtResource("8_m672s")
+texture_offset = Vector2i(32, 32)
+texture_rotation = 270.0
+block_layout = Array[Vector2i]([Vector2i(0, 0)])
+inputs = Array[ExtResource("6_te357")]([SubResource("Resource_516hh")])
+outputs = Array[ExtResource("6_te357")]([SubResource("Resource_cc638")])
+
+[sub_resource type="Resource" id="Resource_aya5b"]
+script = ExtResource("6_te357")
+pos = Vector2i(0, 1)
+edge = 1
+
+[sub_resource type="Resource" id="Resource_n0gwg"]
+script = ExtResource("6_te357")
+pos = Vector2i(-1, 0)
+edge = 2
+
+[sub_resource type="Resource" id="Resource_3injr"]
+script = ExtResource("5_pewdh")
+texture = ExtResource("9_62e2a")
+texture_offset = Vector2i(32, 32)
+texture_rotation = 0.0
+block_layout = Array[Vector2i]([Vector2i(0, 0)])
+inputs = Array[ExtResource("6_te357")]([SubResource("Resource_aya5b")])
+outputs = Array[ExtResource("6_te357")]([SubResource("Resource_n0gwg")])
+
+[sub_resource type="Resource" id="Resource_bbyrv"]
+script = ExtResource("6_te357")
+pos = Vector2i(1, 0)
+edge = 2
+
+[sub_resource type="Resource" id="Resource_w2wwj"]
+script = ExtResource("6_te357")
+pos = Vector2i(0, -1)
+edge = 0
+
+[sub_resource type="Resource" id="Resource_aaen4"]
+script = ExtResource("5_pewdh")
+texture = ExtResource("9_62e2a")
+texture_offset = Vector2i(32, 32)
+texture_rotation = 90.0
+block_layout = Array[Vector2i]([Vector2i(0, 0)])
+inputs = Array[ExtResource("6_te357")]([SubResource("Resource_bbyrv")])
+outputs = Array[ExtResource("6_te357")]([SubResource("Resource_w2wwj")])
+
+[sub_resource type="Resource" id="Resource_kiypj"]
+script = ExtResource("6_te357")
+pos = Vector2i(0, -1)
+edge = 0
+
+[sub_resource type="Resource" id="Resource_j084c"]
+script = ExtResource("6_te357")
+pos = Vector2i(1, 0)
+edge = 3
+
+[sub_resource type="Resource" id="Resource_c8rsd"]
+script = ExtResource("5_pewdh")
+texture = ExtResource("9_62e2a")
+texture_offset = Vector2i(32, 32)
+texture_rotation = 180.0
+block_layout = Array[Vector2i]([Vector2i(0, 0)])
+inputs = Array[ExtResource("6_te357")]([SubResource("Resource_kiypj")])
+outputs = Array[ExtResource("6_te357")]([SubResource("Resource_j084c")])
+
+[sub_resource type="Resource" id="Resource_flkaa"]
+script = ExtResource("6_te357")
+pos = Vector2i(-1, 0)
+edge = 3
+
+[sub_resource type="Resource" id="Resource_gcbnu"]
+script = ExtResource("6_te357")
+pos = Vector2i(0, 1)
+edge = 1
+
+[sub_resource type="Resource" id="Resource_ng1pi"]
+script = ExtResource("5_pewdh")
+texture = ExtResource("9_62e2a")
+texture_offset = Vector2i(32, 32)
+texture_rotation = 270.0
+block_layout = Array[Vector2i]([Vector2i(0, 0)])
+inputs = Array[ExtResource("6_te357")]([SubResource("Resource_flkaa")])
+outputs = Array[ExtResource("6_te357")]([SubResource("Resource_gcbnu")])
 
 [node name="Map" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_30ukq")
 tile_size = Vector2i(64, 64)
-selected_block_data = ExtResource("2_bk6pg")
 
 [node name="TileGridBackground" type="Sprite2D" parent="."]
 position = Vector2(256, 256)
 texture = ExtResource("3_vs4jw")
 
 [node name="BlockPreview" type="Sprite2D" parent="."]
-visible = false
 z_index = 5
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -26,6 +258,12 @@ z_index = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(256, 256)
 shape = SubResource("RectangleShape2D_t3jwo")
+
+[node name="BlockSelector" type="Node2D" parent="."]
+script = ExtResource("4_iyw37")
+currently_selected_block = ExtResource("5_e2ors")
+conveyor_data_variants = Array[ExtResource("5_pewdh")]([SubResource("Resource_qhlbd"), SubResource("Resource_0xjuw"), SubResource("Resource_rkq2l"), SubResource("Resource_j0qow"), SubResource("Resource_5px1a"), SubResource("Resource_6wgb0"), SubResource("Resource_eibse"), SubResource("Resource_habsj"), SubResource("Resource_3injr"), SubResource("Resource_aaen4"), SubResource("Resource_c8rsd"), SubResource("Resource_ng1pi")])
+conveyor_block_data = ExtResource("5_e2ors")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_entered_area"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_mouse_quited_area"]
