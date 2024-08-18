@@ -12,7 +12,7 @@ func work(delta):
         return
     
     work_time += delta
-    if work_time > 2:
+    if work_time > 1:
         generate_component()
 
 

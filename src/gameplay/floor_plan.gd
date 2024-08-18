@@ -20,15 +20,59 @@ func run_simulation(blocks: Array[Block]):
                 block.previous_block = simulated_blocks[previous_pos.x][previous_pos.y]
                 simulated_blocks[previous_pos.x][previous_pos.y].next_block = block
             var next_pos = grid_pos + block.block_data.outputs[0].pos
-            if is_within_grid(next_pos):
-                block.previous_block = simulated_blocks[next_pos.x][next_pos.y]
-                simulated_blocks[next_pos.x][next_pos.y].next_block = block
+            if is_within_grid(next_pos) && simulated_blocks[next_pos.x][next_pos.y].get_script().get_global_name() != "Block":
+                block.next_block = simulated_blocks[next_pos.x][next_pos.y]
+                simulated_blocks[next_pos.x][next_pos.y].previous_block = block
                 block.exit_direction = get_direction_vector(block.block_data.outputs[0].edge)
-        #else:
-        #    for pos in block.block_data.block_layout:
-        #        simulated_blocks[grid_pos.x + pos.x][grid_pos.y + pos.y] = block
-        #    for input in block.block_data.inputs:
+        elif block is Producer:
+            simulated_blocks[grid_pos.x][grid_pos.y] = block
+            var next_pos = grid_pos + block.block_data.outputs[0].pos
+            if is_within_grid(next_pos) && simulated_blocks[next_pos.x][next_pos.y].get_script().get_global_name() != "Block":
+                block.next_block = simulated_blocks[next_pos.x][next_pos.y]
+                simulated_blocks[next_pos.x][next_pos.y].previous_block = block
+        else:
+            for pos in block.block_data.block_layout:
+                simulated_blocks[grid_pos.x + pos.x][grid_pos.y + pos.y] = block
+            for i in block.block_data.inputs.size():
+                var input = block.block_data.inputs[i]
+                block.floor_plan = self
+                block.entrys.append(Entry.new())
+                var entry_pos = block.grid_pos + input.pos
+                if is_within_grid(entry_pos):
+                    simulated_blocks[entry_pos.x][entry_pos.y].next_block = block.entrys[i]
+            for i in block.block_data.outputs.size():
+                var output = block.block_data.outputs[i]
+                block.exits.append(Block.new())
+                var exit_pos = block.grid_pos + output.pos
+                block.exits[i].position = exit_pos - get_direction_vector(output.Direction)
+                if is_within_grid(exit_pos):
+                    block.exits[i].next_block = simulated_blocks[exit_pos.x][exit_pos.y]
                 
+    
+    #var ass = Assembler.new()
+    #simulated_blocks[0][3] = ass
+    #simulated_blocks[1][3] = ass
+    #ass.floor_plan = self
+    #ass.entrys.append(Entry.new())
+    #ass.entrys.append(Entry.new())
+    #simulated_blocks[0][2].next_block = ass.entrys[0]
+    #simulated_blocks[1][2].next_block = ass.entrys[1]
+    #ass.exits.append(Block.new())
+    #ass.exits[0].position = Vector2(0, 192)
+    #ass.exits[0].next_block = simulated_blocks[0][4]
+    
+    #var prod = Producer.new()
+    #prod.component_data = preload("res://src/gameplay/component/test_component.tres")
+    #prod.floor_plan = self
+    #prod.next_block = simulated_blocks[0][1]
+    #simulated_blocks[0][0] = prod
+    #var prod2 = Producer.new()
+    #prod2.component_data = preload("res://src/gameplay/component/test_component.tres")
+    #prod2.floor_plan = self
+    #prod2.next_block = simulated_blocks[1][1]
+    #prod2.position = Vector2(64, 0)
+    #simulated_blocks[1][0] = prod2
+    
             
             
 func is_within_grid(position: Vector2i):
@@ -52,28 +96,23 @@ func get_direction_vector(direction : BlockIO.Direction):
         return Vector2i(0,1)
     elif direction == BlockIO.Direction.UP:
         return Vector2i(0,-1)
-
-
-func _ready():
-    if (testing):
-        setup_test_scenario()
+        
     
-var once = true
-var patate = 0
-func _process(delta):
-    patate += delta
-    #if (testing):
-    if patate > 10:
-        if once:
-            run_simulation(map.blocks)
-            var new_component = preload("res://src/gameplay/component/Component.tscn")
-            var instance = new_component.instantiate()
-            add_child(instance)
-            var component_data = preload("res://src/gameplay/component/test_component.tres")
-            instance.component_data = component_data
-            simulated_blocks[0][1].receive(instance)
-            once = false
-        process_test_scenario(delta)
+#var once = true
+#var patate = 0
+#func _process(delta):
+#    patate += delta
+#    #if (testing):
+#    if patate > 10:
+#        if once:
+#            run_simulation(map.blocks)
+#            var new_component = preload("res://src/gameplay/component/Component.tscn")
+#            var instance = new_component.instantiate()
+#            add_child(instance)
+#            var component_data = preload("res://src/gameplay/component/test_component.tres")
+#            instance.component_data = component_data
+#            once = false
+#        process_test_scenario(delta)
     
 
 func setup(new_width, new_height):
@@ -85,69 +124,6 @@ func setup(new_width, new_height):
             simulated_blocks[i].append(Block.new())
             if (testing):
                 simulated_blocks[i][j].position = Vector2(i,j) * 200 + Vector2(100, 100)
-
-
-func add(new_block: Block, position: Vector2, entry: Vector2, exit: Vector2):
-    simulated_blocks[position.x][position.y].queue_free()
-    simulated_blocks[position.x][position.y] = new_block
-    new_block.position = position * 200 + Vector2(100, 100)
-    new_block.exit_direction = exit
-    
-    var adjacent_block_position = position + entry
-    if (adjacent_block_position.x >= 0 && adjacent_block_position.x < width &&
-        adjacent_block_position.y >= 0 && adjacent_block_position.y < height):
-        var previous_block = simulated_blocks[adjacent_block_position.x][adjacent_block_position.y]
-        if previous_block.next_block == null || previous_block.next_block.get_script().get_global_name() == "Block":
-            new_block.previous_block = previous_block
-            previous_block.next_block = new_block
-    
-    adjacent_block_position = position + exit
-    if (adjacent_block_position.x >= 0 && adjacent_block_position.x < width &&
-        adjacent_block_position.y >= 0 && adjacent_block_position.y < height):
-        var next_block = simulated_blocks[adjacent_block_position.x][adjacent_block_position.y]
-        if (next_block.previous_block == null || next_block.previous_block.get_script().get_global_name() == "Block"):
-            new_block.next_block = next_block
-            next_block.previous_block = new_block
-        
-        
-func remove(position: Vector2):
-    simulated_blocks[position.x][position.y].queue_free()
-    simulated_blocks[position.x][position.y] = Block.new()
-
-
-func setup_test_scenario():
-    setup(3, 3)
-    add(Conveyor.new(), Vector2(0,0), Vector2(0,-1), Vector2(0,1))
-    add(Conveyor.new(), Vector2(1,0), Vector2(0,-1), Vector2(0,1))
-    var asem = Assembler.new()
-    asem.floor_plan = self
-    add(asem, Vector2(0,1), Vector2(0,-1), Vector2(0,1))
-    add(asem, Vector2(1,1), Vector2(0,-1), Vector2(0,1))
-    add(Conveyor.new(), Vector2(0,2), Vector2(0,-1), Vector2(0,1))
-    var prod = Producer.new()
-    prod.component_data = preload("res://src/gameplay/component/test_component.tres")
-    prod.floor_plan = self
-    add(prod, Vector2(2,0), Vector2(0,1), Vector2(-1,0))
-    
-    asem.entrys.append(Entry.new())
-    asem.entrys.append(Entry.new())
-    simulated_blocks[0][0].next_block = asem.entrys[0]
-    simulated_blocks[1][0].next_block = asem.entrys[1]
-    asem.exits.append(Block.new())
-    asem.exits[0].position = Vector2(100, 300)
-    asem.exits[0].next_block = simulated_blocks[0][2]
-    
-    var new_component = preload("res://src/gameplay/component/Component.tscn")
-    var instance = new_component.instantiate()
-    var component_data = preload("res://src/gameplay/component/test_component.tres")
-    add_child(instance)
-    var instance2 = instance.duplicate()
-    add_child(instance2)
-    instance.component_data = component_data
-    instance2.component_data = component_data
-    
-    simulated_blocks[0][0].receive(instance)
-    simulated_blocks[2][0].receive(instance2)
 
 
 func process_test_scenario(delta):
