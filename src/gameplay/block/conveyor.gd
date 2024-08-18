@@ -22,9 +22,9 @@ func move(delta):
                 next_stop = 100
             elif next_block.components_contained.size() != 0:
                 next_stop = 100 + next_block.components_contained[-1][1]
-            free_space = next_stop - components_contained[0][1] - components_contained[0][0].size_in_block_ratio
+            free_space = next_stop - components_contained[0][1] - components_contained[0][0].base_data.size_in_block_ratio
         else:
-            free_space = components_contained[i-1][1] - components_contained[i][1] - components_contained[i][0].size_in_block_ratio
+            free_space = components_contained[i-1][1] - components_contained[i][1] - components_contained[i][0].base_data.size_in_block_ratio
         
         if (free_space == 0):
             if i == 0:
@@ -38,9 +38,9 @@ func move(delta):
         
         components_contained[i][1] += movement
         if (components_contained[i][1] < 50):
-            components_contained[i][0].position = position + (distance_to_adjacent * (components_contained[i][0].position - position).normalized() * absf(components_contained[i][1] - 50) / 100)
+            components_contained[i][0].global_position = global_position + (distance_to_adjacent * (components_contained[i][0].global_position - global_position).normalized() * absf(components_contained[i][1] - 50) / 100)
         else:
-            components_contained[i][0].position = position + (distance_to_adjacent * exit_direction * (components_contained[i][1] - 50) / 100)
+            components_contained[i][0].global_position = global_position + (distance_to_adjacent * exit_direction * (components_contained[i][1] - 50) / 100)
         
     if components_contained[0][1] >= 100:
         components_contained[0][1] -= 100

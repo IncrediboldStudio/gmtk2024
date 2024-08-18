@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ComponentNodeData" load_steps=3 format=3 uid="uid://bv1rrmktne0sk"]
+
+[ext_resource type="Script" path="res://src/gameplay/component/component_base_data.gd" id="1_b4s21"]
+[ext_resource type="Texture2D" uid="uid://dqvpvx11dexg5" path="res://src/art/WhiteSquare.png" id="2_f5uhk"]
+
+[resource]
+script = ExtResource("1_b4s21")
+texture = ExtResource("2_f5uhk")
+size_in_block_ratio = 20.0

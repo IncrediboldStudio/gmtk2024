@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RecipeData" load_steps=5 format=3 uid="uid://dixnqqrh48665"]
+
+[ext_resource type="Script" path="res://src/gameplay/component/component_base_data.gd" id="1_808wc"]
+[ext_resource type="Script" path="res://src/gameplay/component/recipe/recipe_data.gd" id="2_rvf75"]
+[ext_resource type="Resource" uid="uid://da8sfy107vec3" path="res://src/gameplay/component/test_component_base.tres" id="2_tonac"]
+[ext_resource type="Resource" uid="uid://clidfaf1u4s0v" path="res://src/gameplay/component/test_component_assembly.tres" id="3_rjd6i"]
+
+[resource]
+script = ExtResource("2_rvf75")
+components = Array[ExtResource("1_808wc")]([ExtResource("2_tonac"), ExtResource("2_tonac")])
+result = ExtResource("3_rjd6i")
