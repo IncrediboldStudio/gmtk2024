@@ -6,4 +6,4 @@
 [resource]
 script = ExtResource("1_bdcv7")
 texture = ExtResource("2_kxord")
-size_in_block_ratio = 50.0
+size_in_block_ratio = 60.0

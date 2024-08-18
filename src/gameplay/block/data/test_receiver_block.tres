@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BlockData" load_steps=5 format=3 uid="uid://d3346ybws5vcp"]
+
+[ext_resource type="Script" path="res://src/gameplay/block/block_io.gd" id="1_o23dc"]
+[ext_resource type="Script" path="res://src/gameplay/block/data/block_data.gd" id="2_sid1b"]
+[ext_resource type="SpriteFrames" uid="uid://baxigl3lwty45" path="res://src/art/sprfr_receiver_block.tres" id="3_cufnv"]
+
+[sub_resource type="Resource" id="Resource_yei1s"]
+script = ExtResource("1_o23dc")
+pos = Vector2i(0, -1)
+edge = 1
+
+[resource]
+script = ExtResource("2_sid1b")
+sprite_frames = ExtResource("3_cufnv")
+texture_offset = Vector2i(32, 32)
+texture_rotation = 0.0
+block_layout = Array[Vector2i]([Vector2i(0, 0)])
+inputs = Array[ExtResource("1_o23dc")]([SubResource("Resource_yei1s")])
+outputs = Array[ExtResource("1_o23dc")]([])
+block_type = 3

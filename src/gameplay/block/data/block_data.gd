@@ -4,7 +4,8 @@ class_name BlockData
 enum BlockType{
     Conveyor,
     Producer,
-    Assembler
+    Assembler,
+    Receiver
 }
 
 @export var sprite_frames : SpriteFrames
