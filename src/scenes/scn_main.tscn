@@ -7,6 +7,14 @@
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_gl5jm")
 
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"PanelContainerBackground"
+
 [node name="Hud" parent="." instance=ExtResource("2_kkx21")]
 
 [node name="SettingsMenu" parent="." instance=ExtResource("4_1n84m")]
