@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="BlockData" load_steps=6 format=3 uid="uid://bt3mw38aoaf82"]
+
+[ext_resource type="Script" path="res://src/gameplay/block/block_io.gd" id="1_180js"]
+[ext_resource type="Script" path="res://src/gameplay/block/data/block_data.gd" id="2_61rri"]
+[ext_resource type="Texture2D" uid="uid://8crlpiko4t54" path="res://src/art/test_conveyor_straight.png" id="3_qwkbp"]
+
+[sub_resource type="Resource" id="Resource_c1tp6"]
+script = ExtResource("1_180js")
+pos = Vector2i(0, 1)
+edge = 0
+
+[sub_resource type="Resource" id="Resource_4wgwi"]
+script = ExtResource("1_180js")
+pos = Vector2i(0, -1)
+edge = 0
+
+[resource]
+script = ExtResource("2_61rri")
+texture = ExtResource("3_qwkbp")
+texture_offset = Vector2i(32, 32)
+texture_rotation = 0.0
+block_layout = Array[Vector2i]([Vector2i(0, 0)])
+inputs = Array[ExtResource("1_180js")]([SubResource("Resource_c1tp6")])
+outputs = Array[ExtResource("1_180js")]([SubResource("Resource_4wgwi")])

@@ -1,10 +1,10 @@
-[gd_scene load_steps=47 format=3 uid="uid://dgoenhi3apad1"]
+[gd_scene load_steps=44 format=3 uid="uid://dgoenhi3apad1"]
 
 [ext_resource type="Script" path="res://src/gameplay/map/map.gd" id="1_30ukq"]
 [ext_resource type="Texture2D" uid="uid://on1s50gsruye" path="res://src/art/tile_grid.png" id="3_vs4jw"]
 [ext_resource type="Script" path="res://src/gameplay/map/block_selector.gd" id="4_iyw37"]
-[ext_resource type="Resource" uid="uid://bc4eit44ge7u" path="res://src/gameplay/block/data/conveyor_block.tres" id="5_e2ors"]
 [ext_resource type="Script" path="res://src/gameplay/block/data/block_data.gd" id="5_pewdh"]
+[ext_resource type="Resource" uid="uid://bt3mw38aoaf82" path="res://src/gameplay/block/data/conveyor_block_base.tres" id="6_1i41n"]
 [ext_resource type="Script" path="res://src/gameplay/block/block_io.gd" id="6_te357"]
 [ext_resource type="Texture2D" uid="uid://8crlpiko4t54" path="res://src/art/test_conveyor_straight.png" id="7_vmlox"]
 [ext_resource type="Texture2D" uid="uid://bocssasw4lvfa" path="res://src/art/test_conveyor_curved.png" id="8_m672s"]
@@ -12,25 +12,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t3jwo"]
 size = Vector2(512, 512)
-
-[sub_resource type="Resource" id="Resource_c1tp6"]
-script = ExtResource("6_te357")
-pos = Vector2i(0, 1)
-edge = 0
-
-[sub_resource type="Resource" id="Resource_4wgwi"]
-script = ExtResource("6_te357")
-pos = Vector2i(0, -1)
-edge = 0
-
-[sub_resource type="Resource" id="Resource_qhlbd"]
-script = ExtResource("5_pewdh")
-texture = ExtResource("7_vmlox")
-texture_offset = Vector2i(32, 32)
-texture_rotation = 0.0
-block_layout = Array[Vector2i]([Vector2i(0, 0)])
-inputs = Array[ExtResource("6_te357")]([SubResource("Resource_c1tp6")])
-outputs = Array[ExtResource("6_te357")]([SubResource("Resource_4wgwi")])
 
 [sub_resource type="Resource" id="Resource_dn6j3"]
 script = ExtResource("6_te357")
@@ -261,9 +242,9 @@ shape = SubResource("RectangleShape2D_t3jwo")
 
 [node name="BlockSelector" type="Node2D" parent="."]
 script = ExtResource("4_iyw37")
-currently_selected_block = ExtResource("5_e2ors")
-conveyor_data_variants = Array[ExtResource("5_pewdh")]([SubResource("Resource_qhlbd"), SubResource("Resource_0xjuw"), SubResource("Resource_rkq2l"), SubResource("Resource_j0qow"), SubResource("Resource_5px1a"), SubResource("Resource_6wgb0"), SubResource("Resource_eibse"), SubResource("Resource_habsj"), SubResource("Resource_3injr"), SubResource("Resource_aaen4"), SubResource("Resource_c8rsd"), SubResource("Resource_ng1pi")])
-conveyor_block_data = ExtResource("5_e2ors")
+currently_selected_block = ExtResource("6_1i41n")
+conveyor_data_variants = Array[ExtResource("5_pewdh")]([ExtResource("6_1i41n"), SubResource("Resource_0xjuw"), SubResource("Resource_rkq2l"), SubResource("Resource_j0qow"), SubResource("Resource_5px1a"), SubResource("Resource_6wgb0"), SubResource("Resource_eibse"), SubResource("Resource_habsj"), SubResource("Resource_3injr"), SubResource("Resource_aaen4"), SubResource("Resource_c8rsd"), SubResource("Resource_ng1pi")])
+conveyor_block_base_data = ExtResource("6_1i41n")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_entered_area"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_mouse_quited_area"]

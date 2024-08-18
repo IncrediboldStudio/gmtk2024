@@ -18,31 +18,30 @@ var exit_direction: Vector2
 var components_contained = []
 
 func _ready():
-    sprite = get_node("Sprite2D")
+	sprite = get_node("Sprite2D")
 
 func move(_delta):
-    return
+	return
 
 
 func receive(_components):
-    return
-    
+	return
+	
 
 func try_set_previous_block(new_block: Block):
-    if (new_block.next_block == null || new_block.next_block.get_class() == "Block"):
-        previous_block = new_block
-        new_block.next_block = self
-        distance_to_adjacent = (position - new_block.position).length()
-    
+	if (new_block.next_block == null || new_block.next_block.get_class() == "Block"):
+		previous_block = new_block
+		new_block.next_block = self
+		distance_to_adjacent = (position - new_block.position).length()
+	
 
 func try_set_next_block(new_block: Block):
-    if (new_block.previous_block == null || new_block.previous_block.get_class() == "Block"):
-        next_block = new_block
-        new_block.previous_block = self
+	if (new_block.previous_block == null || new_block.previous_block.get_class() == "Block"):
+		next_block = new_block
+		new_block.previous_block = self
 
 func _set_block_data(value):
-    block_data = value
-    sprite.texture = block_data.texture
-    sprite.position = block_data.texture_offset
-    sprite.rotation = deg_to_rad(block_data.texture_rotation)
-
+	block_data = value
+	sprite.texture = block_data.texture
+	sprite.position = block_data.texture_offset
+	sprite.rotation = deg_to_rad(block_data.texture_rotation)
