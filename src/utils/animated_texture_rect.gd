@@ -13,11 +13,11 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(delta: float):
 	time_since_last_frame = time_since_last_frame + delta
-	if time_since_last_frame / frame_time > 1:
-		var nb_frames_till_last_update = int(time_since_last_frame / frame_time)
-		frame = frame + nb_frames_till_last_update
+	var nb_frames_till_last_update = time_since_last_frame / frame_time
+	if nb_frames_till_last_update > 1:
+		frame = frame + int(nb_frames_till_last_update)
 		time_since_last_frame = time_since_last_frame - (nb_frames_till_last_update * frame_time)
 
 func _set_sprite_frames(value : SpriteFrames):
