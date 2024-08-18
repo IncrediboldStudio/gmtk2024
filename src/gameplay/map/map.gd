@@ -85,9 +85,9 @@ func _place_block(selected_tile : SelectTile):
         var block : PackedScene
         if block_data.block_type == BlockData.BlockType.Conveyor:
             block = preload("res://src/gameplay/block/conveyor.tscn")
-        if block_data.block_type == BlockData.BlockType.Assembler:
+        elif block_data.block_type == BlockData.BlockType.Assembler:
             block = preload("res://src/gameplay/block/assembler.tscn")
-        if block_data.block_type == BlockData.BlockType.Producer:
+        elif block_data.block_type == BlockData.BlockType.Producer:
             block = preload("res://src/gameplay/block/producer.tscn")
         var instance = block.instantiate()
         add_child(instance)
