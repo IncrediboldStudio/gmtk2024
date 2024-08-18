@@ -17,7 +17,7 @@ var exit_direction: Vector2
 var components_contained = []
 
 func _ready():
-	sprite = get_node("Sprite2D")
+    sprite = get_node("Sprite2D")
 
 func work(_delta):
     return
@@ -26,7 +26,7 @@ func receive(_components):
     return
 
 func _set_block_data(value):
-	block_data = value
-	sprite.texture = block_data.texture
-	sprite.position = block_data.texture_offset
-	sprite.rotation = deg_to_rad(block_data.texture_rotation)
+    block_data = value
+    sprite.texture = block_data.texture
+    sprite.position = block_data.texture_offset
+    sprite.rotation = deg_to_rad(block_data.texture_rotation)
