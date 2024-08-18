@@ -14,7 +14,12 @@ func work(delta):
     work_time += delta
     if work_time > 1:
         generate_component()
+        
 
+func clean():
+    super()
+    work_complete = false
+    work_time = 0
 
 func generate_component():
     var new_component = preload("res://src/gameplay/component/Component.tscn")

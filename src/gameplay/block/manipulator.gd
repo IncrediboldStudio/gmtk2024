@@ -27,6 +27,17 @@ func work(delta):
     work_time += delta
     if work_time > 2:
         work_complete = true
+   
+
+func clean():
+    super()
+    entrys.clear()
+    exits.clear()
+    work_complete = false
+    work_time = 0
+    components_to_send.clear()
+    is_blocked = false
+
 
 func send_to_next():
     if components_to_send.size() != exits.size():
@@ -48,7 +59,7 @@ func send_to_next():
         components_to_send[i].visible = true
         var destination = exits[i].next_block
         if destination is Conveyor:
-            components_to_send[i].global_position = exits[i].position
+            components_to_send[i].global_position = exits[i].global_position
             destination.receive_from_manipulator(components_to_send[i])
         else:
             destination.receive(components_to_send[i])
@@ -59,4 +70,3 @@ func send_to_next():
     work_time = 0
     work_complete = false
     components_to_send.clear()
-    
