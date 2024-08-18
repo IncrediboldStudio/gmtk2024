@@ -8,10 +8,11 @@ var block_data : BlockData : set = _set_block_data
 
 var used_tiles : Array[SelectTile]
 
+var grid_pos: Vector2i
 var previous_block: Block
 var next_block: Block
 var exit_direction: Vector2
-@export var distance_to_adjacent: float
+const distance_to_adjacent = 64.0
 
 # Contains [Component, progression in %]
 var components_contained = []

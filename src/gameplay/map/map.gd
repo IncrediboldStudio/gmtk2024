@@ -1,10 +1,12 @@
 extends Node2D
 
+class_name Map
+
 enum Click_Held {
   LEFT_CLICK,
   RIGHT_CLICK,
   NONE,
-} 
+}
 
 @export var tile_size = Vector2i(16,16)
 @export var map_size = Vector2i(8,8)
@@ -84,6 +86,7 @@ func _place_block(selected_tile : SelectTile):
         add_child(instance)
         instance.block_data = block_selector.get_block_for_tile(selected_tile)
         instance.position = selected_tile.map_pos * tile_size
+		instance.grid_pos = selected_tile.map_pos
         blocks.append(instance)
 
         for tile in _get_all_tiles_at_position_for_selected_block(selected_tile.map_pos):
