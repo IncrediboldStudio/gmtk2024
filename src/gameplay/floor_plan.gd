@@ -2,9 +2,14 @@ extends Node
 
 class_name FloorPlan
 
+const simulation_duration = 30
+
+var time_since_start = 0
 var width = 8
 var height = 8
 var simulated_blocks = []
+var produced_component = {}
+var saved_producted_component = {}
 
 @export var map: Map
 
@@ -16,9 +21,15 @@ func _on_run_simulation():
     if !simulation_started:
         run_simulation()
         simulation_started = true
+        time_since_start = 0
         return
     
+    stop_simulation()
+        
+        
+func stop_simulation():
     simulation_started = false
+    produced_component.clear()
     for column in simulated_blocks:
         for block in column:
             if block != null:
@@ -27,6 +38,11 @@ func _on_run_simulation():
     for child in get_children():
         remove_child(child)
         child.queue_free()
+        
+        
+func on_simulation_complete():
+    saved_producted_component = produced_component.duplicate()
+    stop_simulation()
     
 
 func run_simulation():
@@ -49,6 +65,8 @@ func run_simulation():
             if is_within_grid(next_pos):
                 var next_block = get_block_at(next_pos, block.grid_pos)
                 if next_block != null && next_block.get_script().get_global_name() != "Block":
+                    if next_block is Conveyor && next_block.grid_pos + next_block.block_data.inputs[0].pos != grid_pos:
+                        continue
                     block.next_block = next_block
                     next_block.previous_block = block
         elif block is Producer:
@@ -59,6 +77,8 @@ func run_simulation():
             if is_within_grid(next_pos) && simulated_blocks[next_pos.x][next_pos.y].get_script().get_global_name() != "Block":
                 var next_block = get_block_at(next_pos, block.grid_pos)
                 if next_block != null && next_block.get_script().get_global_name() != "Block":
+                    if next_block is Conveyor && next_block.grid_pos + next_block.block_data.inputs[0].pos != grid_pos:
+                        continue
                     block.next_block = next_block
                     next_block.previous_block = block
         else:
@@ -88,7 +108,7 @@ func run_simulation():
 func get_block_at(grid_pos: Vector2i, from_grid_pos: Vector2i):
     var block: Block = simulated_blocks[grid_pos.x][grid_pos.y]
     
-    if block is Manipulator:
+    if block is Manipulator || block is Receiver:
         for i in block.block_data.inputs.size():
             var input = block.block_data.inputs[i]
             if block.grid_pos + input.pos == from_grid_pos:
@@ -132,7 +152,11 @@ func get_direction_vector(direction : BlockIO.Direction):
 
 func _process(delta):
     if simulation_started:
-        process_test_scenario(delta)
+        time_since_start += delta
+        if time_since_start < simulation_duration:
+            process_test_scenario(delta)
+        else:
+            on_simulation_complete()
     
 
 func setup(grid_size: Vector2i):

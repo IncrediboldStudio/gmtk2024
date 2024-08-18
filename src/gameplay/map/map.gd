@@ -89,6 +89,8 @@ func _place_block(selected_tile : SelectTile):
             block = preload("res://src/gameplay/block/assembler.tscn")
         elif block_data.block_type == BlockData.BlockType.Producer:
             block = preload("res://src/gameplay/block/producer.tscn")
+        elif block_data.block_type == BlockData.BlockType.Receiver:
+            block = preload("res://src/gameplay/block/receiver.tscn")
         var instance = block.instantiate()
         add_child(instance)
         instance.block_data = block_data

@@ -2,7 +2,7 @@ extends Block
 
 class_name Conveyor
 
-var speed = 70
+var speed = 200
 
 func work(delta):
     if components_contained.size() == 0 || components_contained[-1][0].is_blocked:
