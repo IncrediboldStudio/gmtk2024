@@ -18,9 +18,8 @@ func run_simulation(blocks: Array[Block]):
             var previous_pos = grid_pos + block.block_data.inputs[0].pos
             if is_within_grid(previous_pos):
                 var previous_block = get_block_at(previous_pos)
-                if previous_block.get_script().get_global_name() != "Block":
-                    block.previous_block = previous_block
-                    previous_block.next_block = block
+                block.previous_block = previous_block
+                previous_block.next_block = block
             var next_pos = grid_pos + block.block_data.outputs[0].pos
             if is_within_grid(next_pos):
                 var next_block = get_block_at(next_pos)
@@ -84,19 +83,18 @@ func run_simulation(blocks: Array[Block]):
 func get_block_at(grid_pos: Vector2i):
     var block: Block = simulated_blocks[grid_pos.x][grid_pos.y]
     
-    if block.block_data == null:
+    if !(block is Manipulator):
         return block
     
-    if block.block_data.block_layout.size() == 1 && block.block_data.inputs.size() == 1 && block.block_data.outputs.size() == 1:
-        return block
-        
-    for input in block.block_data.inputs:
+    for i in block.block_data.inputs.size():
+        var input = block.block_data.inputs[i]
         if block.grid_pos + input.pos + get_direction_vector(input.edge) == grid_pos:
-            return input
+            return block.entrys[i]
         
-    for output in block.block_data.outputs:
+    for i in block.block_data.outputs.size():
+        var output = block.block_data.outputs[i]
         if block.grid_pos + output.pos - get_direction_vector(output.edge) == grid_pos:
-            return output
+            return block.exits[i]
             
             
 func is_within_grid(position: Vector2i):
