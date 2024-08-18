@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://on1s50gsruye" path="res://src/art/tile_grid.png" id="3_vs4jw"]
 [ext_resource type="Script" path="res://src/gameplay/map/block_selector.gd" id="4_iyw37"]
 [ext_resource type="Script" path="res://src/gameplay/block/data/block_data.gd" id="5_pewdh"]
-[ext_resource type="Resource" uid="uid://bt3mw38aoaf82" path="res://src/gameplay/block/data/conveyor_block_base.tres" id="6_1i41n"]
+[ext_resource type="Resource" uid="uid://me0ap885qdnr" path="res://src/gameplay/block/data/conveyor_block_base.tres" id="6_1i41n"]
 [ext_resource type="Script" path="res://src/gameplay/block/block_io.gd" id="6_te357"]
 [ext_resource type="Texture2D" uid="uid://8crlpiko4t54" path="res://src/art/test_conveyor_straight.png" id="7_vmlox"]
 [ext_resource type="Texture2D" uid="uid://bocssasw4lvfa" path="res://src/art/test_conveyor_curved.png" id="8_m672s"]
@@ -77,7 +77,7 @@ edge = 3
 
 [sub_resource type="Resource" id="Resource_gikhs"]
 script = ExtResource("6_te357")
-pos = Vector2i(0, 1)
+pos = Vector2i(0, -1)
 edge = 0
 
 [sub_resource type="Resource" id="Resource_5px1a"]
@@ -91,12 +91,12 @@ outputs = Array[ExtResource("6_te357")]([SubResource("Resource_gikhs")])
 
 [sub_resource type="Resource" id="Resource_gj42f"]
 script = ExtResource("6_te357")
-pos = Vector2i(0, 1)
+pos = Vector2i(0, -1)
 edge = 1
 
 [sub_resource type="Resource" id="Resource_3dw4i"]
 script = ExtResource("6_te357")
-pos = Vector2i(-1, 0)
+pos = Vector2i(1, 0)
 edge = 3
 
 [sub_resource type="Resource" id="Resource_6wgb0"]
@@ -115,7 +115,7 @@ edge = 2
 
 [sub_resource type="Resource" id="Resource_1pwy2"]
 script = ExtResource("6_te357")
-pos = Vector2i(0, -1)
+pos = Vector2i(0, 1)
 edge = 1
 
 [sub_resource type="Resource" id="Resource_eibse"]
@@ -148,7 +148,7 @@ outputs = Array[ExtResource("6_te357")]([SubResource("Resource_cc638")])
 
 [sub_resource type="Resource" id="Resource_aya5b"]
 script = ExtResource("6_te357")
-pos = Vector2i(0, 1)
+pos = Vector2i(0, -1)
 edge = 1
 
 [sub_resource type="Resource" id="Resource_n0gwg"]
@@ -186,7 +186,7 @@ outputs = Array[ExtResource("6_te357")]([SubResource("Resource_w2wwj")])
 
 [sub_resource type="Resource" id="Resource_kiypj"]
 script = ExtResource("6_te357")
-pos = Vector2i(0, -1)
+pos = Vector2i(0, 1)
 edge = 0
 
 [sub_resource type="Resource" id="Resource_j084c"]

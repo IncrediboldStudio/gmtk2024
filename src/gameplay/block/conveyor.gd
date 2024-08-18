@@ -2,7 +2,7 @@ extends Block
 
 class_name Conveyor
 
-var speed = 30
+var speed = 70
 
 func work(delta):
     if components_contained.size() == 0 || components_contained[-1][0].is_blocked:
@@ -18,7 +18,7 @@ func work(delta):
         
         if i == 0:
             next_stop = 200
-            if next_block == null || next_block.next_block == self:
+            if next_block == null || next_block.next_block == self || (next_block is Entry && next_block.held_component != null):
                 next_stop = 100
             elif next_block.components_contained.size() != 0:
                 next_stop = 100 + next_block.components_contained[-1][1]
