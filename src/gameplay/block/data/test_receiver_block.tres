@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/gameplay/block/block_io.gd" id="1_o23dc"]
 [ext_resource type="Resource" uid="uid://clidfaf1u4s0v" path="res://src/gameplay/component/test_component_assembly.tres" id="1_wwn2s"]
 [ext_resource type="Script" path="res://src/gameplay/block/data/block_data.gd" id="2_sid1b"]
-[ext_resource type="SpriteFrames" uid="uid://baxigl3lwty45" path="res://src/art/sprfr_receiver_block.tres" id="3_cufnv"]
+[ext_resource type="SpriteFrames" path="res://src/art/sprfr_receiver_block.tres" id="3_cufnv"]
 
 [sub_resource type="Resource" id="Resource_yei1s"]
 script = ExtResource("1_o23dc")
