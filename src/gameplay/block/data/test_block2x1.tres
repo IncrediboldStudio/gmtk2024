@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/gameplay/block/block_io.gd" id="1_4g7nj"]
 [ext_resource type="Script" path="res://src/gameplay/block/data/block_data.gd" id="1_wdu67"]
-[ext_resource type="SpriteFrames" uid="uid://57cddrywk6h6" path="res://src/art/sprfr_assembler.tres" id="3_y2q4w"]
+[ext_resource type="SpriteFrames" uid="uid://57cddrywk6h6" path="res://src/art/sprfr_assembler.tres" id="3_uxu5w"]
 
 [sub_resource type="Resource" id="Resource_pm5nd"]
 script = ExtResource("1_4g7nj")
@@ -21,7 +21,7 @@ edge = 1
 
 [resource]
 script = ExtResource("1_wdu67")
-sprite_frames = ExtResource("3_y2q4w")
+sprite_frames = ExtResource("3_uxu5w")
 texture_offset = Vector2i(64, 32)
 texture_rotation = 0.0
 block_layout = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
