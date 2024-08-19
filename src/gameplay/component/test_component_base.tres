@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="ComponentBaseData" load_steps=3 format=3 uid="uid://da8sfy107vec3"]
 
 [ext_resource type="Script" path="res://src/gameplay/component/component_base_data.gd" id="1_bdcv7"]
-[ext_resource type="Texture2D" uid="uid://cja76vjc3nfwu" path="res://src/art/RedSquare.png" id="2_kxord"]
+[ext_resource type="Texture2D" uid="uid://dha23fwhynobg" path="res://src/art/spr_chip.png" id="2_ff3wp"]
 
 [resource]
 script = ExtResource("1_bdcv7")
-texture = ExtResource("2_kxord")
+texture = ExtResource("2_ff3wp")
 size_in_block_ratio = 60.0

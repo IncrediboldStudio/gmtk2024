@@ -39,7 +39,7 @@ offset_right = -864.0
 offset_bottom = -544.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 8
 theme_type_variation = &"PanelContainerPrimary"
 script = ExtResource("1_7746q")
 
@@ -48,7 +48,6 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
-expand_mode = 2
 stretch_mode = 4
 script = ExtResource("2_yim00")
 animation = "preview"
@@ -56,6 +55,7 @@ animation = "preview"
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
+size_flags_horizontal = 8
 tooltip_text = "Block Name"
 theme_override_styles/focus = SubResource("StyleBoxFlat_wu24i")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_t055k")
