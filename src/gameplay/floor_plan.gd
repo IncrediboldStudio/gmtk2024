@@ -9,17 +9,23 @@ var width = 8
 var height = 8
 var simulated_blocks = []
 var produced_component = {}
-var saved_producted_component = {}
+
+var expected_components = {}
+var expected_components_left = {}
 
 @export var map: Map
 
 var simulation_started = false
 func _ready():
     EventEngine.run_simulation.connect(_on_run_simulation)
+    expected_components.get_or_add(preload("res://src/gameplay/component/test_component_base_assembly.tres") ,10)
+    expected_components.get_or_add(preload("res://src/gameplay/component/test_component_base.tres") ,30)
+    EventEngine.update_target_components.emit(expected_components)
 
 func _on_run_simulation():
     if !simulation_started:
         SfxManager.play_sfx(SfxManager.SfxName.FACTORY_ACTIVATION, SfxManager.SfxVariation.NONE)
+        expected_components_left = expected_components
         run_simulation()
         simulation_started = true
         time_since_start = 0
@@ -40,10 +46,10 @@ func stop_simulation():
     for child in get_children():
         remove_child(child)
         child.queue_free()
+    EventEngine.update_target_components.emit(expected_components)
         
         
 func on_simulation_complete():
-    saved_producted_component = produced_component.duplicate()
     stop_simulation()
     
 
@@ -176,3 +182,14 @@ func process_test_scenario(delta):
             if simulated_blocks[i][j] == null:
                 return
             simulated_blocks[i][j].work(delta)
+            
+            
+func component_received(component_data: ComponentData):
+    var value = expected_components_left.get(component_data)
+    if value == null:
+        return
+    
+    if value > 0:
+        value -= 1
+    expected_components_left[component_data] = value
+    EventEngine.update_target_components.emit(expected_components)
