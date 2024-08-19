@@ -55,23 +55,3 @@ block_data = ExtResource("4_b78my")
 [node name="BlockTypeButton4" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
 layout_mode = 2
 block_data = ExtResource("6_15is1")
-
-[node name="BlockTypeButton5" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
-layout_mode = 2
-block_data = ExtResource("4_b78my")
-
-[node name="BlockTypeButton6" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
-layout_mode = 2
-block_data = ExtResource("4_b78my")
-
-[node name="BlockTypeButton7" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
-layout_mode = 2
-block_data = ExtResource("4_b78my")
-
-[node name="BlockTypeButton8" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
-layout_mode = 2
-block_data = ExtResource("4_b78my")
-
-[node name="BlockTypeButton9" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sfdlw")]
-layout_mode = 2
-block_data = ExtResource("4_b78my")

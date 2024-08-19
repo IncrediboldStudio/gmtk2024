@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://odpaja1mfuvi"]
 
-[ext_resource type="Texture2D" uid="uid://dmfff8h5kxmo1" path="res://icon.svg" id="1_3pjnn"]
 [ext_resource type="Script" path="res://src/ui/components/hud/blocks_palette/block_type_button/block_type_button.gd" id="1_7746q"]
+[ext_resource type="Script" path="res://src/utils/animated_texture_rect.gd" id="2_yim00"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu24i"]
 bg_color = Color(0, 0, 0, 0)
@@ -48,9 +48,9 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
-texture = ExtResource("1_3pjnn")
 expand_mode = 2
 stretch_mode = 4
+script = ExtResource("2_yim00")
 
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(96, 96)
