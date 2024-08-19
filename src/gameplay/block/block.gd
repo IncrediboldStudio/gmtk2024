@@ -37,6 +37,11 @@ func _set_block_data(value):
     sprite.animation = "block"
     sprite.position = block_data.texture_offset
     sprite.rotation = deg_to_rad(block_data.texture_rotation)
+    on_setup_component_data()
+    
+    
+func on_setup_component_data():
+    return
 
 func advance_animation(frame : int):
     var nb_frame = sprite.sprite_frames.get_frame_count("block")

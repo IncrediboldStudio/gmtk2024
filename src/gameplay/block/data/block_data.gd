@@ -15,3 +15,4 @@ enum BlockType{
 @export var inputs : Array[BlockIO]
 @export var outputs : Array[BlockIO]
 @export var block_type : BlockType
+@export var component_data: ComponentData

@@ -8,7 +8,6 @@ var time_since_start = 0
 var width = 8
 var height = 8
 var simulated_blocks = []
-var produced_component = {}
 
 var expected_components = {}
 var expected_components_left = {}
@@ -25,7 +24,7 @@ func _ready():
 func _on_run_simulation():
     if !simulation_started:
         SfxManager.play_sfx(SfxManager.SfxName.FACTORY_ACTIVATION, SfxManager.SfxVariation.NONE)
-        expected_components_left = expected_components
+        expected_components_left = expected_components.duplicate()
         run_simulation()
         simulation_started = true
         time_since_start = 0
@@ -37,7 +36,6 @@ func _on_run_simulation():
 func stop_simulation():
     SfxManager.play_sfx(SfxManager.SfxName.FACTORY_DESACTIVATION, SfxManager.SfxVariation.NONE)
     simulation_started = false
-    produced_component.clear()
     for column in simulated_blocks:
         for block in column:
             if block != null:
@@ -78,7 +76,6 @@ func run_simulation():
                     block.next_block = next_block
                     next_block.previous_block = block
         elif block is Producer:
-            block.component_data = preload("res://src/gameplay/component/test_component.tres")
             block.floor_plan = self
             simulated_blocks[grid_pos.x][grid_pos.y] = block
             var next_pos = grid_pos + block.block_data.outputs[0].pos
@@ -184,12 +181,12 @@ func process_test_scenario(delta):
             simulated_blocks[i][j].work(delta)
             
             
-func component_received(component_data: ComponentData):
-    var value = expected_components_left.get(component_data)
+func component_received(component_base_data: ComponentBaseData):
+    var value = expected_components_left.get(component_base_data)
     if value == null:
         return
     
     if value > 0:
         value -= 1
-    expected_components_left[component_data] = value
-    EventEngine.update_target_components.emit(expected_components)
+    expected_components_left[component_base_data] = value
+    EventEngine.update_target_components.emit(expected_components_left)
