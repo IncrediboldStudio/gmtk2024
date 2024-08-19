@@ -27,6 +27,8 @@ func _process(delta: float):
 
 func _set_sprite_frames(value : SpriteFrames):
 	sprite_frames = value
+	if value == null:
+		return
 	frame_count = sprite_frames.get_frame_count(animation)
 	frame_time = 1 / sprite_frames.get_animation_speed(animation)
 	time_since_last_frame = 0

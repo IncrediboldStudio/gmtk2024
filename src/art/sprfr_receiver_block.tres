@@ -1,12 +1,12 @@
 [gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://baxigl3lwty45"]
 
-[ext_resource type="Texture2D" uid="uid://c58h8h4qx6v12" path="res://src/art/test_receiver_block.png" id="1_vmgdy"]
+[ext_resource type="Texture2D" uid="uid://bukqi12ur7cwo" path="res://src/art/spr_receiver.png" id="1_rr4sv"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_vmgdy")
+"texture": ExtResource("1_rr4sv")
 }],
 "loop": true,
 "name": &"block",
@@ -14,7 +14,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_vmgdy")
+"texture": ExtResource("1_rr4sv")
 }],
 "loop": true,
 "name": &"preview",
