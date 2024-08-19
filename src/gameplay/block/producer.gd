@@ -10,6 +10,7 @@ func on_setup_component_data():
     add_child(preview)
     preview.component_data = block_data.component_data
     preview.sprite.offset = Vector2(64,64)
+    preview.sprite.z_index = 1
     
 
 var work_complete = false

@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://src/ui/components/quit_button/quit_button.gd" id="4_rnmjo"]
 [ext_resource type="Script" path="res://src/ui/components/change_scene_button/change_scene_button.gd" id="4_uxse1"]
 [ext_resource type="Script" path="res://src/ui/components/hud/change_level_button.gd" id="6_m1q0n"]
-[ext_resource type="Resource" uid="uid://dlnps4qrbnp7i" path="res://src/gameplay/level/level1.tres" id="7_xr08q"]
+[ext_resource type="Resource" uid="uid://dlnps4qrbnp7i" path="res://src/gameplay/level/level.tres" id="7_xr08q"]
 [ext_resource type="Script" path="res://src/ui/components/hud/run_simulation_button.gd" id="8_f30o3"]
 [ext_resource type="Script" path="res://src/ui/components/hud/save_map_button.gd" id="9_cjnt8"]
 [ext_resource type="PackedScene" uid="uid://dgoenhi3apad1" path="res://src/scenes/scn_map.tscn" id="9_fkjx2"]

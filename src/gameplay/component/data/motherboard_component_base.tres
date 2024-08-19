@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ComponentBaseData" load_steps=3 format=3 uid="uid://befok323vwm53"]
+
+[ext_resource type="Script" path="res://src/gameplay/component/component_base_data.gd" id="1_qw3io"]
+[ext_resource type="Texture2D" uid="uid://b5eeevb7hoky4" path="res://src/art/motherboard.png" id="2_r3xds"]
+
+[resource]
+script = ExtResource("1_qw3io")
+texture = ExtResource("2_r3xds")
+size_in_block_ratio = 60.0

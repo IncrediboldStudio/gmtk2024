@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RecipeListData" load_steps=4 format=3 uid="uid://dueytuyxwn3ru"]
+
+[ext_resource type="Script" path="res://src/gameplay/component/recipe/recipe_data.gd" id="1_gvdah"]
+[ext_resource type="Resource" uid="uid://bp5hthk2die4f" path="res://src/gameplay/component/recipe/computer_module_recipe.tres" id="2_e7t1k"]
+[ext_resource type="Script" path="res://src/gameplay/component/recipe/recipe_list_data.gd" id="3_k8ktv"]
+
+[resource]
+script = ExtResource("3_k8ktv")
+recipes = Array[ExtResource("1_gvdah")]([ExtResource("2_e7t1k")])
