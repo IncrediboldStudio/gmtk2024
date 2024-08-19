@@ -23,6 +23,10 @@ var click_held = Click_Held.NONE
 var current_frame = 0
 
 func _ready():
+    EventEngine.clear_level.connect(clear_map)
+    EventEngine.save_level.connect(save_level)
+    EventEngine.load_level.connect(load_level)
+
     block_selector = get_node("BlockSelector")
     block_preview = get_node("BlockPreview")
     block_selector._on_selected_block_changed.connect(_on_selected_block_changed)
@@ -184,3 +188,53 @@ func _on_anim_frame_update():
     current_frame = current_frame + 1
     for block in blocks:
         block.advance_animation(current_frame)
+
+func clear_map():
+    for select_tile_rows in select_tiles._content:
+        for select_tile in select_tile_rows:
+            select_tile.clear()
+    
+    for block in blocks:
+        block.queue_free()
+    blocks.clear()
+
+func save_map():
+    var map_save : Dictionary
+    for block in blocks:
+        map_save[block.grid_pos] = block.block_data
+    return map_save
+
+func load_map(map_save : Dictionary):
+    clear_map()
+
+    for block_pos in map_save.keys():
+        var block_data = map_save[block_pos]
+        var block : PackedScene
+        if block_data.block_type == BlockData.BlockType.Conveyor:
+            block = preload("res://src/gameplay/block/conveyor.tscn")
+        elif block_data.block_type == BlockData.BlockType.Assembler:
+            block = preload("res://src/gameplay/block/assembler.tscn")
+        elif block_data.block_type == BlockData.BlockType.Producer:
+            block = preload("res://src/gameplay/block/producer.tscn")
+        elif block_data.block_type == BlockData.BlockType.Receiver:
+            block = preload("res://src/gameplay/block/receiver.tscn")
+        var instance = block.instantiate()
+        add_child(instance)
+        instance.block_data = block_data
+        instance.position = block_pos * tile_size
+        instance.grid_pos = block_pos
+        blocks.append(instance)
+
+        for tile in _get_all_tiles_at_position_for_selected_block(block_pos):
+            tile.occupied = true
+            tile.placed_block = instance
+            instance.used_tiles.append(tile)
+
+
+func save_level(level : int):
+    if Saveinator.saves.size() < level + 1:
+        Saveinator.saves.resize(level + 1)
+    Saveinator.saves[level] = save_map()
+
+func load_level(level : int):
+    load_map(Saveinator.saves[level]) 

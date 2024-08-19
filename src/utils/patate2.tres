@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://h2b8h172yk4r"]
+
+[ext_resource type="Resource" uid="uid://3buvsuqhjikp" path="res://src/utils/patate1.tres" id="1_gnn3b"]
+[ext_resource type="Script" path="res://src/utils/patate.gd" id="1_s6udi"]
+
+[resource]
+script = ExtResource("1_s6udi")
+name = "234"
+weight = 213
+parent_resource = ExtResource("1_gnn3b")

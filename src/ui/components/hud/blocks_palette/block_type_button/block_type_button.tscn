@@ -51,6 +51,7 @@ layout_mode = 2
 expand_mode = 2
 stretch_mode = 4
 script = ExtResource("2_yim00")
+animation = ""
 
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(96, 96)

@@ -27,6 +27,7 @@ SfxManager="*res://src/system/game_settings/audio/sfx_manager.gd"
 MusicManager="*res://src/system/game_settings/audio/music_manager.gd"
 KeyPersistence="*res://src/system/key_persistence.gd"
 EventEngine="*res://src/system/event_engine.gd"
+Saveinator="*res://src/system/saveinator.gd"
 
 [display]
 

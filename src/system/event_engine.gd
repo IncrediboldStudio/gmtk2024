@@ -4,3 +4,6 @@ extends Node
 signal change_selected_block(selected_block : BlockData)
 signal change_level(level : Level)
 signal run_simulation()
+signal clear_level()
+signal load_level(level : int)
+signal save_level(level : int)
