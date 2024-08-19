@@ -1,22 +1,23 @@
 [gd_resource type="Resource" script_class="BlockData" load_steps=6 format=3 uid="uid://co511qq8mvf47"]
 
-[ext_resource type="Resource" uid="uid://cwrd48ssrxi6w" path="res://src/gameplay/component/data/chip_component.tres" id="1_g3as5"]
-[ext_resource type="Script" path="res://src/gameplay/block/block_io.gd" id="2_ttnhe"]
-[ext_resource type="Script" path="res://src/gameplay/block/data/block_data.gd" id="3_sj6lt"]
-[ext_resource type="SpriteFrames" uid="uid://cninexj8yyj4a" path="res://src/art/sprfr_producer_block.tres" id="4_mpnqa"]
+[ext_resource type="Resource" uid="uid://cwrd48ssrxi6w" path="res://src/gameplay/component/data/chip_component.tres" id="1_moxc8"]
+[ext_resource type="Script" path="res://src/gameplay/block/block_io.gd" id="2_ki6ej"]
+[ext_resource type="Script" path="res://src/gameplay/block/data/block_data.gd" id="3_pukoo"]
+[ext_resource type="SpriteFrames" uid="uid://cninexj8yyj4a" path="res://src/art/sprfr_producer_block.tres" id="4_c3n3v"]
 
 [sub_resource type="Resource" id="Resource_45lgq"]
-script = ExtResource("2_ttnhe")
+script = ExtResource("2_ki6ej")
 pos = Vector2i(0, 1)
 edge = 1
 
 [resource]
-script = ExtResource("3_sj6lt")
-sprite_frames = ExtResource("4_mpnqa")
+script = ExtResource("3_pukoo")
+sprite_frames = ExtResource("4_c3n3v")
 texture_offset = Vector2i(32, 32)
 texture_rotation = 0.0
 block_layout = Array[Vector2i]([Vector2i(0, 0)])
-inputs = Array[ExtResource("2_ttnhe")]([])
-outputs = Array[ExtResource("2_ttnhe")]([SubResource("Resource_45lgq")])
+inputs = Array[ExtResource("2_ki6ej")]([])
+outputs = Array[ExtResource("2_ki6ej")]([SubResource("Resource_45lgq")])
 block_type = 1
-component_data = ExtResource("1_g3as5")
+is_unremovable = true
+component_data = ExtResource("1_moxc8")

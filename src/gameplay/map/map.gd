@@ -119,6 +119,10 @@ func _place_block(selected_tile : SelectTile):
 func _remove_block(selected_tile : SelectTile):
     if selected_tile.occupied:
         var block = selected_tile.placed_block
+        if block.block_data.is_unremovable == true:
+            SfxManager.play_sfx(SfxManager.SfxName.ERROR, SfxManager.SfxVariation.MEDIUM)
+            return
+        
         var used_tiles = blocks[blocks.find(block)].used_tiles
         for tile in used_tiles:
             tile.occupied = false
