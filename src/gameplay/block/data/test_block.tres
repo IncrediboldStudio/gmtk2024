@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/gameplay/block/data/block_data.gd" id="1_6ud2c"]
 [ext_resource type="Script" path="res://src/gameplay/block/block_io.gd" id="1_8qi4e"]
-[ext_resource type="SpriteFrames" uid="uid://xkxl3p2wx6mr" path="res://src/art/sprfr_test_block.tres" id="3_ceubs"]
+[ext_resource type="SpriteFrames" path="res://src/art/sprfr_test_block.tres" id="3_ceubs"]
 
 [sub_resource type="Resource" id="Resource_45lgq"]
 script = ExtResource("1_8qi4e")
