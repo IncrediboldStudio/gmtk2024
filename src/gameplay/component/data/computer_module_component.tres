@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ComponentData" load_steps=3 format=3 uid="uid://3oi7j1f83kk2"]
+
+[ext_resource type="Resource" uid="uid://bfanpodxs6dlt" path="res://src/gameplay/component/data/computer_module_component_base.tres" id="1_kiu6o"]
+[ext_resource type="Script" path="res://src/gameplay/component/component_data.gd" id="3_7roey"]
+
+[resource]
+script = ExtResource("3_7roey")
+base_data = ExtResource("1_kiu6o")

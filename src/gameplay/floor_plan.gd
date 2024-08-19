@@ -17,8 +17,9 @@ var expected_components_left = {}
 var simulation_started = false
 func _ready():
     EventEngine.run_simulation.connect(_on_run_simulation)
-    expected_components.get_or_add(preload("res://src/gameplay/component/test_component_base_assembly.tres") ,10)
-    expected_components.get_or_add(preload("res://src/gameplay/component/test_component_base.tres") ,30)
+    var lvlData: LevelData = preload("res://src/gameplay/level/level_1.tres")
+    map.load_map(lvlData.blocks)
+    expected_components = lvlData.expected_component
     EventEngine.update_target_components.emit(expected_components)
 
 func _on_run_simulation():

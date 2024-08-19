@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ComponentData" load_steps=4 format=3 uid="uid://bk70gnnvn5lnv"]
+
+[ext_resource type="Resource" uid="uid://befok323vwm53" path="res://src/gameplay/component/data/motherboard_component_base.tres" id="1_tge5w"]
+[ext_resource type="Resource" uid="uid://dueytuyxwn3ru" path="res://src/gameplay/component/recipe/motherboard_recipe_list.tres" id="2_qfs0x"]
+[ext_resource type="Script" path="res://src/gameplay/component/component_data.gd" id="3_y1cq1"]
+
+[resource]
+script = ExtResource("3_y1cq1")
+base_data = ExtResource("1_tge5w")
+recipe_list = ExtResource("2_qfs0x")

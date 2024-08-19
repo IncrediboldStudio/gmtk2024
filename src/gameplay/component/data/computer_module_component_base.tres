@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ComponentBaseData" load_steps=3 format=3 uid="uid://bfanpodxs6dlt"]
+
+[ext_resource type="Script" path="res://src/gameplay/component/component_base_data.gd" id="1_q81pc"]
+[ext_resource type="Texture2D" uid="uid://drp5t6jgijf6r" path="res://src/art/computer_module.png" id="2_tt25u"]
+
+[resource]
+script = ExtResource("1_q81pc")
+texture = ExtResource("2_tt25u")
+size_in_block_ratio = 60.0

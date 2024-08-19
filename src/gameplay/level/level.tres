@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Level_Data" load_steps=2 format=3 uid="uid://dlnps4qrbnp7i"]
+
+[ext_resource type="Script" path="res://src/gameplay/level/level_data.gd" id="1_iqfmq"]
+
+[resource]
+script = ExtResource("1_iqfmq")
+blocks = {}
+expected_component = {}
