@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://c57pgxppcpbcp"]
+
+[ext_resource type="Texture2D" uid="uid://dmfff8h5kxmo1" path="res://icon.svg" id="1_h6gq4"]
+[ext_resource type="Script" path="res://src/ui/components/hud/target_components_palette/target_components_container.gd" id="1_hhpgo"]
+
+[node name="TargetComponentContainer" type="PanelContainer"]
+offset_right = 51.0
+offset_bottom = 64.0
+theme_type_variation = &"PanelContainerSurface"
+script = ExtResource("1_hhpgo")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_h6gq4")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "x 8"

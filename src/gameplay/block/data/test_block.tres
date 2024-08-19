@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="BlockData" load_steps=5 format=3 uid="uid://bgbphtrsiljvr"]
+[gd_resource type="Resource" script_class="BlockData" load_steps=6 format=3 uid="uid://bgbphtrsiljvr"]
 
 [ext_resource type="Script" path="res://src/gameplay/block/data/block_data.gd" id="1_6ud2c"]
 [ext_resource type="Script" path="res://src/gameplay/block/block_io.gd" id="1_8qi4e"]
+[ext_resource type="Resource" uid="uid://cpp3n6rxlf1eh" path="res://src/gameplay/component/test_component.tres" id="1_ccwc1"]
 [ext_resource type="SpriteFrames" uid="uid://cninexj8yyj4a" path="res://src/art/sprfr_producer_block.tres" id="3_m5lsd"]
 
 [sub_resource type="Resource" id="Resource_45lgq"]
@@ -18,3 +19,4 @@ block_layout = Array[Vector2i]([Vector2i(0, 0)])
 inputs = Array[ExtResource("1_8qi4e")]([])
 outputs = Array[ExtResource("1_8qi4e")]([SubResource("Resource_45lgq")])
 block_type = 1
+component_data = ExtResource("1_ccwc1")

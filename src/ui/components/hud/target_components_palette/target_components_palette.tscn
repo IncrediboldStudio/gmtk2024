@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4m18xs4qmrxw"]
+
+[ext_resource type="PackedScene" uid="uid://c57pgxppcpbcp" path="res://src/ui/components/hud/target_components_palette/target_component_container.tscn" id="1_38dqf"]
+[ext_resource type="Script" path="res://src/ui/components/hud/target_components_palette/target_components_palette.gd" id="1_oib1b"]
+
+[node name="TargetComponentsPalette" type="PanelContainer" node_paths=PackedStringArray("target_components_container")]
+offset_right = 51.0
+offset_bottom = 64.0
+theme_type_variation = &"PanelContainerSurface"
+script = ExtResource("1_oib1b")
+target_components_container = [NodePath("MarginContainer/TargetComponentContainer/TargetComponents"), NodePath("MarginContainer/TargetComponentContainer/TargetComponents2"), NodePath("MarginContainer/TargetComponentContainer/TargetComponents3"), NodePath("MarginContainer/TargetComponentContainer/TargetComponents4")]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="TargetComponentContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="TargetComponents" parent="MarginContainer/TargetComponentContainer" instance=ExtResource("1_38dqf")]
+layout_mode = 2
+
+[node name="TargetComponents2" parent="MarginContainer/TargetComponentContainer" instance=ExtResource("1_38dqf")]
+layout_mode = 2
+
+[node name="TargetComponents3" parent="MarginContainer/TargetComponentContainer" instance=ExtResource("1_38dqf")]
+layout_mode = 2
+
+[node name="TargetComponents4" parent="MarginContainer/TargetComponentContainer" instance=ExtResource("1_38dqf")]
+layout_mode = 2

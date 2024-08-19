@@ -7,11 +7,19 @@ var floor_plan: FloorPlan
 var entrys: Array[Entry]
 var exits: Array[Entry]
 
+func on_setup_component_data():
+    var new_component = preload("res://src/gameplay/component/Component.tscn")
+    var preview = new_component.instantiate()
+    preview.scale = Vector2(0.5, 0.5)
+    add_child(preview)
+    preview.component_data = block_data.component_data
+    preview.sprite.offset = Vector2(64,64)
+
 func work(_delta):
     for entry in entrys:
         if entry.held_component != null:
-            var value = floor_plan.produced_component.get_or_add(entry.held_component.component_data, 0)
-            floor_plan.produced_component[entry.held_component.component_data] = value + 1
+            if entry.held_component.component_data == block_data.component_data:
+                floor_plan.component_received(entry.held_component.base_data)
             entry.held_component = null
         
 

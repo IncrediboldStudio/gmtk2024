@@ -1,20 +1,14 @@
 extends Block
 
 class_name Producer
-
-@export var component_data: ComponentData
 var floor_plan: FloorPlan
 
-func _ready() -> void:
-    super()
-    if component_data == null:
-        component_data = preload("res://src/gameplay/component/test_component.tres")
-    
+func on_setup_component_data():
     var new_component = preload("res://src/gameplay/component/Component.tscn")
     var preview = new_component.instantiate()
     preview.scale = Vector2(0.5, 0.5)
     add_child(preview)
-    preview.component_data = component_data
+    preview.component_data = block_data.component_data
     preview.sprite.offset = Vector2(64,64)
     
 
@@ -38,7 +32,7 @@ func generate_component():
     var new_component = preload("res://src/gameplay/component/Component.tscn")
     var instance = new_component.instantiate()
     floor_plan.add_child(instance)
-    instance.component_data = component_data
+    instance.component_data = block_data.component_data
     
     if next_block is Conveyor:
         instance.global_position = position
