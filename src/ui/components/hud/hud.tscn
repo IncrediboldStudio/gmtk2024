@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://da4rwmiwsc58c"]
+[gd_scene load_steps=15 format=3 uid="uid://da4rwmiwsc58c"]
 
 [ext_resource type="PackedScene" uid="uid://giy013f25khn" path="res://src/ui/components/hud/blocks_palette/blocks_palette.tscn" id="1_6ejom"]
 [ext_resource type="Script" path="res://src/ui/menus/menu.gd" id="1_odwqh"]
@@ -9,8 +9,11 @@
 [ext_resource type="Script" path="res://src/ui/components/hud/change_level_button.gd" id="6_m1q0n"]
 [ext_resource type="Resource" uid="uid://dlnps4qrbnp7i" path="res://src/gameplay/level/level1.tres" id="7_xr08q"]
 [ext_resource type="Script" path="res://src/ui/components/hud/run_simulation_button.gd" id="8_f30o3"]
+[ext_resource type="Script" path="res://src/ui/components/hud/save_map_button.gd" id="9_cjnt8"]
 [ext_resource type="PackedScene" uid="uid://dgoenhi3apad1" path="res://src/scenes/scn_map.tscn" id="9_fkjx2"]
+[ext_resource type="Script" path="res://src/ui/components/hud/clear_map_button.gd" id="9_gxf7h"]
 [ext_resource type="Script" path="res://src/gameplay/floor_plan.gd" id="10_2ydak"]
+[ext_resource type="Script" path="res://src/ui/components/hud/load_map_button.gd" id="10_71smo"]
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -80,6 +83,30 @@ size_flags_vertical = 4
 text = "Run Simulation"
 script = ExtResource("8_f30o3")
 
+[node name="SaveMapButton" type="Button" parent="MarginContainer/NavigationButtons"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "Save
+"
+script = ExtResource("9_cjnt8")
+
+[node name="LoadMapButton" type="Button" parent="MarginContainer/NavigationButtons"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "Load
+"
+script = ExtResource("10_71smo")
+
+[node name="ClearMapButton" type="Button" parent="MarginContainer/NavigationButtons"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "Clear
+"
+script = ExtResource("9_gxf7h")
+
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -111,3 +138,6 @@ map = NodePath("../Map")
 [connection signal="pressed" from="MarginContainer/NavigationButtons/ButtonSettings" to="." method="change_menu" binds= ["SettingsMenu"]]
 [connection signal="pressed" from="MarginContainer/NavigationButtons/ChangeLevelButton" to="MarginContainer/NavigationButtons/ChangeLevelButton" method="_on_pressed"]
 [connection signal="pressed" from="MarginContainer/NavigationButtons/RunSimulationButton" to="MarginContainer/NavigationButtons/RunSimulationButton" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/NavigationButtons/SaveMapButton" to="MarginContainer/NavigationButtons/SaveMapButton" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/NavigationButtons/LoadMapButton" to="MarginContainer/NavigationButtons/LoadMapButton" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/NavigationButtons/ClearMapButton" to="MarginContainer/NavigationButtons/ClearMapButton" method="_on_pressed"]

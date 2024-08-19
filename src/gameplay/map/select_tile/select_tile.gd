@@ -41,5 +41,9 @@ func show_highlight(valid_placement):
         highlight_valid.visible = false
         highlight_invalid.visible = true
 
-        
+func clear():
+    placed_block = null;
+    occupied = false;
+    highlight_valid.visible = false
+    highlight_invalid.visible = false
         

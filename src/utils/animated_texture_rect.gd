@@ -43,4 +43,5 @@ func _set_frame(value : int):
 func _set_animation(value : String):
 	animation = value
 	#Reset Frame since we changed animation
-	sprite_frames = sprite_frames
+	if sprite_frames:
+		sprite_frames = sprite_frames
