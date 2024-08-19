@@ -19,6 +19,7 @@ func _ready():
 
 func _on_run_simulation():
     if !simulation_started:
+        SfxManager.play_sfx(SfxManager.SfxName.FACTORY_ACTIVATION, SfxManager.SfxVariation.NONE)
         run_simulation()
         simulation_started = true
         time_since_start = 0
@@ -28,6 +29,7 @@ func _on_run_simulation():
         
         
 func stop_simulation():
+    SfxManager.play_sfx(SfxManager.SfxName.FACTORY_DESACTIVATION, SfxManager.SfxVariation.NONE)
     simulation_started = false
     produced_component.clear()
     for column in simulated_blocks:

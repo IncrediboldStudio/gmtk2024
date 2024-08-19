@@ -1,15 +1,20 @@
 extends Node
 
 enum MusicName {
-    EXAMPLE,
+    ONE,
+    TWO
 }
 
 var MUSIC_FILES = {
-    #MusicName.EXAMPLE: preload ("res://src/audio/example.mp3"),
+    MusicName.ONE: preload ("res://src/audio/music/Game_Jam_E24_01_V2.wav"),
+    MusicName.TWO: preload ("res://src/audio/music/Game_Jam_E24_02_V1.wav"),
 }
 
-var start_music = MusicName.EXAMPLE
+var start_music = MusicName.ONE
 var music_player
+
+var current_music = 0
+var music_loop = [MusicName.ONE, MusicName.TWO]
 
 func _ready():
     music_player = AudioStreamPlayer.new()
@@ -22,6 +27,11 @@ func _ready():
 
 
 func on_music_finished():
+    current_music += 1
+    if (current_music >= music_loop.size()):
+        current_music = 0
+    var stream = MUSIC_FILES.get(music_loop[current_music])
+    music_player.set_stream(stream)
     music_player.play()
     
     

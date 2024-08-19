@@ -37,6 +37,7 @@ func set_configuration(config: Dictionary) -> void:
 ##
 ## Returns: None
 func load_scene(next_scene_path: String, current_scene: Node = null) -> void:
+    SfxManager.play_sfx(SfxManager.SfxName.WHOOSH_2, SfxManager.SfxVariation.LOW)
     var loading_screen_instance: Node = _initialize_loading_screen()
     var path: String = _find_scene_path(next_scene_path)
 
