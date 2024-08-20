@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dj1mns8gt38um"]
+[gd_scene load_steps=5 format=3 uid="uid://dj1mns8gt38um"]
 
 [ext_resource type="Script" path="res://src/ui/menus/menu.gd" id="1_b8gtb"]
 [ext_resource type="PackedScene" uid="uid://dgdcegdvx3ooh" path="res://src/ui/menus/audio_settings.tscn" id="2_o60l8"]
 [ext_resource type="Script" path="res://src/ui/menus/settings_tab.gd" id="2_p3m0o"]
-[ext_resource type="PackedScene" uid="uid://bjdgwg23lm1d4" path="res://src/ui/menus/action_remap_menu.tscn" id="3_bhs1p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y2m1i"]
 bg_color = Color(0, 0, 0, 0.501961)
@@ -54,18 +53,6 @@ theme_override_constants/margin_bottom = 64
 metadata/_tab_index = 0
 
 [node name="AudioSettings" parent="Panel/MarginContainer/TabContainer/Audio" instance=ExtResource("2_o60l8")]
-layout_mode = 2
-
-[node name="Controls" type="MarginContainer" parent="Panel/MarginContainer/TabContainer"]
-visible = false
-layout_mode = 2
-theme_override_constants/margin_left = 128
-theme_override_constants/margin_top = 64
-theme_override_constants/margin_right = 128
-theme_override_constants/margin_bottom = 64
-metadata/_tab_index = 1
-
-[node name="ActionRemapMenu" parent="Panel/MarginContainer/TabContainer/Controls" instance=ExtResource("3_bhs1p")]
 layout_mode = 2
 
 [node name="ButtonBack" type="Button" parent="."]

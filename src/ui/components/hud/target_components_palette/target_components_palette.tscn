@@ -8,7 +8,7 @@ offset_right = 51.0
 offset_bottom = 64.0
 theme_type_variation = &"PanelContainerSurface"
 script = ExtResource("1_oib1b")
-target_components_container = [NodePath("MarginContainer/TargetComponentContainer/TargetComponents"), NodePath("MarginContainer/TargetComponentContainer/TargetComponents2"), NodePath("MarginContainer/TargetComponentContainer/TargetComponents3"), NodePath("MarginContainer/TargetComponentContainer/TargetComponents4")]
+target_components_container = [NodePath("MarginContainer/VBoxContainer/TargetComponentContainer/TargetComponents"), NodePath("MarginContainer/VBoxContainer/TargetComponentContainer/TargetComponents2"), NodePath("MarginContainer/VBoxContainer/TargetComponentContainer/TargetComponents3"), NodePath("MarginContainer/VBoxContainer/TargetComponentContainer/TargetComponents4")]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -17,20 +17,28 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="TargetComponentContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Needed:"
+horizontal_alignment = 1
+
+[node name="TargetComponentContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_constants/separation = 8
 
-[node name="TargetComponents" parent="MarginContainer/TargetComponentContainer" instance=ExtResource("1_38dqf")]
+[node name="TargetComponents" parent="MarginContainer/VBoxContainer/TargetComponentContainer" instance=ExtResource("1_38dqf")]
 layout_mode = 2
 
-[node name="TargetComponents2" parent="MarginContainer/TargetComponentContainer" instance=ExtResource("1_38dqf")]
+[node name="TargetComponents2" parent="MarginContainer/VBoxContainer/TargetComponentContainer" instance=ExtResource("1_38dqf")]
 layout_mode = 2
 
-[node name="TargetComponents3" parent="MarginContainer/TargetComponentContainer" instance=ExtResource("1_38dqf")]
+[node name="TargetComponents3" parent="MarginContainer/VBoxContainer/TargetComponentContainer" instance=ExtResource("1_38dqf")]
 layout_mode = 2
 
-[node name="TargetComponents4" parent="MarginContainer/TargetComponentContainer" instance=ExtResource("1_38dqf")]
+[node name="TargetComponents4" parent="MarginContainer/VBoxContainer/TargetComponentContainer" instance=ExtResource("1_38dqf")]
 layout_mode = 2

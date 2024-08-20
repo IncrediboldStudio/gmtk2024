@@ -32,6 +32,7 @@ block_layout = Array[Vector2i]([Vector2i(0, 0)])
 inputs = Array[ExtResource("6_te357")]([SubResource("Resource_dn6j3")])
 outputs = Array[ExtResource("6_te357")]([SubResource("Resource_n4wlm")])
 block_type = 0
+is_unremovable = false
 
 [sub_resource type="Resource" id="Resource_jkcv5"]
 script = ExtResource("6_te357")
@@ -52,6 +53,7 @@ block_layout = Array[Vector2i]([Vector2i(0, 0)])
 inputs = Array[ExtResource("6_te357")]([SubResource("Resource_jkcv5")])
 outputs = Array[ExtResource("6_te357")]([SubResource("Resource_1aav3")])
 block_type = 0
+is_unremovable = false
 
 [sub_resource type="Resource" id="Resource_521so"]
 script = ExtResource("6_te357")
@@ -72,6 +74,7 @@ block_layout = Array[Vector2i]([Vector2i(0, 0)])
 inputs = Array[ExtResource("6_te357")]([SubResource("Resource_521so")])
 outputs = Array[ExtResource("6_te357")]([SubResource("Resource_0hsr5")])
 block_type = 0
+is_unremovable = false
 
 [sub_resource type="Resource" id="Resource_ajjtx"]
 script = ExtResource("6_te357")
@@ -92,6 +95,7 @@ block_layout = Array[Vector2i]([Vector2i(0, 0)])
 inputs = Array[ExtResource("6_te357")]([SubResource("Resource_ajjtx")])
 outputs = Array[ExtResource("6_te357")]([SubResource("Resource_gikhs")])
 block_type = 0
+is_unremovable = false
 
 [sub_resource type="Resource" id="Resource_gj42f"]
 script = ExtResource("6_te357")
@@ -112,6 +116,7 @@ block_layout = Array[Vector2i]([Vector2i(0, 0)])
 inputs = Array[ExtResource("6_te357")]([SubResource("Resource_gj42f")])
 outputs = Array[ExtResource("6_te357")]([SubResource("Resource_3dw4i")])
 block_type = 0
+is_unremovable = false
 
 [sub_resource type="Resource" id="Resource_l1csf"]
 script = ExtResource("6_te357")
@@ -132,6 +137,7 @@ block_layout = Array[Vector2i]([Vector2i(0, 0)])
 inputs = Array[ExtResource("6_te357")]([SubResource("Resource_l1csf")])
 outputs = Array[ExtResource("6_te357")]([SubResource("Resource_1pwy2")])
 block_type = 0
+is_unremovable = false
 
 [sub_resource type="Resource" id="Resource_516hh"]
 script = ExtResource("6_te357")
@@ -152,6 +158,7 @@ block_layout = Array[Vector2i]([Vector2i(0, 0)])
 inputs = Array[ExtResource("6_te357")]([SubResource("Resource_516hh")])
 outputs = Array[ExtResource("6_te357")]([SubResource("Resource_cc638")])
 block_type = 0
+is_unremovable = false
 
 [sub_resource type="Resource" id="Resource_aya5b"]
 script = ExtResource("6_te357")
@@ -172,6 +179,7 @@ block_layout = Array[Vector2i]([Vector2i(0, 0)])
 inputs = Array[ExtResource("6_te357")]([SubResource("Resource_aya5b")])
 outputs = Array[ExtResource("6_te357")]([SubResource("Resource_n0gwg")])
 block_type = 0
+is_unremovable = false
 
 [sub_resource type="Resource" id="Resource_bbyrv"]
 script = ExtResource("6_te357")
@@ -192,6 +200,7 @@ block_layout = Array[Vector2i]([Vector2i(0, 0)])
 inputs = Array[ExtResource("6_te357")]([SubResource("Resource_bbyrv")])
 outputs = Array[ExtResource("6_te357")]([SubResource("Resource_w2wwj")])
 block_type = 0
+is_unremovable = false
 
 [sub_resource type="Resource" id="Resource_kiypj"]
 script = ExtResource("6_te357")
@@ -212,6 +221,7 @@ block_layout = Array[Vector2i]([Vector2i(0, 0)])
 inputs = Array[ExtResource("6_te357")]([SubResource("Resource_kiypj")])
 outputs = Array[ExtResource("6_te357")]([SubResource("Resource_j084c")])
 block_type = 0
+is_unremovable = false
 
 [sub_resource type="Resource" id="Resource_flkaa"]
 script = ExtResource("6_te357")
@@ -232,6 +242,7 @@ block_layout = Array[Vector2i]([Vector2i(0, 0)])
 inputs = Array[ExtResource("6_te357")]([SubResource("Resource_flkaa")])
 outputs = Array[ExtResource("6_te357")]([SubResource("Resource_gcbnu")])
 block_type = 0
+is_unremovable = false
 
 [node name="Map" type="Node2D"]
 texture_filter = 1
