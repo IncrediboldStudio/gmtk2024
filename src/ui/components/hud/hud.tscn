@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://da4rwmiwsc58c"]
+[gd_scene load_steps=17 format=3 uid="uid://da4rwmiwsc58c"]
 
 [ext_resource type="PackedScene" uid="uid://giy013f25khn" path="res://src/ui/components/hud/blocks_palette/blocks_palette.tscn" id="1_6ejom"]
 [ext_resource type="Script" path="res://src/ui/menus/menu.gd" id="1_odwqh"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c4m18xs4qmrxw" path="res://src/ui/components/hud/target_components_palette/target_components_palette.tscn" id="2_7qr12"]
 [ext_resource type="Script" path="res://src/ui/components/quit_button/quit_button.gd" id="4_rnmjo"]
 [ext_resource type="Script" path="res://src/ui/components/change_scene_button/change_scene_button.gd" id="4_uxse1"]
+[ext_resource type="PackedScene" uid="uid://ccxv2w840yaoe" path="res://src/ui/components/hud/target_components_palette/upgrade_factory_button.tscn" id="5_3tmd6"]
 [ext_resource type="PackedScene" uid="uid://bos8xmtwkc411" path="res://src/ui/components/hud/recipes_preview/recipe_palette.tscn" id="5_yewto"]
 [ext_resource type="Script" path="res://src/ui/components/hud/change_level_button.gd" id="6_m1q0n"]
 [ext_resource type="Resource" path="res://src/gameplay/level/level.tres" id="7_xr08q"]
@@ -62,7 +63,10 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
-[node name="RecipePalette2" parent="VBoxContainer" instance=ExtResource("5_yewto")]
+[node name="RecipePalette" parent="VBoxContainer" instance=ExtResource("5_yewto")]
+layout_mode = 2
+
+[node name="TargetComponentContainer" parent="VBoxContainer" instance=ExtResource("5_3tmd6")]
 layout_mode = 2
 
 [node name="NavigationButtons" type="HBoxContainer" parent="."]
@@ -71,8 +75,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -259.5
+offset_top = 10.0
 offset_right = 259.5
-offset_bottom = 28.0
+offset_bottom = 38.0
 grow_horizontal = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0

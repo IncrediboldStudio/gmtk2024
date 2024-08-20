@@ -13,4 +13,4 @@ func _ready() -> void:
 func set_value(recipe_data : RecipeData):
 	texture_rect1.texture = recipe_data.components[0].texture
 	texture_rect2.texture = recipe_data.components[1].texture
-	texture_rect3.texture = recipe_data.result.texture
+	texture_rect3.texture = recipe_data.result.base_data.texture

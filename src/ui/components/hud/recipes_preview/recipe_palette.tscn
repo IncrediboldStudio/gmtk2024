@@ -24,7 +24,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Needed:"
+text = "Recipes:"
 horizontal_alignment = 1
 
 [node name="TargetComponentContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
