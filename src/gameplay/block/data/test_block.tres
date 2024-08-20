@@ -19,4 +19,5 @@ block_layout = Array[Vector2i]([Vector2i(0, 0)])
 inputs = Array[ExtResource("1_8qi4e")]([])
 outputs = Array[ExtResource("1_8qi4e")]([SubResource("Resource_45lgq")])
 block_type = 1
+is_unremovable = false
 component_data = ExtResource("1_ccwc1")

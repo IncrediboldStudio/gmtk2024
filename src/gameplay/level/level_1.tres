@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Level_Data" load_steps=6 format=3 uid="uid://cmgbgjs8wfsj4"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=6 format=3 uid="uid://cmgbgjs8wfsj4"]
 
 [ext_resource type="Script" path="res://src/gameplay/level/level_data.gd" id="1_0cn1j"]
 [ext_resource type="Resource" uid="uid://co511qq8mvf47" path="res://src/gameplay/block/data/chip_producer_block.tres" id="1_jxxl3"]
@@ -14,5 +14,5 @@ Vector2i(3, 4): ExtResource("3_rv163"),
 Vector2i(7, 5): ExtResource("2_lrupb")
 }
 expected_component = {
-ExtResource("4_cmc4i"): 20
+ExtResource("4_cmc4i"): 1
 }
