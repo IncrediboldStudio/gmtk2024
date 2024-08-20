@@ -60,6 +60,7 @@ func stop_simulation():
         remove_child(child)
         child.queue_free()
     EventEngine.update_target_components.emit(expected_components)
+    EventEngine.stop_simulation.emit()
         
         
 func on_simulation_complete():

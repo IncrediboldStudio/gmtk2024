@@ -6,8 +6,7 @@ enum MusicName {
 }
 
 var MUSIC_FILES = {
-    MusicName.ONE: preload ("res://src/audio/music/Game_Jam_E24_01_V2.wav"),
-    MusicName.TWO: preload ("res://src/audio/music/Game_Jam_E24_02_V1.wav"),
+    MusicName.ONE: preload ("res://src/audio/music/GameJam_E24_01_Master.wav"),
 }
 
 var start_music = MusicName.ONE
@@ -27,11 +26,6 @@ func _ready():
 
 
 func on_music_finished():
-    current_music += 1
-    if (current_music >= music_loop.size()):
-        current_music = 0
-    var stream = MUSIC_FILES.get(music_loop[current_music])
-    music_player.set_stream(stream)
     music_player.play()
     
     
