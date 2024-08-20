@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RecipeListData" load_steps=4 format=3 uid="uid://cno6uxyev83dt"]
+
+[ext_resource type="Script" path="res://src/gameplay/component/recipe/recipe_data.gd" id="1_1fq34"]
+[ext_resource type="Resource" uid="uid://d0f54ycgw1swf" path="res://src/gameplay/component/recipe/cockpit_recipe.tres" id="2_oy40d"]
+[ext_resource type="Script" path="res://src/gameplay/component/recipe/recipe_list_data.gd" id="3_fcygj"]
+
+[resource]
+script = ExtResource("3_fcygj")
+recipes = Array[ExtResource("1_1fq34")]([ExtResource("2_oy40d")])

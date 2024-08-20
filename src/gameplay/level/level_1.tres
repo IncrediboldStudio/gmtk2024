@@ -14,5 +14,5 @@ Vector2i(3, 4): ExtResource("3_rv163"),
 Vector2i(7, 5): ExtResource("2_lrupb")
 }
 expected_component = {
-ExtResource("4_cmc4i"): 1
+ExtResource("4_cmc4i"): 20
 }

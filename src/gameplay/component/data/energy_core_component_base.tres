@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ComponentBaseData" load_steps=3 format=3 uid="uid://du3bokmdnvugr"]
+
+[ext_resource type="Script" path="res://src/gameplay/component/component_base_data.gd" id="1_s6qny"]
+[ext_resource type="Texture2D" uid="uid://cq73qwjqoafpa" path="res://src/art/spr_energy_core.png" id="2_js2sx"]
+
+[resource]
+script = ExtResource("1_s6qny")
+texture = ExtResource("2_js2sx")
+size_in_block_ratio = 60.0

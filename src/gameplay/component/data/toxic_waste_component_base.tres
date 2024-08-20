@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ComponentBaseData" load_steps=3 format=3 uid="uid://dj52ijbfvsdbp"]
+
+[ext_resource type="Script" path="res://src/gameplay/component/component_base_data.gd" id="1_8lm1q"]
+[ext_resource type="Texture2D" uid="uid://lc5q64oafsgm" path="res://src/art/spr_toxic_waste.png" id="2_exu6o"]
+
+[resource]
+script = ExtResource("1_8lm1q")
+texture = ExtResource("2_exu6o")
+size_in_block_ratio = 60.0

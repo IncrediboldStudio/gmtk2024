@@ -192,7 +192,7 @@ func setup(grid_size: Vector2i):
 func process_test_scenario(delta):
     for i in width:
         for j in height:
-            if simulated_blocks[i][j] == null:
+            if simulated_blocks.size() == 0 || simulated_blocks[i][j] == null:
                 return
             simulated_blocks[i][j].work(delta)
             

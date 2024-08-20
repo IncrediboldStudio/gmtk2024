@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ComponentBaseData" load_steps=3 format=3 uid="uid://s04blc2h53i3"]
+
+[ext_resource type="Script" path="res://src/gameplay/component/component_base_data.gd" id="1_qhy8x"]
+[ext_resource type="Texture2D" uid="uid://i56ryj70x5k4" path="res://src/art/spr_cockpit.png" id="2_bgkq2"]
+
+[resource]
+script = ExtResource("1_qhy8x")
+texture = ExtResource("2_bgkq2")
+size_in_block_ratio = 60.0

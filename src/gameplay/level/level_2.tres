@@ -1,20 +1,35 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=7 format=3 uid="uid://blvq23t0g1a6f"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=10 format=3 uid="uid://blvq23t0g1a6f"]
 
-[ext_resource type="Resource" uid="uid://co511qq8mvf47" path="res://src/gameplay/block/data/chip_producer_block.tres" id="1_y24li"]
-[ext_resource type="Resource" uid="uid://dd7lsunf1j66w" path="res://src/gameplay/block/data/motherboard_producer_block.tres" id="2_mdaob"]
-[ext_resource type="Resource" uid="uid://gbuksxkjftic" path="res://src/gameplay/block/data/computer_module_receiver_block.tres" id="3_yevui"]
-[ext_resource type="Resource" uid="uid://bfanpodxs6dlt" path="res://src/gameplay/component/data/computer_module_component_base.tres" id="4_3b86l"]
+[ext_resource type="Resource" uid="uid://b7ijov0yylpmo" path="res://src/gameplay/block/data/steel_frame_producer_block.tres" id="1_fw50m"]
+[ext_resource type="Resource" uid="uid://d0m022vyr20nt" path="res://src/gameplay/block/data/computer_module_producer_block.tres" id="2_fn8pg"]
+[ext_resource type="Resource" uid="uid://csu5bplw2pem7" path="res://src/gameplay/block/data/energy_core_producer_block.tres" id="4_1jhlu"]
 [ext_resource type="Resource" uid="uid://b02qnw1152c7u" path="res://src/gameplay/block/data/box_block.tres" id="4_f8xug"]
+[ext_resource type="Resource" uid="uid://dvqvqhpjbu17d" path="res://src/gameplay/component/data/thruster_component_base.tres" id="4_xn6uo"]
 [ext_resource type="Script" path="res://src/gameplay/level/level_data.gd" id="5_7m303"]
+[ext_resource type="Resource" uid="uid://s04blc2h53i3" path="res://src/gameplay/component/data/cockpit_component_base.tres" id="5_guuo8"]
+[ext_resource type="Resource" uid="uid://754my3ttdky5" path="res://src/gameplay/block/data/thruster_receiver_block.tres" id="5_xxkrk"]
+[ext_resource type="Resource" uid="uid://cpbnpytabub5b" path="res://src/gameplay/block/data/cockpit_receiver_block.tres" id="6_2a1nc"]
 
 [resource]
 script = ExtResource("5_7m303")
 blocks = {
-Vector2i(0, 0): ExtResource("4_f8xug"),
-Vector2i(2, 2): ExtResource("1_y24li"),
-Vector2i(3, 4): ExtResource("3_yevui"),
-Vector2i(7, 5): ExtResource("2_mdaob")
+Vector2i(0, 6): ExtResource("4_f8xug"),
+Vector2i(1, 0): ExtResource("1_fw50m"),
+Vector2i(1, 4): ExtResource("4_f8xug"),
+Vector2i(1, 6): ExtResource("5_xxkrk"),
+Vector2i(1, 7): ExtResource("4_f8xug"),
+Vector2i(2, 3): ExtResource("4_f8xug"),
+Vector2i(2, 4): ExtResource("4_1jhlu"),
+Vector2i(4, 0): ExtResource("2_fn8pg"),
+Vector2i(5, 4): ExtResource("4_f8xug"),
+Vector2i(5, 6): ExtResource("6_2a1nc"),
+Vector2i(5, 7): ExtResource("4_f8xug"),
+Vector2i(6, 1): ExtResource("4_f8xug"),
+Vector2i(6, 2): ExtResource("4_f8xug"),
+Vector2i(6, 3): ExtResource("4_f8xug"),
+Vector2i(6, 4): ExtResource("1_fw50m")
 }
 expected_component = {
-ExtResource("4_3b86l"): 20
+ExtResource("4_xn6uo"): 15,
+ExtResource("5_guuo8"): 15
 }

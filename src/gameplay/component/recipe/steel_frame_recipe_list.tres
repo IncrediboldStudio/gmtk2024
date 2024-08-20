@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RecipeListData" load_steps=5 format=3 uid="uid://duwkaktgl87wi"]
+
+[ext_resource type="Script" path="res://src/gameplay/component/recipe/recipe_data.gd" id="1_faext"]
+[ext_resource type="Resource" uid="uid://cwpsq1kgmhp31" path="res://src/gameplay/component/recipe/thruster_recipe.tres" id="2_4go1a"]
+[ext_resource type="Resource" uid="uid://d0f54ycgw1swf" path="res://src/gameplay/component/recipe/cockpit_recipe.tres" id="3_66ttn"]
+[ext_resource type="Script" path="res://src/gameplay/component/recipe/recipe_list_data.gd" id="3_0206e"]
+
+[resource]
+script = ExtResource("3_0206e")
+recipes = Array[ExtResource("1_faext")]([ExtResource("2_4go1a"), ExtResource("3_66ttn")])
