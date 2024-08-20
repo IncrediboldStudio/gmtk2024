@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://da4rwmiwsc58c"]
+[gd_scene load_steps=19 format=3 uid="uid://da4rwmiwsc58c"]
 
 [ext_resource type="PackedScene" uid="uid://giy013f25khn" path="res://src/ui/components/hud/blocks_palette/blocks_palette.tscn" id="1_6ejom"]
 [ext_resource type="Script" path="res://src/ui/menus/menu.gd" id="1_odwqh"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://src/ui/components/hud/target_components_palette/upgrade_factory_button.gd" id="14_84usf"]
 [ext_resource type="Texture2D" uid="uid://bukqi12ur7cwo" path="res://src/art/spr_receiver.png" id="14_iyqhu"]
 [ext_resource type="Texture2D" uid="uid://dcrpkwh1633v7" path="res://src/art/spr_assembler_no_anim.png" id="14_mw1pv"]
+[ext_resource type="Script" path="res://src/ui/components/hud/win_window.gd" id="16_dl8c1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bei0g"]
 
@@ -172,7 +173,6 @@ map = NodePath("../Map")
 title = "Tutorial"
 initial_position = 2
 size = Vector2i(350, 350)
-visible = false
 unresizable = true
 content_scale_mode = 1
 content_scale_aspect = 4
@@ -297,12 +297,13 @@ auto_translate_mode = 1
 title = "You Win!"
 initial_position = 2
 size = Vector2i(350, 350)
+visible = false
 unresizable = true
 content_scale_mode = 1
 content_scale_aspect = 4
 theme_override_colors/title_color = Color(0.756863, 0.807843, 0.85098, 1)
 theme_override_styles/embedded_border = SubResource("StyleBoxFlat_yddxw")
-script = ExtResource("12_ehwey")
+script = ExtResource("16_dl8c1")
 
 [node name="PanelContainer" type="PanelContainer" parent="WinScreen"]
 anchors_preset = 15
@@ -352,6 +353,7 @@ Employee of the century!
 "
 horizontal_alignment = 1
 
+[connection signal="pressed" from="NavigationButtons/ButttonMainMenu" to="Window" method="_close"]
 [connection signal="pressed" from="NavigationButtons/ButtonSettings" to="." method="change_menu" binds= ["SettingsMenu"]]
 [connection signal="pressed" from="NavigationButtons2/RunSimulationButton" to="NavigationButtons2/RunSimulationButton" method="_on_pressed"]
 [connection signal="pressed" from="NavigationButtons2/Button" to="NavigationButtons2/Button" method="_on_pressed"]
