@@ -40,15 +40,16 @@ offset_bottom = -544.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-theme_type_variation = &"PanelContainerPrimary"
+theme_type_variation = &"PanelContainerSurface"
 script = ExtResource("1_7746q")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
-expand_mode = 2
 stretch_mode = 4
 script = ExtResource("2_yim00")
 animation = ""
