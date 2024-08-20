@@ -11,11 +11,6 @@ func work(delta):
     for entry in entrys:
         components.append(entry.held_component)
     
-    if components.size() == 0:
-        for entry in entrys:
-            entry.held_component == null
-        return
-    
     var new_component_data = components[0].GetAssemblyResult(components)
     for component in components:
         component.queue_free()
