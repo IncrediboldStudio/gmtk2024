@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://da4rwmiwsc58c"]
+[gd_scene load_steps=18 format=3 uid="uid://da4rwmiwsc58c"]
 
 [ext_resource type="PackedScene" uid="uid://giy013f25khn" path="res://src/ui/components/hud/blocks_palette/blocks_palette.tscn" id="1_6ejom"]
 [ext_resource type="Script" path="res://src/ui/menus/menu.gd" id="1_odwqh"]
@@ -10,9 +10,20 @@
 [ext_resource type="Script" path="res://src/ui/components/hud/run_simulation_button.gd" id="8_f30o3"]
 [ext_resource type="PackedScene" uid="uid://dgoenhi3apad1" path="res://src/scenes/scn_map.tscn" id="9_fkjx2"]
 [ext_resource type="Script" path="res://src/gameplay/floor_plan.gd" id="10_2ydak"]
+[ext_resource type="Script" path="res://src/ui/components/hud/closable_window.gd" id="12_ehwey"]
+[ext_resource type="Texture2D" uid="uid://cgi70rwu4g7ko" path="res://src/art/spr_producer.png" id="13_464vm"]
 [ext_resource type="Script" path="res://src/ui/components/hud/target_components_palette/upgrade_factory_button.gd" id="14_84usf"]
+[ext_resource type="Texture2D" uid="uid://bukqi12ur7cwo" path="res://src/art/spr_receiver.png" id="14_iyqhu"]
+[ext_resource type="Texture2D" uid="uid://dcrpkwh1633v7" path="res://src/art/spr_assembler_no_anim.png" id="14_mw1pv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bei0g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yddxw"]
+bg_color = Color(0.305882, 0.396078, 0.454902, 1)
+expand_margin_left = 5.0
+expand_margin_top = 35.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -156,6 +167,129 @@ render_target_update_mode = 4
 [node name="FloorPlan" type="Node2D" parent="SubViewportContainer/Viewport" node_paths=PackedStringArray("map")]
 script = ExtResource("10_2ydak")
 map = NodePath("../Map")
+
+[node name="Window" type="Window" parent="."]
+title = "Tutorial"
+initial_position = 2
+size = Vector2i(350, 350)
+unresizable = true
+content_scale_mode = 1
+content_scale_aspect = 4
+theme_override_colors/title_color = Color(0.756863, 0.807843, 0.85098, 1)
+theme_override_styles/embedded_border = SubResource("StyleBoxFlat_yddxw")
+script = ExtResource("12_ehwey")
+
+[node name="PanelContainer" type="PanelContainer" parent="Window"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Window"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Window/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Window/Control/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Window/Control/ScrollContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Window/Control/ScrollContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Welcome to MicroGiant Inc. !
+Here's is your task:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Window/Control/ScrollContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Window/Control/ScrollContainer/MarginContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Items will come out
+out these producers:"
+horizontal_alignment = 1
+
+[node name="Container" type="Container" parent="Window/Control/ScrollContainer/MarginContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect3" type="TextureRect" parent="Window/Control/ScrollContainer/MarginContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("13_464vm")
+stretch_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Window/Control/ScrollContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="Window/Control/ScrollContainer/MarginContainer/VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Combine these items
+in these fabricator:"
+horizontal_alignment = 1
+
+[node name="Container" type="Container" parent="Window/Control/ScrollContainer/MarginContainer/VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Window/Control/ScrollContainer/MarginContainer/VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("14_mw1pv")
+stretch_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Window/Control/ScrollContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label3" type="Label" parent="Window/Control/ScrollContainer/MarginContainer/VBoxContainer2/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "And then deliver them
+in these receiver:"
+horizontal_alignment = 1
+
+[node name="Container" type="Container" parent="Window/Control/ScrollContainer/MarginContainer/VBoxContainer2/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect2" type="TextureRect" parent="Window/Control/ScrollContainer/MarginContainer/VBoxContainer2/HBoxContainer4"]
+layout_mode = 2
+texture = ExtResource("14_iyqhu")
+stretch_mode = 2
+
+[node name="Label2" type="Label" parent="Window/Control/ScrollContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "When you are ready, 
+press the start button
+ to begin the simulation 
+and see if your 
+design works properly.
+
+Once your design has been
+confirmed, Press Upgrade to
+to go the next task where you will
+combine even bigger things!"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="NavigationButtons/ButtonSettings" to="." method="change_menu" binds= ["SettingsMenu"]]
 [connection signal="pressed" from="NavigationButtons2/RunSimulationButton" to="NavigationButtons2/RunSimulationButton" method="_on_pressed"]
