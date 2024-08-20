@@ -171,7 +171,7 @@ map = NodePath("../Map")
 [node name="Window" type="Window" parent="."]
 title = "Tutorial"
 initial_position = 2
-size = Vector2i(350, 270)
+size = Vector2i(350, 350)
 unresizable = true
 content_scale_mode = 1
 content_scale_aspect = 4
@@ -277,19 +277,19 @@ layout_mode = 2
 texture = ExtResource("14_iyqhu")
 stretch_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Window/Control"]
+[node name="Label2" type="Label" parent="Window/Control/ScrollContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
-offset_left = 8.0
-offset_top = 199.0
-offset_right = 201.0
-offset_bottom = 331.0
+text = "When you are ready, 
+press the start button
+ to begin the simulation 
+and see if your 
+design works properly.
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Window/Control"]
-layout_mode = 2
-offset_left = 205.0
-offset_top = 199.0
-offset_right = 333.0
-offset_bottom = 331.0
+Once your design has been
+confirmed, Press Upgrade to
+to go the next task where you will
+combine even bigger things!"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="NavigationButtons/ButtonSettings" to="." method="change_menu" binds= ["SettingsMenu"]]
 [connection signal="pressed" from="NavigationButtons2/RunSimulationButton" to="NavigationButtons2/RunSimulationButton" method="_on_pressed"]
