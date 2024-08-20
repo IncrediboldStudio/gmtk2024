@@ -12,15 +12,29 @@ var simulated_blocks = []
 var expected_components = {}
 var expected_components_left = {}
 
+var levels = []
+
 @export var map: Map
 
 var simulation_started = false
 func _ready():
     EventEngine.run_simulation.connect(_on_run_simulation)
-    var lvlData: LevelData = preload("res://src/gameplay/level/level_1.tres")
-    map.load_map(lvlData.blocks)
-    expected_components = lvlData.expected_component
+    EventEngine.upgrade_factory.connect(_on_upgrade_factory)
+    levels.append(preload("res://src/gameplay/level/level_1.tres"))
+    levels.append(preload("res://src/gameplay/level/level_2.tres"))
+    levels.append(preload("res://src/gameplay/level/level_3.tres"))
+    _on_upgrade_factory()
+
+var current_level = -1
+func _on_upgrade_factory():
+    current_level += 1
+    if current_level >= levels.size():
+        EventEngine.you_win.emit()
+    
+    map.load_map(levels[current_level].blocks)
+    expected_components = levels[current_level].expected_component
     EventEngine.update_target_components.emit(expected_components)
+    
 
 func _on_run_simulation():
     if !simulation_started:
@@ -189,5 +203,17 @@ func component_received(component_base_data: ComponentBaseData):
     
     if value > 0:
         value -= 1
+    
+    if value == 0:
+        var all_component_received = true
+        for component in expected_components_left:
+            if expected_components_left[component] != 0:
+                all_component_received = false
+                break
+        if all_component_received:
+            EventEngine.all_component_delivered.emit()
+            SfxManager.play_sfx(SfxManager.SfxName.SUCCESS, SfxManager.SfxVariation.LOW)
+            on_simulation_complete()
+    
     expected_components_left[component_base_data] = value
     EventEngine.update_target_components.emit(expected_components_left)

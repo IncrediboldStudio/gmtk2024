@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccxv2w840yaoe"]
+
+[ext_resource type="Script" path="res://src/ui/components/hud/target_components_palette/upgrade_factory_button.gd" id="1_ybrj2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r0mj7"]
+
+[node name="TargetComponentContainer" type="PanelContainer"]
+offset_right = 51.0
+offset_bottom = 64.0
+theme_type_variation = &"PanelContainerSurface"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Button" type="Button" parent="MarginContainer"]
+layout_mode = 2
+theme_type_variation = &"ButtonAccent"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_r0mj7")
+text = "Upgrade"
+script = ExtResource("1_ybrj2")
+
+[connection signal="pressed" from="MarginContainer/Button" to="MarginContainer/Button" method="_on_pressed"]

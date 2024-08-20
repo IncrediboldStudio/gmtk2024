@@ -8,6 +8,9 @@ var entrys: Array[Entry]
 var exits: Array[Entry]
 
 func on_setup_component_data():
+    if block_data.component_data == null:
+        return
+        
     var new_component = preload("res://src/gameplay/component/Component.tscn")
     var preview = new_component.instantiate()
     preview.scale = Vector2(0.5, 0.5)
