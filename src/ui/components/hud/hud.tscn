@@ -172,6 +172,7 @@ map = NodePath("../Map")
 title = "Tutorial"
 initial_position = 2
 size = Vector2i(350, 350)
+visible = false
 unresizable = true
 content_scale_mode = 1
 content_scale_aspect = 4
@@ -289,6 +290,66 @@ Once your design has been
 confirmed, Press Upgrade to
 to go the next task where you will
 combine even bigger things!"
+horizontal_alignment = 1
+
+[node name="WinScreen" type="Window" parent="."]
+auto_translate_mode = 1
+title = "You Win!"
+initial_position = 2
+size = Vector2i(350, 350)
+unresizable = true
+content_scale_mode = 1
+content_scale_aspect = 4
+theme_override_colors/title_color = Color(0.756863, 0.807843, 0.85098, 1)
+theme_override_styles/embedded_border = SubResource("StyleBoxFlat_yddxw")
+script = ExtResource("12_ehwey")
+
+[node name="PanelContainer" type="PanelContainer" parent="WinScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="WinScreen"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="WinScreen/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="WinScreen/Control/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="WinScreen/Control/ScrollContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="WinScreen/Control/ScrollContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Thank you for playing
+MicroGiant Inc. !
+
+From microchips to spaceships,
+you were able to manage all
+the challenge presented to you.
+
+So we shall now award you
+with the title of
+Employee of the century!
+
+"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="NavigationButtons/ButtonSettings" to="." method="change_menu" binds= ["SettingsMenu"]]
