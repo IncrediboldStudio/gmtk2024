@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="BlockData" load_steps=6 format=3 uid="uid://c34doj7g3w6vb"]
+
+[ext_resource type="Resource" uid="uid://cx60fe6sh5anf" path="res://src/gameplay/component/data/spaceship_component.tres" id="1_w5yty"]
+[ext_resource type="Script" path="res://src/gameplay/block/block_io.gd" id="2_nmx7s"]
+[ext_resource type="Script" path="res://src/gameplay/block/data/block_data.gd" id="3_lfcf6"]
+[ext_resource type="SpriteFrames" uid="uid://baxigl3lwty45" path="res://src/art/sprfr_receiver_block.tres" id="4_gfcpv"]
+
+[sub_resource type="Resource" id="Resource_yei1s"]
+script = ExtResource("2_nmx7s")
+pos = Vector2i(0, -1)
+edge = 1
+
+[resource]
+script = ExtResource("3_lfcf6")
+sprite_frames = ExtResource("4_gfcpv")
+texture_offset = Vector2i(32, 32)
+texture_rotation = 0.0
+block_layout = Array[Vector2i]([Vector2i(0, 0)])
+inputs = Array[ExtResource("2_nmx7s")]([SubResource("Resource_yei1s")])
+outputs = Array[ExtResource("2_nmx7s")]([])
+block_type = 3
+is_unremovable = true
+component_data = ExtResource("1_w5yty")

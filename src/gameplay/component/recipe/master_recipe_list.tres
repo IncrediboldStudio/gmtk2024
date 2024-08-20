@@ -1,9 +1,13 @@
-[gd_resource type="Resource" script_class="MasterRecipeList" load_steps=4 format=3 uid="uid://d2ik5yhcvitqf"]
+[gd_resource type="Resource" script_class="MasterRecipeList" load_steps=8 format=3 uid="uid://dk8i3p72ksygl"]
 
 [ext_resource type="Script" path="res://src/gameplay/component/recipe/recipe_data.gd" id="1_5vree"]
 [ext_resource type="Script" path="res://src/gameplay/component/recipe/master_recipe_list.gd" id="2_88nvx"]
 [ext_resource type="Resource" uid="uid://bp5hthk2die4f" path="res://src/gameplay/component/recipe/computer_module_recipe.tres" id="2_nxhwv"]
+[ext_resource type="Resource" uid="uid://d0f54ycgw1swf" path="res://src/gameplay/component/recipe/cockpit_recipe.tres" id="3_qcxrv"]
+[ext_resource type="Resource" uid="uid://bx1h405kbr6xk" path="res://src/gameplay/component/recipe/last_item_recipe.tres" id="4_ydgax"]
+[ext_resource type="Resource" uid="uid://d21o73bfjqrvt" path="res://src/gameplay/component/recipe/spaceship_recipe.tres" id="5_1ba0s"]
+[ext_resource type="Resource" uid="uid://cwpsq1kgmhp31" path="res://src/gameplay/component/recipe/thruster_recipe.tres" id="6_xsksu"]
 
 [resource]
 script = ExtResource("2_88nvx")
-recipes = Array[ExtResource("1_5vree")]([ExtResource("2_nxhwv")])
+recipes = Array[ExtResource("1_5vree")]([ExtResource("2_nxhwv"), ExtResource("3_qcxrv"), ExtResource("4_ydgax"), ExtResource("5_1ba0s"), ExtResource("6_xsksu")])

@@ -3,11 +3,11 @@
 [ext_resource type="Resource" uid="uid://clidfaf1u4s0v" path="res://src/gameplay/component/test_component_assembly.tres" id="1_kpahq"]
 [ext_resource type="Script" path="res://src/gameplay/block/block_io.gd" id="2_2cxjx"]
 [ext_resource type="Script" path="res://src/gameplay/block/data/block_data.gd" id="3_hf4q5"]
-[ext_resource type="SpriteFrames" uid="uid://baxigl3lwty45" path="res://src/art/sprfr_receiver_block.tres" id="4_cmiki"]
+[ext_resource type="SpriteFrames" uid="uid://byqf13fmfpry4" path="res://src/art/sprfr_box_block.tres" id="4_wnf0k"]
 
 [resource]
 script = ExtResource("3_hf4q5")
-sprite_frames = ExtResource("4_cmiki")
+sprite_frames = ExtResource("4_wnf0k")
 texture_offset = Vector2i(32, 32)
 texture_rotation = 0.0
 block_layout = Array[Vector2i]([Vector2i(0, 0)])

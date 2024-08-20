@@ -30,6 +30,7 @@ func _on_upgrade_factory():
     current_level += 1
     if current_level >= levels.size():
         EventEngine.you_win.emit()
+        return
     
     map.load_map(levels[current_level].blocks)
     expected_components = levels[current_level].expected_component
@@ -192,7 +193,7 @@ func setup(grid_size: Vector2i):
 func process_test_scenario(delta):
     for i in width:
         for j in height:
-            if simulated_blocks[i][j] == null:
+            if simulated_blocks.size() == 0 || simulated_blocks[i][j] == null:
                 return
             simulated_blocks[i][j].work(delta)
             

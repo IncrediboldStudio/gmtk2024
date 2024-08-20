@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ComponentData" load_steps=4 format=3 uid="uid://bjksqloww1a1m"]
+
+[ext_resource type="Resource" uid="uid://du3bokmdnvugr" path="res://src/gameplay/component/data/energy_core_component_base.tres" id="1_gv5eh"]
+[ext_resource type="Resource" uid="uid://djtapvjbxjj0x" path="res://src/gameplay/component/recipe/energy_core_recipe_list.tres" id="2_yxo0j"]
+[ext_resource type="Script" path="res://src/gameplay/component/component_data.gd" id="3_g6ygh"]
+
+[resource]
+script = ExtResource("3_g6ygh")
+base_data = ExtResource("1_gv5eh")
+recipe_list = ExtResource("2_yxo0j")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ComponentBaseData" load_steps=3 format=3 uid="uid://dvqvqhpjbu17d"]
+
+[ext_resource type="Script" path="res://src/gameplay/component/component_base_data.gd" id="1_piihy"]
+[ext_resource type="Texture2D" uid="uid://bdq36vwmf038a" path="res://src/art/thruster.png" id="2_k1vp8"]
+
+[resource]
+script = ExtResource("1_piihy")
+texture = ExtResource("2_k1vp8")
+size_in_block_ratio = 60.0

@@ -27,9 +27,12 @@ func _set_component_data(value):
     for recipe in recipes:
         recipe.components.sort()
 
-
+var recipe_result = null
 func GetAssemblyResult(components: Array[Component]):
-    if (recipes.size() == 0):
+    if recipe_result != null:
+        return recipe_result
+
+    if recipes.size() == 0:
         return null
         
     var components_base_data: Array[ComponentBaseData]
@@ -38,7 +41,13 @@ func GetAssemblyResult(components: Array[Component]):
     components_base_data.sort()
         
     for recipe in recipes:
-        if recipe.components == components_base_data:
-            return recipe.result
+        var all_components = true
+        for component in recipe.components:
+            if components_base_data.find(component) == -1:
+                all_components = false
+                break
+        if all_components:
+            recipe_result = recipe.result
+            return recipe_result
     
     return null

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="RecipeData" load_steps=6 format=3 uid="uid://d21o73bfjqrvt"]
+
+[ext_resource type="Script" path="res://src/gameplay/component/component_base_data.gd" id="1_d4gci"]
+[ext_resource type="Resource" uid="uid://d3xjqgj83ensi" path="res://src/gameplay/component/data/last_item_component_base.tres" id="2_mkpth"]
+[ext_resource type="Resource" uid="uid://dvqvqhpjbu17d" path="res://src/gameplay/component/data/thruster_component_base.tres" id="3_672d0"]
+[ext_resource type="Resource" uid="uid://cx60fe6sh5anf" path="res://src/gameplay/component/data/spaceship_component.tres" id="4_kyc2p"]
+[ext_resource type="Script" path="res://src/gameplay/component/recipe/recipe_data.gd" id="5_rtrt0"]
+
+[resource]
+script = ExtResource("5_rtrt0")
+components = Array[ExtResource("1_d4gci")]([ExtResource("2_mkpth"), ExtResource("3_672d0")])
+result = ExtResource("4_kyc2p")

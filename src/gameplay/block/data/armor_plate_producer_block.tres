@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="BlockData" load_steps=6 format=3 uid="uid://d1jt4k0gnsxnq"]
+
+[ext_resource type="Resource" uid="uid://dbfsjnmcm8od1" path="res://src/gameplay/component/data/armor_plate.tres" id="1_tlnr0"]
+[ext_resource type="Script" path="res://src/gameplay/block/block_io.gd" id="2_qspyg"]
+[ext_resource type="Script" path="res://src/gameplay/block/data/block_data.gd" id="3_fn7yx"]
+[ext_resource type="SpriteFrames" uid="uid://cninexj8yyj4a" path="res://src/art/sprfr_producer_block.tres" id="4_q7uhi"]
+
+[sub_resource type="Resource" id="Resource_45lgq"]
+script = ExtResource("2_qspyg")
+pos = Vector2i(0, 1)
+edge = 1
+
+[resource]
+script = ExtResource("3_fn7yx")
+sprite_frames = ExtResource("4_q7uhi")
+texture_offset = Vector2i(32, 32)
+texture_rotation = 0.0
+block_layout = Array[Vector2i]([Vector2i(0, 0)])
+inputs = Array[ExtResource("2_qspyg")]([])
+outputs = Array[ExtResource("2_qspyg")]([SubResource("Resource_45lgq")])
+block_type = 1
+is_unremovable = true
+component_data = ExtResource("1_tlnr0")

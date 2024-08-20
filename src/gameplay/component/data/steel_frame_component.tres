@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ComponentData" load_steps=4 format=3 uid="uid://bilaeoj0colc5"]
+
+[ext_resource type="Resource" uid="uid://h4pheufjkghk" path="res://src/gameplay/component/data/steel_frame_component_base.tres" id="1_sguhd"]
+[ext_resource type="Resource" uid="uid://duwkaktgl87wi" path="res://src/gameplay/component/recipe/steel_frame_recipe_list.tres" id="2_udatn"]
+[ext_resource type="Script" path="res://src/gameplay/component/component_data.gd" id="3_kinlq"]
+
+[resource]
+script = ExtResource("3_kinlq")
+base_data = ExtResource("1_sguhd")
+recipe_list = ExtResource("2_udatn")

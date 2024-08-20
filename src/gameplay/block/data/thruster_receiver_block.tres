@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="BlockData" load_steps=6 format=3 uid="uid://754my3ttdky5"]
+
+[ext_resource type="Resource" uid="uid://c1ju6v6o7so5d" path="res://src/gameplay/component/data/thruster_component.tres" id="1_gg83j"]
+[ext_resource type="Script" path="res://src/gameplay/block/block_io.gd" id="2_vv0ks"]
+[ext_resource type="Script" path="res://src/gameplay/block/data/block_data.gd" id="3_f237e"]
+[ext_resource type="SpriteFrames" uid="uid://baxigl3lwty45" path="res://src/art/sprfr_receiver_block.tres" id="4_libex"]
+
+[sub_resource type="Resource" id="Resource_yei1s"]
+script = ExtResource("2_vv0ks")
+pos = Vector2i(0, -1)
+edge = 1
+
+[resource]
+script = ExtResource("3_f237e")
+sprite_frames = ExtResource("4_libex")
+texture_offset = Vector2i(32, 32)
+texture_rotation = 0.0
+block_layout = Array[Vector2i]([Vector2i(0, 0)])
+inputs = Array[ExtResource("2_vv0ks")]([SubResource("Resource_yei1s")])
+outputs = Array[ExtResource("2_vv0ks")]([])
+block_type = 3
+is_unremovable = true
+component_data = ExtResource("1_gg83j")

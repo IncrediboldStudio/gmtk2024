@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ComponentBaseData" load_steps=3 format=3 uid="uid://h4pheufjkghk"]
+
+[ext_resource type="Script" path="res://src/gameplay/component/component_base_data.gd" id="1_xii7j"]
+[ext_resource type="Texture2D" uid="uid://dqb20gsm3tqnu" path="res://src/art/spr_steel_frame.png" id="2_73uar"]
+
+[resource]
+script = ExtResource("1_xii7j")
+texture = ExtResource("2_73uar")
+size_in_block_ratio = 60.0

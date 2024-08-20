@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ComponentData" load_steps=4 format=3 uid="uid://c1ju6v6o7so5d"]
+
+[ext_resource type="Resource" uid="uid://dvqvqhpjbu17d" path="res://src/gameplay/component/data/thruster_component_base.tres" id="1_bptxi"]
+[ext_resource type="Resource" uid="uid://b0skm8nyvdlcq" path="res://src/gameplay/component/recipe/thruster_recipe_list.tres" id="2_elm31"]
+[ext_resource type="Script" path="res://src/gameplay/component/component_data.gd" id="3_gur1m"]
+
+[resource]
+script = ExtResource("3_gur1m")
+base_data = ExtResource("1_bptxi")
+recipe_list = ExtResource("2_elm31")

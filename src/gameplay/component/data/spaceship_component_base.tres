@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ComponentBaseData" load_steps=3 format=3 uid="uid://dugr7qio51k13"]
+
+[ext_resource type="Script" path="res://src/gameplay/component/component_base_data.gd" id="1_ca6r8"]
+[ext_resource type="Texture2D" uid="uid://6m08m15384cr" path="res://src/art/spr_spaceship.png" id="2_shhmo"]
+
+[resource]
+script = ExtResource("1_ca6r8")
+texture = ExtResource("2_shhmo")
+size_in_block_ratio = 60.0

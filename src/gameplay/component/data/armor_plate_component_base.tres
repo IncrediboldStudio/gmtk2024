@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ComponentBaseData" load_steps=3 format=3 uid="uid://vdj5ek8hb36a"]
+
+[ext_resource type="Script" path="res://src/gameplay/component/component_base_data.gd" id="1_ox7ew"]
+[ext_resource type="Texture2D" uid="uid://fpdviggl3uc1" path="res://src/art/spr_armor_plate.png" id="2_60e42"]
+
+[resource]
+script = ExtResource("1_ox7ew")
+texture = ExtResource("2_60e42")
+size_in_block_ratio = 60.0
