@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://da4rwmiwsc58c"]
+[gd_scene load_steps=13 format=3 uid="uid://da4rwmiwsc58c"]
 
 [ext_resource type="PackedScene" uid="uid://giy013f25khn" path="res://src/ui/components/hud/blocks_palette/blocks_palette.tscn" id="1_6ejom"]
 [ext_resource type="Script" path="res://src/ui/menus/menu.gd" id="1_odwqh"]
@@ -6,16 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://c4m18xs4qmrxw" path="res://src/ui/components/hud/target_components_palette/target_components_palette.tscn" id="2_7qr12"]
 [ext_resource type="Script" path="res://src/ui/components/quit_button/quit_button.gd" id="4_rnmjo"]
 [ext_resource type="Script" path="res://src/ui/components/change_scene_button/change_scene_button.gd" id="4_uxse1"]
-[ext_resource type="PackedScene" uid="uid://ccxv2w840yaoe" path="res://src/ui/components/hud/target_components_palette/upgrade_factory_button.tscn" id="5_3tmd6"]
 [ext_resource type="PackedScene" uid="uid://bos8xmtwkc411" path="res://src/ui/components/hud/recipes_preview/recipe_palette.tscn" id="5_yewto"]
-[ext_resource type="Script" path="res://src/ui/components/hud/change_level_button.gd" id="6_m1q0n"]
-[ext_resource type="Resource" path="res://src/gameplay/level/level.tres" id="7_xr08q"]
 [ext_resource type="Script" path="res://src/ui/components/hud/run_simulation_button.gd" id="8_f30o3"]
-[ext_resource type="Script" path="res://src/ui/components/hud/save_map_button.gd" id="9_cjnt8"]
 [ext_resource type="PackedScene" uid="uid://dgoenhi3apad1" path="res://src/scenes/scn_map.tscn" id="9_fkjx2"]
-[ext_resource type="Script" path="res://src/ui/components/hud/clear_map_button.gd" id="9_gxf7h"]
 [ext_resource type="Script" path="res://src/gameplay/floor_plan.gd" id="10_2ydak"]
-[ext_resource type="Script" path="res://src/ui/components/hud/load_map_button.gd" id="10_71smo"]
+[ext_resource type="Script" path="res://src/ui/components/hud/target_components_palette/upgrade_factory_button.gd" id="14_84usf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bei0g"]
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -69,9 +66,6 @@ size_flags_vertical = 4
 [node name="RecipePalette" parent="VBoxContainer" instance=ExtResource("5_yewto")]
 layout_mode = 2
 
-[node name="TargetComponentContainer" parent="VBoxContainer" instance=ExtResource("5_3tmd6")]
-layout_mode = 2
-
 [node name="NavigationButtons" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 5
@@ -104,49 +98,38 @@ theme_type_variation = &"ButtonAccent"
 text = "Quit"
 script = ExtResource("4_rnmjo")
 
-[node name="ChangeLevelButton" type="Button" parent="NavigationButtons"]
-visible = false
-layout_mode = 2
+[node name="NavigationButtons2" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -130.5
+offset_top = -38.0
+offset_right = 130.5
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
 size_flags_horizontal = 0
-size_flags_vertical = 4
-text = "Change Level"
-script = ExtResource("6_m1q0n")
-level = ExtResource("7_xr08q")
+size_flags_vertical = 0
+alignment = 1
 
-[node name="RunSimulationButton" type="Button" parent="NavigationButtons"]
-visible = false
+[node name="RunSimulationButton" type="Button" parent="NavigationButtons2"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-text = "Run Simulation"
+theme_type_variation = &"ButtonPrimary"
+text = "Start / Stop
+"
 script = ExtResource("8_f30o3")
 
-[node name="SaveMapButton" type="Button" parent="NavigationButtons"]
-visible = false
+[node name="Button" type="Button" parent="NavigationButtons2"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-text = "Save
-"
-script = ExtResource("9_cjnt8")
-
-[node name="LoadMapButton" type="Button" parent="NavigationButtons"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-text = "Load
-"
-script = ExtResource("10_71smo")
-
-[node name="ClearMapButton" type="Button" parent="NavigationButtons"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-text = "Clear
-"
-script = ExtResource("9_gxf7h")
+theme_type_variation = &"ButtonAccent"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bei0g")
+text = "Upgrade"
+script = ExtResource("14_84usf")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1
@@ -177,8 +160,5 @@ script = ExtResource("10_2ydak")
 map = NodePath("../Map")
 
 [connection signal="pressed" from="NavigationButtons/ButtonSettings" to="." method="change_menu" binds= ["SettingsMenu"]]
-[connection signal="pressed" from="NavigationButtons/ChangeLevelButton" to="NavigationButtons/ChangeLevelButton" method="_on_pressed"]
-[connection signal="pressed" from="NavigationButtons/RunSimulationButton" to="NavigationButtons/RunSimulationButton" method="_on_pressed"]
-[connection signal="pressed" from="NavigationButtons/SaveMapButton" to="NavigationButtons/SaveMapButton" method="_on_pressed"]
-[connection signal="pressed" from="NavigationButtons/LoadMapButton" to="NavigationButtons/LoadMapButton" method="_on_pressed"]
-[connection signal="pressed" from="NavigationButtons/ClearMapButton" to="NavigationButtons/ClearMapButton" method="_on_pressed"]
+[connection signal="pressed" from="NavigationButtons2/RunSimulationButton" to="NavigationButtons2/RunSimulationButton" method="_on_pressed"]
+[connection signal="pressed" from="NavigationButtons2/Button" to="NavigationButtons2/Button" method="_on_pressed"]

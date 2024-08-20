@@ -22,10 +22,14 @@ var click_held = Click_Held.NONE
 
 var current_frame = 0
 
+var simulation_running = false;
+
 func _ready():
     EventEngine.clear_level.connect(clear_map)
     EventEngine.save_level.connect(save_level)
     EventEngine.load_level.connect(load_level)
+    EventEngine.run_simulation.connect(run_simulation)
+    EventEngine.stop_simulation.connect(stop_simulation)
 
     block_selector = get_node("BlockSelector")
     block_preview = get_node("BlockPreview")
@@ -74,64 +78,67 @@ func _handle_selectable_tile_right_clicked(selected_tile : SelectTile):
     click_held = Click_Held.RIGHT_CLICK
 
 func _handle_selectable_tile_hovered(selected_tile : SelectTile):
-    if click_held == Click_Held.LEFT_CLICK:
-        _place_block(selected_tile)
-        if block_selector.is_conveyor_selected():
-            block_selector.update_last_placed_tile(selected_tile)
-        print("Dragged from " + str(block_selector.last_tile_dragged.map_pos))
-        block_selector.last_tile_dragged = selected_tile
-    elif click_held == Click_Held.RIGHT_CLICK:
-        _remove_block(selected_tile)
+    if not simulation_running:
+        if click_held == Click_Held.LEFT_CLICK:
+            _place_block(selected_tile)
+            if block_selector.is_conveyor_selected():
+                block_selector.update_last_placed_tile(selected_tile)
+            print("Dragged from " + str(block_selector.last_tile_dragged.map_pos))
+            block_selector.last_tile_dragged = selected_tile
+        elif click_held == Click_Held.RIGHT_CLICK:
+            _remove_block(selected_tile)
     else:
         _update_tile_highlight(selected_tile)
 
 func _place_block(selected_tile : SelectTile):
-    if _is_block_placable(selected_tile.map_pos):
-        var block_data = block_selector.get_block_for_tile(selected_tile)
-        var block : PackedScene
-        if block_data.block_type == BlockData.BlockType.Conveyor:
-            block = preload("res://src/gameplay/block/conveyor.tscn")
-        elif block_data.block_type == BlockData.BlockType.Assembler:
-            block = preload("res://src/gameplay/block/assembler.tscn")
-        elif block_data.block_type == BlockData.BlockType.Producer:
-            block = preload("res://src/gameplay/block/producer.tscn")
-        elif block_data.block_type == BlockData.BlockType.Receiver:
-            block = preload("res://src/gameplay/block/receiver.tscn")
-        var instance = block.instantiate()
-        add_child(instance)
-        instance.block_data = block_data
-        instance.position = selected_tile.map_pos * tile_size
-        instance.grid_pos = selected_tile.map_pos
-        blocks.append(instance)
-        SfxManager.play_sfx(SfxManager.SfxName.FACTORY_CREATION, SfxManager.SfxVariation.MEDIUM)
+    if not simulation_running:
+        if _is_block_placable(selected_tile.map_pos):
+            var block_data = block_selector.get_block_for_tile(selected_tile)
+            var block : PackedScene
+            if block_data.block_type == BlockData.BlockType.Conveyor:
+                block = preload("res://src/gameplay/block/conveyor.tscn")
+            elif block_data.block_type == BlockData.BlockType.Assembler:
+                block = preload("res://src/gameplay/block/assembler.tscn")
+            elif block_data.block_type == BlockData.BlockType.Producer:
+                block = preload("res://src/gameplay/block/producer.tscn")
+            elif block_data.block_type == BlockData.BlockType.Receiver:
+                block = preload("res://src/gameplay/block/receiver.tscn")
+            var instance = block.instantiate()
+            add_child(instance)
+            instance.block_data = block_data
+            instance.position = selected_tile.map_pos * tile_size
+            instance.grid_pos = selected_tile.map_pos
+            blocks.append(instance)
+            SfxManager.play_sfx(SfxManager.SfxName.FACTORY_CREATION, SfxManager.SfxVariation.MEDIUM)
 
-        for tile in _get_all_tiles_at_position_for_selected_block(selected_tile.map_pos):
-            tile.occupied = true
-            tile.placed_block = instance
-            instance.used_tiles.append(tile)
-    else:
-        if block_selector.is_conveyor_selected():
-            block_selector.verify_already_placed_block_data(selected_tile)
-    
+            for tile in _get_all_tiles_at_position_for_selected_block(selected_tile.map_pos):
+                tile.occupied = true
+                tile.placed_block = instance
+                instance.used_tiles.append(tile)
+        else:
+            if block_selector.is_conveyor_selected():
+                block_selector.verify_already_placed_block_data(selected_tile)
+        
 
     _update_tile_highlight(selected_tile)
 
 func _remove_block(selected_tile : SelectTile):
-    if selected_tile.occupied:
-        var block = selected_tile.placed_block
-        if block.block_data.is_unremovable == true:
-            SfxManager.play_sfx(SfxManager.SfxName.ERROR, SfxManager.SfxVariation.MEDIUM)
-            return
-        
-        var used_tiles = blocks[blocks.find(block)].used_tiles
-        for tile in used_tiles:
-            tile.occupied = false
-            tile.placed_block = null
-        
-        blocks.remove_at(blocks.find(block))
-        block.queue_free()
-        SfxManager.play_sfx(SfxManager.SfxName.FACTORY_DESTRUCTION, SfxManager.SfxVariation.MEDIUM)
-        
+    if not simulation_running:
+        if selected_tile.occupied:
+            var block = selected_tile.placed_block
+            if block.block_data.is_unremovable == true:
+                SfxManager.play_sfx(SfxManager.SfxName.ERROR, SfxManager.SfxVariation.MEDIUM)
+                return
+            
+            var used_tiles = blocks[blocks.find(block)].used_tiles
+            for tile in used_tiles:
+                tile.occupied = false
+                tile.placed_block = null
+            
+            blocks.remove_at(blocks.find(block))
+            block.queue_free()
+            SfxManager.play_sfx(SfxManager.SfxName.FACTORY_DESTRUCTION, SfxManager.SfxVariation.MEDIUM)
+            
     _update_tile_highlight(selected_tile)
 
 func _update_tile_highlight(selected_tile : SelectTile):
@@ -149,7 +156,8 @@ func _on_mouse_quited_area():
     block_preview.visible = false
 
 func _on_mouse_entered_area():
-    block_preview.visible = true
+    if not simulation_running:
+        block_preview.visible = true
 
 func _clear_highlights():
     for tile in highlighted_tiles:
@@ -242,3 +250,11 @@ func save_level(level : int):
 
 func load_level(level : int):
     load_map(Saveinator.saves[level]) 
+
+func run_simulation():
+    simulation_running = true;
+    block_preview.visible = false
+
+func stop_simulation():
+    simulation_running = false;
+    block_preview.visible = true 
