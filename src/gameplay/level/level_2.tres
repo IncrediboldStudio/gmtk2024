@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=7 format=3 uid="uid://blvq23t0g1a6f"]
+
+[ext_resource type="Resource" uid="uid://co511qq8mvf47" path="res://src/gameplay/block/data/chip_producer_block.tres" id="1_y24li"]
+[ext_resource type="Resource" uid="uid://dd7lsunf1j66w" path="res://src/gameplay/block/data/motherboard_producer_block.tres" id="2_mdaob"]
+[ext_resource type="Resource" uid="uid://gbuksxkjftic" path="res://src/gameplay/block/data/computer_module_receiver_block.tres" id="3_yevui"]
+[ext_resource type="Resource" uid="uid://bfanpodxs6dlt" path="res://src/gameplay/component/data/computer_module_component_base.tres" id="4_3b86l"]
+[ext_resource type="Resource" uid="uid://b02qnw1152c7u" path="res://src/gameplay/block/data/box_block.tres" id="4_f8xug"]
+[ext_resource type="Script" path="res://src/gameplay/level/level_data.gd" id="5_7m303"]
+
+[resource]
+script = ExtResource("5_7m303")
+blocks = {
+Vector2i(0, 0): ExtResource("4_f8xug"),
+Vector2i(2, 2): ExtResource("1_y24li"),
+Vector2i(3, 4): ExtResource("3_yevui"),
+Vector2i(7, 5): ExtResource("2_mdaob")
+}
+expected_component = {
+ExtResource("4_3b86l"): 20
+}

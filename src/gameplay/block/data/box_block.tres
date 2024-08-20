@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BlockData" load_steps=5 format=3 uid="uid://b02qnw1152c7u"]
+
+[ext_resource type="Resource" uid="uid://clidfaf1u4s0v" path="res://src/gameplay/component/test_component_assembly.tres" id="1_kpahq"]
+[ext_resource type="Script" path="res://src/gameplay/block/block_io.gd" id="2_2cxjx"]
+[ext_resource type="Script" path="res://src/gameplay/block/data/block_data.gd" id="3_hf4q5"]
+[ext_resource type="SpriteFrames" uid="uid://baxigl3lwty45" path="res://src/art/sprfr_receiver_block.tres" id="4_cmiki"]
+
+[resource]
+script = ExtResource("3_hf4q5")
+sprite_frames = ExtResource("4_cmiki")
+texture_offset = Vector2i(32, 32)
+texture_rotation = 0.0
+block_layout = Array[Vector2i]([Vector2i(0, 0)])
+inputs = Array[ExtResource("2_2cxjx")]([])
+outputs = Array[ExtResource("2_2cxjx")]([])
+block_type = 3
+is_unremovable = true
+component_data = ExtResource("1_kpahq")
