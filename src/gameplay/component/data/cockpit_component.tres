@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="ComponentData" load_steps=3 format=3 uid="uid://cg8u23xwhuvsv"]
+[gd_resource type="Resource" script_class="ComponentData" load_steps=4 format=3 uid="uid://cg8u23xwhuvsv"]
 
 [ext_resource type="Resource" uid="uid://s04blc2h53i3" path="res://src/gameplay/component/data/cockpit_component_base.tres" id="1_3st00"]
+[ext_resource type="Resource" uid="uid://biunq3r8p8gb3" path="res://src/gameplay/component/recipe/cockpit_recipe_list.tres" id="2_xjpy0"]
 [ext_resource type="Script" path="res://src/gameplay/component/component_data.gd" id="3_qlg2f"]
 
 [resource]
 script = ExtResource("3_qlg2f")
 base_data = ExtResource("1_3st00")
+recipe_list = ExtResource("2_xjpy0")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ComponentData" load_steps=4 format=3 uid="uid://dbfsjnmcm8od1"]
+
+[ext_resource type="Resource" uid="uid://vdj5ek8hb36a" path="res://src/gameplay/component/data/armor_plate_component_base.tres" id="1_ajy73"]
+[ext_resource type="Resource" uid="uid://i84ki3evfdk5" path="res://src/gameplay/component/recipe/armor_plate_recipe_list.tres" id="2_e4i6g"]
+[ext_resource type="Script" path="res://src/gameplay/component/component_data.gd" id="3_5k2nc"]
+
+[resource]
+script = ExtResource("3_5k2nc")
+base_data = ExtResource("1_ajy73")
+recipe_list = ExtResource("2_e4i6g")

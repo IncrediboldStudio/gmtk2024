@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RecipeListData" load_steps=4 format=3 uid="uid://dagcrymv1e3ox"]
+
+[ext_resource type="Script" path="res://src/gameplay/component/recipe/recipe_data.gd" id="1_ocqlw"]
+[ext_resource type="Resource" uid="uid://d21o73bfjqrvt" path="res://src/gameplay/component/recipe/spaceship_recipe.tres" id="2_teu3v"]
+[ext_resource type="Script" path="res://src/gameplay/component/recipe/recipe_list_data.gd" id="3_g07mh"]
+
+[resource]
+script = ExtResource("3_g07mh")
+recipes = Array[ExtResource("1_ocqlw")]([ExtResource("2_teu3v")])

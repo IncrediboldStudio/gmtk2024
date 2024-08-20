@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ComponentBaseData" load_steps=3 format=3 uid="uid://d3xjqgj83ensi"]
+
+[ext_resource type="Script" path="res://src/gameplay/component/component_base_data.gd" id="1_frs3q"]
+[ext_resource type="Texture2D" uid="uid://dqqmrvt1ahvsm" path="res://src/art/spr_armored_ship_frame.png" id="2_anht7"]
+
+[resource]
+script = ExtResource("1_frs3q")
+texture = ExtResource("2_anht7")
+size_in_block_ratio = 60.0

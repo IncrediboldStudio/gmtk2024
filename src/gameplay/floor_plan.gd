@@ -30,6 +30,7 @@ func _on_upgrade_factory():
     current_level += 1
     if current_level >= levels.size():
         EventEngine.you_win.emit()
+        return
     
     map.load_map(levels[current_level].blocks)
     expected_components = levels[current_level].expected_component
