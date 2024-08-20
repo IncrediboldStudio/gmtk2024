@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://bos8xmtwkc411"]
+
+[ext_resource type="Script" path="res://src/ui/components/hud/recipes_preview/recipe_palette.gd" id="1_mlpuy"]
+[ext_resource type="PackedScene" uid="uid://64u7p0yl6kv4" path="res://src/ui/components/hud/recipes_preview/recipe_container.tscn" id="2_q36vo"]
+[ext_resource type="Resource" uid="uid://d2ik5yhcvitqf" path="res://src/gameplay/component/recipe/master_recipe_list.tres" id="2_rvx64"]
+
+[node name="TargetComponentsPalette" type="PanelContainer" node_paths=PackedStringArray("recipe_containers")]
+offset_right = 51.0
+offset_bottom = 64.0
+theme_type_variation = &"PanelContainerSurface"
+script = ExtResource("1_mlpuy")
+recipe_containers = [NodePath("MarginContainer/VBoxContainer/TargetComponentContainer/recipe_container"), NodePath("MarginContainer/VBoxContainer/TargetComponentContainer/recipe_container2"), NodePath("MarginContainer/VBoxContainer/TargetComponentContainer/recipe_container3"), NodePath("MarginContainer/VBoxContainer/TargetComponentContainer/recipe_container4")]
+master_recipe_list = ExtResource("2_rvx64")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Recipes:"
+horizontal_alignment = 1
+
+[node name="TargetComponentContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="recipe_container" parent="MarginContainer/VBoxContainer/TargetComponentContainer" instance=ExtResource("2_q36vo")]
+layout_mode = 2
+
+[node name="recipe_container2" parent="MarginContainer/VBoxContainer/TargetComponentContainer" instance=ExtResource("2_q36vo")]
+layout_mode = 2
+
+[node name="recipe_container3" parent="MarginContainer/VBoxContainer/TargetComponentContainer" instance=ExtResource("2_q36vo")]
+layout_mode = 2
+
+[node name="recipe_container4" parent="MarginContainer/VBoxContainer/TargetComponentContainer" instance=ExtResource("2_q36vo")]
+layout_mode = 2
