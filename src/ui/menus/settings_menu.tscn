@@ -61,6 +61,7 @@ offset_left = 18.0
 offset_top = 17.0
 offset_right = 63.0
 offset_bottom = 48.0
+theme_type_variation = &"ButtonAccent"
 text = "Back"
 
 [connection signal="tab_changed" from="Panel/MarginContainer/TabContainer" to="Panel/MarginContainer/TabContainer" method="_on_tab_changed"]
