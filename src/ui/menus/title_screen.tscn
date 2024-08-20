@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2ix1hajlrdqq"]
+[gd_scene load_steps=4 format=3 uid="uid://c2ix1hajlrdqq"]
 
 [ext_resource type="Script" path="res://src/ui/menus/menu.gd" id="1_qqegu"]
 [ext_resource type="Script" path="res://src/ui/components/any_key_button/any_key_button.gd" id="2_ayu3u"]
+[ext_resource type="Texture2D" uid="uid://4xgx7d7tuadg" path="res://src/art/spr_logo.png" id="2_vlco8"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -12,6 +13,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qqegu")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 50.0
+offset_top = 121.0
+offset_right = 331.798
+offset_bottom = 299.0
+grow_horizontal = 2
+scale = Vector2(0.7, 0.7)
+size_flags_vertical = 3
+texture = ExtResource("2_vlco8")
+expand_mode = 3
+stretch_mode = 3
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -19,15 +35,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -154.5
-offset_top = -141.5
-offset_right = 154.5
-offset_bottom = 141.5
+offset_left = -216.0
+offset_top = 20.0
+offset_right = 216.0
+offset_bottom = 52.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 170
 
 [node name="Title" type="Label" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"TypographyDisplay"
@@ -35,6 +52,7 @@ text = "GMTK 2024"
 
 [node name="Press To Start" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 8
 theme_override_font_sizes/font_size = 32
 text = "Press any button to start"
 
